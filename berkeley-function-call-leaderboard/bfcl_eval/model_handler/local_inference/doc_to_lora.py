@@ -203,6 +203,13 @@ class DocToLoraHandler(BaseHandler):
         self._worker = _D2LWorkerProxy(d2l_python, d2l_source_path)
         self._model_loaded = False
 
+        raw_log_path = os.environ.get("D2L_RAW_LOG", "")
+        if raw_log_path:
+            os.makedirs(os.path.dirname(raw_log_path) or ".", exist_ok=True)
+            self._raw_log = open(raw_log_path, "w")
+        else:
+            self._raw_log = None
+
     # ------------------------------------------------------------------
     # Model lifecycle
     # ------------------------------------------------------------------
@@ -306,11 +313,30 @@ class DocToLoraHandler(BaseHandler):
             "input_tokens": result["input_tokens"],
             "output_tokens": result["output_tokens"],
         }
+
+        if self._raw_log is not None:
+            self._raw_log.write(json.dumps({
+                "messages": messages,
+                "raw_output": result["text"],
+                "input_tokens": result["input_tokens"],
+                "output_tokens": result["output_tokens"],
+                "latency": end_time - start_time,
+            }) + "\n")
+            self._raw_log.flush()
+
         return api_response, end_time - start_time
 
     def _parse_query_response_prompting(self, api_response: Any) -> dict:
+        raw = api_response["text"]
+        reasoning_content = ""
+        cleaned = raw
+        if "</think>" in raw:
+            parts = raw.split("</think>")
+            reasoning_content = parts[0].rstrip("\n").split("<think>")[-1].lstrip("\n")
+            cleaned = parts[-1].lstrip("\n")
         return {
-            "model_responses": api_response["text"],
+            "model_responses": cleaned,
+            "reasoning_content": reasoning_content,
             "input_token": api_response["input_tokens"],
             "output_token": api_response["output_tokens"],
         }
@@ -330,9 +356,11 @@ class DocToLoraHandler(BaseHandler):
     def _add_assistant_message_prompting(
         self, inference_data: dict, model_response_data: dict
     ) -> dict:
-        inference_data["message"].append(
-            {"role": "assistant", "content": model_response_data["model_responses"]}
-        )
+        msg = {"role": "assistant", "content": model_response_data["model_responses"]}
+        reasoning = model_response_data.get("reasoning_content", "")
+        if reasoning:
+            msg["reasoning_content"] = reasoning
+        inference_data["message"].append(msg)
         return inference_data
 
     def _add_execution_results_prompting(

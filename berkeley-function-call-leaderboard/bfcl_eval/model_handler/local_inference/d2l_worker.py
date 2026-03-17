@@ -136,8 +136,6 @@ def _generate(
         add_generation_prompt=True,
         return_tensors="pt",
     )
-    if hasattr(_tokenizer, "chat_template") and "enable_thinking" in (_tokenizer.chat_template or ""):
-        template_kwargs["enable_thinking"] = True
     chat_ids = _tokenizer.apply_chat_template(
         messages,
         **template_kwargs,
