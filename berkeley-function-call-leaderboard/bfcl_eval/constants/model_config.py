@@ -38,6 +38,7 @@ from bfcl_eval.model_handler.local_inference.deepseek_reasoning import (
     DeepseekReasoningHandler,
 )
 from bfcl_eval.model_handler.local_inference.doc_to_lora import DocToLoraHandler
+from bfcl_eval.model_handler.local_inference.doc_to_lora_sglang import DocToLoraSGLangHandler
 from bfcl_eval.model_handler.local_inference.falcon_fc import Falcon3FCHandler
 from bfcl_eval.model_handler.local_inference.gemma import GemmaHandler
 from bfcl_eval.model_handler.local_inference.functiongemma import FunctionGemmaHandler
@@ -2145,6 +2146,18 @@ local_inference_model_map = {
         org="Doc-to-LoRA",
         license="Apache 2.0",
         model_handler=DocToLoraHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
+    "doc-to-lora/qwen3-4b-sglang": ModelConfig(
+        model_name="doc-to-lora/qwen3-4b-sglang",
+        display_name="Doc-to-LoRA Qwen3-4B SGLang (D2L)",
+        url="https://github.com/",
+        org="Doc-to-LoRA",
+        license="Apache 2.0",
+        model_handler=DocToLoraSGLangHandler,
         input_price=None,
         output_price=None,
         is_fc_model=False,

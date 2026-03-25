@@ -1,0 +1,34 @@
+---
+description: BFCL tool schema normalization for Doc-to-LoRA evaluation
+globs: bfcl_eval/model_handler/local_inference/doc_to_lora.py
+alwaysApply: false
+---
+
+# BFCL → Training Format Normalization for Doc-to-LoRA
+
+The D2L context encoder was trained on OpenAI-style tool definitions (toucan + nemotron datasets). BFCL uses a different schema format. The `_normalize_bfcl_function` method in `DocToLoraHandler` bridges this gap before tool definitions reach the context encoder.
+
+## Key format differences
+
+| BFCL | Training (OpenAI JSON Schema) | Scope |
+|------|-------------------------------|-------|
+| `"type": "dict"` | `"type": "object"` | `parameters` and nested properties |
+| `"type": "tuple"` | `"type": "array"` | property types (e.g. coordinates) |
+| `"type": "float"` | `"type": "number"` | property types (very common) |
+| `"optional": true/\"True\"` | absent (use `required` array) | property-level field |
+
+## What `_normalize_bfcl_function` does
+
+Applies a recursive `_normalize_schema` to the `parameters` dict that:
+
+1. Rewrites `"dict"` → `"object"`, `"tuple"` → `"array"`, `"float"` → `"number"` on any `"type"` field
+2. Strips `"optional"` from every schema node
+3. Recurses into `"properties"` and `"items"` to handle nested schemas
+
+## Why this matters
+
+The D2L context encoder tokenizes tool definitions and produces LoRA weights. If the token sequence at eval time differs from training (e.g. the tokens for `"dict"` vs `"object"`), the encoder produces degraded LoRA weights. This caused the model to reason correctly about tools during `<think>` but select wrong functions during `<tool_call>` generation.
+
+## If adding new training datasets
+
+When adding new tool-calling datasets, ensure their `context` column uses the same OpenAI-style format (`"type": "object"`, no `"optional"` on properties). If a new eval benchmark uses a different schema dialect, add normalization in the handler before internalization — never change the training format.

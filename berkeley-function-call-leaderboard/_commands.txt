@@ -2,6 +2,17 @@ conda run -n BFCL --no-capture-output bash -c \
 'D2L_CHECKPOINT_PATH=/home/jah649/tool-lora/doc-to-lora/train_outputs/runs/toucan_nemotron_test1/checkpoint-1200/pytorch_model.bin D2L_RESTRICT_TOOLGEN=1 \
 bfcl generate --model doc-to-lora/qwen3-4b --test-category multiple --result-dir /home/jah649/gorilla/berkeley-function-call-leaderboard/result_d2l/toucan_nemotron_test1_1200/'
 
+
 conda run -n BFCL --no-capture-output bash -c \
 'bfcl evaluate --model doc-to-lora/qwen3-4b --test-category multiple --result-dir /home/jah649/gorilla/berkeley-function-call-leaderboard/result_d2l/toucan_nemotron_test1_1200/ \
 --score-dir /home/jah649/gorilla/berkeley-function-call-leaderboard/score_d2l/toucan_nemotron_test1_1200/'
+
+
+
+conda run -n BFCL --no-capture-output bash -c \
+'D2L_CHECKPOINT_PATH=/home/jah649/tool-lora/doc-to-lora/train_outputs/runs/toucan_nemotron_test1/checkpoint-1200/pytorch_model.bin D2L_RESTRICT_TOOLGEN=1 \
+bfcl generate --model doc-to-lora/qwen3-4b-sglang --test-category multiple --result-dir /home/jah649/gorilla/berkeley-function-call-leaderboard/result_d2l/sglang-test/'
+
+conda run -n BFCL --no-capture-output bash -c \
+'bfcl evaluate --model doc-to-lora/qwen3-4b-sglang --test-category multiple --result-dir /home/jah649/gorilla/berkeley-function-call-leaderboard/result_d2l/sglang-test/ \
+--score-dir /home/jah649/gorilla/berkeley-function-call-leaderboard/score_d2l/sglang-test/'

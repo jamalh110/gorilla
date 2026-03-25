@@ -75,6 +75,12 @@ def get_args():
         default=None,
         help="Specify the maximum LoRA rank for vLLM backend.",
     )
+    parser.add_argument(
+        "--hash-names",
+        action="store_true",
+        default=False,
+        help="Hash function names to 6-character random strings.",
+    )
     args = parser.parse_args()
     print(f"Parsed arguments: {args}")
 
@@ -186,14 +192,68 @@ def collect_test_cases(args, model_name, all_test_categories, all_test_entries_i
     return sorted(test_cases_to_generate, key=sort_key)
 
 
-def multi_threaded_inference(handler, test_case, include_input_log, exclude_state_log):
+def multi_threaded_inference(handler, test_case, include_input_log, exclude_state_log, hash_names=False):
+    import copy
+    import hashlib
+    import re
 
     assert type(test_case["function"]) is list
 
+    test_case_run = test_case
+    mapping = {}
+    reverse_mapping = {}
+
+    if hash_names:
+        test_case_run = copy.deepcopy(test_case)
+        for func in test_case_run["function"]:
+            orig_name = func.get("name")
+            if orig_name:
+                hashed_name = "#" + hashlib.sha256(orig_name.encode()).hexdigest()[:6]
+                mapping[orig_name] = hashed_name
+                reverse_mapping[hashed_name] = orig_name
+                func["name"] = hashed_name
+                func["name_original"] = orig_name
+
+        def replace_text(text):
+            if not isinstance(text, str):
+                return text
+            for old, new in sorted(mapping.items(), key=lambda x: -len(x[0])):
+                text = re.sub(
+                    r"(?<![a-zA-Z0-9_.])" + re.escape(old) + r"(?![a-zA-Z0-9_])",
+                    new,
+                    text,
+                )
+            return text
+
+        if "question" in test_case_run:
+            if isinstance(test_case_run["question"], list):
+                for turn in test_case_run["question"]:
+                    if isinstance(turn, list):
+                        for msg in turn:
+                            if isinstance(msg, dict) and "content" in msg:
+                                msg["content"] = replace_text(msg["content"])
+            elif isinstance(test_case_run["question"], str):
+                test_case_run["question"] = replace_text(test_case_run["question"])
+
     try:
         result, metadata = handler.inference(
-            test_case, include_input_log, exclude_state_log
+            test_case_run, include_input_log, exclude_state_log
         )
+        if hash_names:
+            def unhash(obj):
+                if isinstance(obj, str):
+                    for hashed_name, orig_name in reverse_mapping.items():
+                        obj = obj.replace(hashed_name, orig_name)
+                    return obj
+                elif isinstance(obj, list):
+                    return [unhash(x) for x in obj]
+                elif isinstance(obj, dict):
+                    return {k: unhash(v) for k, v in obj.items()}
+                return obj
+            
+            result = unhash(result)
+            metadata = unhash(metadata)
+            
     except Exception as e:
         # This is usually the case when the model getting stuck on one particular test case.
         # For example, timeout error or FC model returning invalid JSON response.
@@ -223,11 +283,20 @@ def multi_threaded_inference(handler, test_case, include_input_log, exclude_stat
 def generate_results(args, model_name, test_cases_total):
     handler = build_handler(model_name, args.temperature)
 
+    has_prepare = hasattr(handler, "prepare") and callable(handler.prepare)
+
     if isinstance(handler, OSSHandler):
         handler: OSSHandler
         is_oss_model = True
         # For OSS models, if the user didn't explicitly set the number of threads,
         # we default to 100 threads to speed up the inference.
+        num_threads = (
+            args.num_threads
+            if args.num_threads is not None
+            else LOCAL_SERVER_MAX_CONCURRENT_REQUEST
+        )
+    elif has_prepare:
+        is_oss_model = False
         num_threads = (
             args.num_threads
             if args.num_threads is not None
@@ -265,6 +334,9 @@ def generate_results(args, model_name, test_cases_total):
                 enable_lora=args.enable_lora,
                 max_lora_rank=args.max_lora_rank,
             )
+
+        if has_prepare:
+            handler.prepare(test_cases_total)
 
         # ───── dependency bookkeeping ──────────────────────────────
         dependencies = {
@@ -308,6 +380,7 @@ def generate_results(args, model_name, test_cases_total):
                     test_case,
                     args.include_input_log,
                     args.exclude_state_log,
+                    args.hash_names,
                 )
                 in_flight[future] = test_case_id
 
@@ -344,6 +417,7 @@ def generate_results(args, model_name, test_cases_total):
                         test_case,
                         args.include_input_log,
                         args.exclude_state_log,
+                        args.hash_names,
                     )
                     in_flight[future] = test_case_id
 
@@ -354,6 +428,9 @@ def generate_results(args, model_name, test_cases_total):
 
         if is_oss_model:
             handler.shutdown_local_server()
+
+        if has_prepare and hasattr(handler, "shutdown"):
+            handler.shutdown()
 
 
 def main(args):

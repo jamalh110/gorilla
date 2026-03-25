@@ -231,9 +231,52 @@ class DocToLoraHandler(BaseHandler):
         print(f"D2L model loaded via worker (base: {result.get('base_model_name')})")
         self._model_loaded = True
 
+    @staticmethod
+    def _normalize_bfcl_function(func: dict) -> dict:
+        """Normalize a BFCL function definition to the OpenAI-style format
+        used during training (``"type": "object"`` parameters, no ``optional``
+        field on individual properties, etc.).
+
+        Handles the following BFCL→OpenAI type rewrites recursively:
+          - ``"dict"``  → ``"object"``
+          - ``"tuple"`` → ``"array"``
+          - ``"float"`` → ``"number"``
+        Also strips the non-standard ``"optional"`` key from every property.
+        """
+        func = json.loads(json.dumps(func))  # deep copy
+
+        _TYPE_MAP = {
+            "dict": "object",
+            "tuple": "array",
+            "float": "number",
+            "String": "string",
+            "Boolean": "boolean",
+            "HashMap": "object",
+            "ArrayList": "array",
+            "any": "string",
+        }
+
+        def _normalize_schema(schema: dict):
+            t = schema.get("type")
+            if t in _TYPE_MAP:
+                schema["type"] = _TYPE_MAP[t]
+            schema.pop("optional", None)
+            for prop in schema.get("properties", {}).values():
+                _normalize_schema(prop)
+            if "items" in schema and isinstance(schema["items"], dict):
+                _normalize_schema(schema["items"])
+
+        params = func.get("parameters", {})
+        _normalize_schema(params)
+        params.pop("optional", None)
+        return func
+
     def _internalize_tools(self, functions: list[dict]):
         """Convert BFCL function docs to OpenAI-style tool JSON and internalize."""
-        tools = [{"type": "function", "function": func} for func in functions]
+        tools = [
+            {"type": "function", "function": self._normalize_bfcl_function(func)}
+            for func in functions
+        ]
         tool_defs = json.dumps(tools, indent=2)
         self._worker.send(
             "internalize",
