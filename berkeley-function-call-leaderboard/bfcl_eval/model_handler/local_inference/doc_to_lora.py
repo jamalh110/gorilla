@@ -12,15 +12,18 @@ subprocess** (``d2l_worker.py``) under D2L's own virtualenv.  The handler
 communicates with the worker via a JSON-lines protocol over stdin/stdout.
 
 Environment variables:
-    D2L_CHECKPOINT_PATH  : Path to the D2L checkpoint (pytorch_model.bin)
-    D2L_CHUNK_SIZE       : Max tokens per context chunk for internalization (default: 1024)
-    D2L_MAX_NEW_TOKENS   : Max tokens to generate (default: 1024)
-    D2L_SOURCE_PATH      : Path to the doc-to-lora/src directory
-    D2L_PYTHON           : Path to the Python interpreter in D2L's virtualenv
-                           (default: ~/tool-lora/doc-to-lora/.venv/bin/python)
-    D2L_RESTRICT_TOOLGEN : Set to "1" to enable constrained decoding that
-                           restricts function names, parameter names, and enum
-                           values to those defined by the tool schema.
+    D2L_CHECKPOINT_PATH      : Path to the D2L checkpoint (pytorch_model.bin)
+    D2L_CHUNK_SIZE           : Max tokens per context chunk for internalization (default: 1024)
+    D2L_MAX_NEW_TOKENS       : Max tokens to generate (default: 1024)
+    D2L_SOURCE_PATH          : Path to the doc-to-lora/src directory
+    D2L_PYTHON               : Path to the Python interpreter in D2L's virtualenv
+                               (default: ~/tool-lora/doc-to-lora/.venv/bin/python)
+    D2L_RESTRICT_TOOLGEN     : Set to "1" to enable constrained decoding that
+                               restricts function names, parameter names, and enum
+                               values to those defined by the tool schema.
+    D2L_TOOL_NAMES_IN_SYSTEM : Set to "1" to include tool names in the system
+                               message so the model can copy exact names from
+                               context rather than reconstructing them from LoRA.
 """
 
 import atexit
@@ -48,6 +51,21 @@ TOOL_CALL_SYSTEM_MSG = (
     '{"name": <function-name>, "arguments": <args-json-object>}\n'
     "</tool_call>"
 )
+
+
+def _build_system_msg(tool_names: list[str] | None = None) -> str:
+    """Build the system message, optionally including tool names."""
+    if tool_names is None:
+        return TOOL_CALL_SYSTEM_MSG
+    return (
+        "You may call one or more functions to assist with the user query.\n\n"
+        f"Available functions: {json.dumps(tool_names, ensure_ascii=False)}\n\n"
+        "For each function call, return a json object with function name and arguments "
+        "within <tool_call></tool_call> XML tags:\n"
+        "<tool_call>\n"
+        '{"name": <function-name>, "arguments": <args-json-object>}\n'
+        "</tool_call>"
+    )
 
 
 def _parse_tool_calls(text: str) -> list[dict]:
@@ -183,6 +201,12 @@ class DocToLoraHandler(BaseHandler):
             kwargs.get(
                 "restrict_toolgen",
                 os.environ.get("D2L_RESTRICT_TOOLGEN", "0"),
+            )
+        ) not in ("0", "", "false", "False")
+        self.tool_names_in_system = str(
+            kwargs.get(
+                "tool_names_in_system",
+                os.environ.get("D2L_TOOL_NAMES_IN_SYSTEM", "0"),
             )
         ) not in ("0", "", "false", "False")
         d2l_source_path = kwargs.get(
@@ -326,8 +350,14 @@ class DocToLoraHandler(BaseHandler):
     def _pre_query_processing_prompting(self, test_entry: dict) -> dict:
         functions: list = test_entry["function"]
         self._internalize_tools(functions)
+        if self.tool_names_in_system:
+            names = [f.get("name", "") for f in functions]
+            names = [n for n in names if n]
+            sys_msg = _build_system_msg(names)
+        else:
+            sys_msg = TOOL_CALL_SYSTEM_MSG
         return {
-            "message": [{"role": "system", "content": TOOL_CALL_SYSTEM_MSG}],
+            "message": [{"role": "system", "content": sys_msg}],
             "function": functions,
         }
 
