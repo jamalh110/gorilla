@@ -24,14 +24,24 @@ Environment variables:
     D2L_TOOL_NAMES_IN_SYSTEM : Set to "1" to include tool names in the system
                                message so the model can copy exact names from
                                context rather than reconstructing them from LoRA.
+    D2L_TOOL_SYMBOLS_IN_SYSTEM : Set to "1" to include tool names, parameter
+                               names, and enum values (no descriptions) in the
+                               system message.  Superset of TOOL_NAMES_IN_SYSTEM.
+    D2L_SKIP_INTERNALIZE     : Set to "1" to skip LoRA internalization entirely.
+                               The model runs with base weights only — useful as
+                               an ablation to isolate the contribution of the
+                               system-prompt tool info vs the LoRA.
 """
 
 import atexit
 import json
 import os
+import queue
 import re
 import subprocess
+import threading
 import time
+from contextlib import contextmanager
 from typing import Any
 
 from bfcl_eval.model_handler.base_handler import BaseHandler
@@ -60,6 +70,38 @@ def _build_system_msg(tool_names: list[str] | None = None) -> str:
     return (
         "You may call one or more functions to assist with the user query.\n\n"
         f"Available functions: {json.dumps(tool_names, ensure_ascii=False)}\n\n"
+        "For each function call, return a json object with function name and arguments "
+        "within <tool_call></tool_call> XML tags:\n"
+        "<tool_call>\n"
+        '{"name": <function-name>, "arguments": <args-json-object>}\n'
+        "</tool_call>"
+    )
+
+
+def _build_system_msg_with_symbols(functions: list[dict]) -> str:
+    """Build a system message containing tool names, parameter names, and enums.
+
+    No descriptions or types — only the exact symbols the model must reproduce.
+    Format per tool:  ``func_name(param1, param2, param3[a|b|c])``
+    """
+    lines = []
+    for func in functions:
+        name = func.get("name", "")
+        properties = func.get("parameters", {}).get("properties", {})
+        param_parts = []
+        for pname, pschema in properties.items():
+            enum = pschema.get("enum")
+            if enum:
+                param_parts.append(
+                    f"{pname}[{'|'.join(str(e) for e in enum)}]"
+                )
+            else:
+                param_parts.append(pname)
+        lines.append(f"{name}({', '.join(param_parts)})")
+    tools_block = "\n".join(lines)
+    return (
+        "You may call one or more functions to assist with the user query.\n\n"
+        f"Available tools:\n{tools_block}\n\n"
         "For each function call, return a json object with function name and arguments "
         "within <tool_call></tool_call> XML tags:\n"
         "<tool_call>\n"
@@ -100,10 +142,12 @@ def _parse_tool_calls(text: str) -> list[dict]:
 class _D2LWorkerProxy:
     """Manages the lifecycle of and communication with the d2l_worker subprocess."""
 
-    def __init__(self, python_path: str, d2l_source_path: str):
+    def __init__(self, python_path: str, d2l_source_path: str, gpu_device: str | None = None):
         self._proc: subprocess.Popen | None = None
         self._python = python_path
         self._src = d2l_source_path
+        self.gpu_device = gpu_device
+        self.model_loaded = False
 
     # ------------------------------------------------------------------
 
@@ -114,6 +158,9 @@ class _D2LWorkerProxy:
 
     def _start(self):
         self._stop()
+        env = os.environ.copy()
+        if self.gpu_device is not None:
+            env["CUDA_VISIBLE_DEVICES"] = self.gpu_device
         self._proc = subprocess.Popen(
             [self._python, _WORKER_SCRIPT, self._src],
             stdin=subprocess.PIPE,
@@ -121,6 +168,7 @@ class _D2LWorkerProxy:
             stderr=None,  # inherit → D2L prints appear in terminal
             text=True,
             bufsize=1,  # line-buffered
+            env=env,
         )
         atexit.register(self._stop)
         ready = self._read_response()
@@ -209,6 +257,18 @@ class DocToLoraHandler(BaseHandler):
                 os.environ.get("D2L_TOOL_NAMES_IN_SYSTEM", "0"),
             )
         ) not in ("0", "", "false", "False")
+        self.tool_symbols_in_system = str(
+            kwargs.get(
+                "tool_symbols_in_system",
+                os.environ.get("D2L_TOOL_SYMBOLS_IN_SYSTEM", "0"),
+            )
+        ) not in ("0", "", "false", "False")
+        self.skip_internalize = str(
+            kwargs.get(
+                "skip_internalize",
+                os.environ.get("D2L_SKIP_INTERNALIZE", "0"),
+            )
+        ) not in ("0", "", "false", "False")
         d2l_source_path = kwargs.get(
             "d2l_source_path",
             os.environ.get(
@@ -224,8 +284,17 @@ class DocToLoraHandler(BaseHandler):
             ),
         )
 
-        self._worker = _D2LWorkerProxy(d2l_python, d2l_source_path)
-        self._model_loaded = False
+        gpu_ids = self._detect_gpu_ids()
+        self._worker_pool: queue.Queue[_D2LWorkerProxy] = queue.Queue()
+        self._all_workers: list[_D2LWorkerProxy] = []
+        for gpu_dev in gpu_ids:
+            worker = _D2LWorkerProxy(d2l_python, d2l_source_path, gpu_device=gpu_dev)
+            self._all_workers.append(worker)
+            self._worker_pool.put(worker)
+        self._thread_local = threading.local()
+        self._log_lock = threading.Lock()
+        self.num_gpus = len(gpu_ids)
+        print(f"DocToLoraHandler: {self.num_gpus} GPU(s) detected → {gpu_ids}")
 
         raw_log_path = os.environ.get("D2L_RAW_LOG", "")
         if raw_log_path:
@@ -234,12 +303,56 @@ class DocToLoraHandler(BaseHandler):
         else:
             self._raw_log = None
 
+    @staticmethod
+    def _detect_gpu_ids() -> list[str]:
+        """Return the list of physical GPU device strings to use.
+
+        Respects CUDA_VISIBLE_DEVICES if already set; otherwise enumerates
+        all GPUs via torch.cuda.
+        """
+        cuda_vis = os.environ.get("CUDA_VISIBLE_DEVICES")
+        if cuda_vis:
+            ids = [g.strip() for g in cuda_vis.split(",") if g.strip()]
+            if ids:
+                return ids
+        try:
+            import torch
+            n = torch.cuda.device_count()
+            if n > 0:
+                return [str(i) for i in range(n)]
+        except Exception:
+            pass
+        return ["0"]
+
+    @contextmanager
+    def _checkout_worker(self):
+        """Acquire a worker from the pool for the current thread."""
+        worker = self._worker_pool.get()
+        self._thread_local.worker = worker
+        try:
+            yield worker
+        finally:
+            self._thread_local.worker = None
+            self._worker_pool.put(worker)
+
+    @property
+    def _active_worker(self) -> _D2LWorkerProxy:
+        """Return the worker assigned to the current thread."""
+        w = getattr(self._thread_local, "worker", None)
+        if w is None:
+            raise RuntimeError(
+                "No D2L worker checked out for the current thread. "
+                "Ensure inference is called through the handler's inference() method."
+            )
+        return w
+
     # ------------------------------------------------------------------
     # Model lifecycle
     # ------------------------------------------------------------------
 
     def _ensure_model_loaded(self):
-        if self._model_loaded:
+        worker = self._active_worker
+        if worker.model_loaded:
             return
 
         if self.checkpoint_path is None:
@@ -249,11 +362,12 @@ class DocToLoraHandler(BaseHandler):
                 "checkpoint_path as a kwarg."
             )
 
-        result = self._worker.send(
+        result = worker.send(
             "load_model", {"checkpoint_path": self.checkpoint_path}
         )
-        print(f"D2L model loaded via worker (base: {result.get('base_model_name')})")
-        self._model_loaded = True
+        gpu_label = f" on GPU {worker.gpu_device}" if worker.gpu_device else ""
+        print(f"D2L model loaded{gpu_label} (base: {result.get('base_model_name')})")
+        worker.model_loaded = True
 
     @staticmethod
     def _normalize_bfcl_function(func: dict) -> dict:
@@ -302,7 +416,7 @@ class DocToLoraHandler(BaseHandler):
             for func in functions
         ]
         tool_defs = json.dumps(tools, indent=2)
-        self._worker.send(
+        self._active_worker.send(
             "internalize",
             {"tool_defs": tool_defs, "chunk_size": self.chunk_size},
         )
@@ -317,13 +431,14 @@ class DocToLoraHandler(BaseHandler):
         include_input_log: bool,
         exclude_state_log: bool,
     ):
-        self._ensure_model_loaded()
-        if contain_multi_turn_interaction(test_entry["id"]):
-            return self.inference_multi_turn_prompting(
-                test_entry, include_input_log, exclude_state_log
-            )
-        else:
-            return self.inference_single_turn_prompting(test_entry, include_input_log)
+        with self._checkout_worker():
+            self._ensure_model_loaded()
+            if contain_multi_turn_interaction(test_entry["id"]):
+                return self.inference_multi_turn_prompting(
+                    test_entry, include_input_log, exclude_state_log
+                )
+            else:
+                return self.inference_single_turn_prompting(test_entry, include_input_log)
 
     def decode_ast(self, result, language, has_tool_call_tag):
         tool_calls = _parse_tool_calls(result)
@@ -349,8 +464,12 @@ class DocToLoraHandler(BaseHandler):
 
     def _pre_query_processing_prompting(self, test_entry: dict) -> dict:
         functions: list = test_entry["function"]
-        self._internalize_tools(functions)
-        if self.tool_names_in_system:
+        if not self.skip_internalize:
+            self._internalize_tools(functions)
+        if self.tool_symbols_in_system:
+            normalized = [self._normalize_bfcl_function(f) for f in functions]
+            sys_msg = _build_system_msg_with_symbols(normalized)
+        elif self.tool_names_in_system:
             names = [f.get("name", "") for f in functions]
             names = [n for n in names if n]
             sys_msg = _build_system_msg(names)
@@ -365,7 +484,7 @@ class DocToLoraHandler(BaseHandler):
         messages: list[dict] = inference_data["message"]
 
         start_time = time.time()
-        result = self._worker.send(
+        result = self._active_worker.send(
             "generate",
             {
                 "messages": messages,
@@ -388,14 +507,16 @@ class DocToLoraHandler(BaseHandler):
         }
 
         if self._raw_log is not None:
-            self._raw_log.write(json.dumps({
-                "messages": messages,
-                "raw_output": result["text"],
-                "input_tokens": result["input_tokens"],
-                "output_tokens": result["output_tokens"],
-                "latency": end_time - start_time,
-            }) + "\n")
-            self._raw_log.flush()
+            with self._log_lock:
+                self._raw_log.write(json.dumps({
+                    "messages": messages,
+                    "functions": inference_data.get("function", []),
+                    "raw_output": result["text"],
+                    "input_tokens": result["input_tokens"],
+                    "output_tokens": result["output_tokens"],
+                    "latency": end_time - start_time,
+                }) + "\n")
+                self._raw_log.flush()
 
         return api_response, end_time - start_time
 
