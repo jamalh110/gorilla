@@ -709,6 +709,13 @@ class BaseHandler:
         metadata["input_token_count"] = model_response_data["input_token"]
         metadata["output_token_count"] = model_response_data["output_token"]
         metadata["latency"] = query_latency
+        for timing_key in (
+            "time_to_first_token",
+            "input_latency",
+            "output_latency",
+        ):
+            if timing_key in model_response_data:
+                metadata[timing_key] = model_response_data[timing_key]
 
         if (
             "reasoning_content" in model_response_data
@@ -744,6 +751,13 @@ class BaseHandler:
         metadata["input_token_count"] = model_response_data["input_token"]
         metadata["output_token_count"] = model_response_data["output_token"]
         metadata["latency"] = query_latency
+        for timing_key in (
+            "time_to_first_token",
+            "input_latency",
+            "output_latency",
+        ):
+            if timing_key in model_response_data:
+                metadata[timing_key] = model_response_data[timing_key]
 
         if (
             "reasoning_content" in model_response_data

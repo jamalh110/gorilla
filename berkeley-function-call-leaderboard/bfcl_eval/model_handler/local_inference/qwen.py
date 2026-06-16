@@ -189,12 +189,22 @@ class QwenHandler(OSSHandler):
             reasoning_content = parts[0].rstrip("\n").split("<think>")[-1].lstrip("\n")
             cleaned_response = parts[-1].lstrip("\n")
 
-        return {
+        response_data = {
             "model_responses": cleaned_response,
             "reasoning_content": reasoning_content,
             "input_token": api_response.usage.prompt_tokens,
             "output_token": api_response.usage.completion_tokens,
         }
+        timing = getattr(api_response, "timing", None)
+        if timing is not None:
+            response_data.update(
+                {
+                    "time_to_first_token": timing.time_to_first_token,
+                    "input_latency": timing.input_latency,
+                    "output_latency": timing.output_latency,
+                }
+            )
+        return response_data
 
     @override
     def _add_assistant_message_prompting(

@@ -1,0 +1,84 @@
+{"id": "events_multiple_0", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Chicago, IL"], "date": ["2023-03-10"]}}], "_original_id": "live_multiple_396-139-0"}
+{"id": "events_multiple_1", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Palo Alto, CA"], "date": ["2023-03-13"]}}], "_original_id": "live_multiple_397-139-1"}
+{"id": "events_multiple_2", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["San Diego, CA"], "date": ["2023-05-02"]}}], "_original_id": "live_multiple_398-139-2"}
+{"id": "events_multiple_3", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Chicago, IL"], "date": ["2023-05-02"]}}], "_original_id": "live_multiple_399-139-3"}
+{"id": "events_multiple_4", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Chicago, IL"], "date": ["2023-10-02"]}}], "_original_id": "live_multiple_400-139-4"}
+{"id": "events_multiple_5", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Toronto, ON", "Toronto, Canada"], "date": ["2023-10-02"]}}], "_original_id": "live_multiple_401-139-5"}
+{"id": "events_multiple_6", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["London, UK"], "date": ["2023-10-02"]}}], "_original_id": "live_multiple_402-139-6"}
+{"id": "events_multiple_7", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["London, UK"], "date": ["2023-04-05"]}}], "_original_id": "live_multiple_403-139-7"}
+{"id": "events_multiple_8", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Chicago, IL"], "date": ["2023-04-29"]}}], "_original_id": "live_multiple_490-148-0"}
+{"id": "events_multiple_9", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Berkeley, CA"], "date": ["2023-05-12"]}}], "_original_id": "live_multiple_491-148-1"}
+{"id": "events_multiple_10", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Berkeley, CA"], "date": ["2023-03-10"]}}], "_original_id": "live_multiple_492-148-2"}
+{"id": "events_multiple_11", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["New York, NY"], "date": ["2023-04-15"]}}], "_original_id": "live_multiple_493-148-3"}
+{"id": "events_multiple_12", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-04-15"]}}], "_original_id": "live_multiple_494-148-4"}
+{"id": "events_multiple_13", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["", "null"]}}], "_original_id": "live_multiple_495-148-5"}
+{"id": "events_multiple_14", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-03-25"]}}], "_original_id": "live_multiple_496-148-6"}
+{"id": "events_multiple_15", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Oakland, CA"], "date": ["2023-04-11"]}}], "_original_id": "live_multiple_497-148-7"}
+{"id": "events_multiple_16", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-03-01"]}}], "_original_id": "live_multiple_498-148-8"}
+{"id": "events_multiple_17", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-03-09"]}}], "_original_id": "live_multiple_499-148-9"}
+{"id": "events_multiple_18", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["San Francisco, CA"], "date": ["", "null"]}}], "_original_id": "live_multiple_500-148-10"}
+{"id": "events_multiple_19", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["San Francisco, CA"], "date": ["2023-10-01"]}}], "_original_id": "live_multiple_501-148-11"}
+{"id": "events_multiple_20", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["New York, NY"], "date": ["2023-03-12"]}}], "_original_id": "live_multiple_502-148-12"}
+{"id": "events_multiple_21", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Chicago, IL"], "date": ["", "dontcare"]}}], "_original_id": "live_multiple_524-151-0"}
+{"id": "events_multiple_22", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Toronto, Canada"], "date": ["05/01/2023"]}}], "_original_id": "live_multiple_525-151-1"}
+{"id": "events_multiple_23", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["San Diego, CA"], "date": ["05/05/2023"]}}], "_original_id": "live_multiple_526-151-2"}
+{"id": "events_multiple_24", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Seattle, WA"], "date": ["05/15/2023"]}}], "_original_id": "live_multiple_527-151-3"}
+{"id": "events_multiple_25", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["New York, NY"], "date": ["", "dontcare"]}}], "_original_id": "live_multiple_528-151-4"}
+{"id": "events_multiple_26", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Los Angeles, CA"], "date": ["04/07/2023"]}}], "_original_id": "live_multiple_529-151-5"}
+{"id": "events_multiple_27", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["09/09/2023"]}}], "_original_id": "live_multiple_530-151-6"}
+{"id": "events_multiple_28", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Philadelphia, PA"], "date": ["", "dontcare"]}}], "_original_id": "live_multiple_531-151-7"}
+{"id": "events_multiple_29", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Portland, OR"], "date": ["", "dontcare"]}}], "_original_id": "live_multiple_532-151-8"}
+{"id": "events_multiple_30", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["London, UK"], "date": ["", "dontcare"]}}], "_original_id": "live_multiple_533-151-9"}
+{"id": "events_multiple_31", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Livermore, CA"], "date": ["03/06/2023"]}}], "_original_id": "live_multiple_534-151-10"}
+{"id": "events_multiple_32", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Belvedere, CA"], "date": ["", "dontcare"]}}], "_original_id": "live_multiple_535-151-11"}
+{"id": "events_multiple_33", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Portland, OR"], "date": ["03/09/2023"]}}], "_original_id": "live_multiple_536-151-12"}
+{"id": "events_multiple_34", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Chicago, IL"], "date": ["", "dontcare"]}}], "_original_id": "live_multiple_537-151-13"}
+{"id": "events_multiple_35", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["", "any"]}}], "_original_id": "live_multiple_560-155-0"}
+{"id": "events_multiple_36", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["", "any"]}}], "_original_id": "live_multiple_561-155-1"}
+{"id": "events_multiple_37", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Seattle, WA"], "date": ["", "any"]}}], "_original_id": "live_multiple_562-155-2"}
+{"id": "events_multiple_38", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Philadelphia", "Philadelphia, PA"], "date": ["2023-03-07"]}}], "_original_id": "live_multiple_563-155-3"}
+{"id": "events_multiple_39", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Seattle, WA"], "date": ["2023-03-07"]}}], "_original_id": "live_multiple_564-155-4"}
+{"id": "events_multiple_40", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-03-12"]}}], "_original_id": "live_multiple_565-155-5"}
+{"id": "events_multiple_41", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music", "Theater"], "city": ["Sacramento, CA"], "date": ["", "any"]}}], "_original_id": "live_multiple_566-155-6"}
+{"id": "events_multiple_42", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Los Angeles"], "date": ["2023-03-04"]}}], "_original_id": "live_multiple_567-155-7"}
+{"id": "events_multiple_43", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["New York, NY"], "date": ["2023-09-09"]}}], "_original_id": "live_multiple_568-155-8"}
+{"id": "events_multiple_44", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music", "Theater"], "city": ["Las Vegas, NV"], "date": ["2023-03-06"]}}], "_original_id": "live_multiple_569-155-9"}
+{"id": "events_multiple_45", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["", "any"]}}], "_original_id": "live_multiple_570-155-10"}
+{"id": "events_multiple_46", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["San Francisco, CA"], "date": ["2023-03-09"]}}], "_original_id": "live_multiple_571-155-11"}
+{"id": "events_multiple_47", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Fresno, CA"], "date": ["2023-03-10"]}}], "_original_id": "live_multiple_572-155-12"}
+{"id": "events_multiple_48", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Seattle, WA"], "date": ["2023-03-11"]}}], "_original_id": "live_multiple_573-155-13"}
+{"id": "events_multiple_49", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-03-14"]}}], "_original_id": "live_multiple_607-159-0"}
+{"id": "events_multiple_50", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Chicago, IL"], "date": ["2023-03-13"]}}], "_original_id": "live_multiple_608-159-1"}
+{"id": "events_multiple_51", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Philadelphia, PA"], "date": ["2023-03-10"]}}], "_original_id": "live_multiple_609-159-2"}
+{"id": "events_multiple_52", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Portland, OR"], "date": ["2023-03-14"]}}], "_original_id": "live_multiple_610-159-3"}
+{"id": "events_multiple_53", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Philadelphia, PA"], "date": ["2023-09-30"]}}], "_original_id": "live_multiple_611-159-4"}
+{"id": "events_multiple_54", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Los Angeles, CA"], "date": ["", "dontcare"]}}], "_original_id": "live_multiple_612-159-5"}
+{"id": "events_multiple_55", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["London, UK"], "date": ["2023-03-10"]}}], "_original_id": "live_multiple_613-159-6"}
+{"id": "events_multiple_56", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Portland, OR"], "date": ["", "dontcare"]}}], "_original_id": "live_multiple_614-159-7"}
+{"id": "events_multiple_57", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["San Diego, CA"], "date": ["2023-04-08"]}}], "_original_id": "live_multiple_615-159-8"}
+{"id": "events_multiple_58", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Los Angeles, CA"], "date": ["2023-03-11"]}}], "_original_id": "live_multiple_616-159-9"}
+{"id": "events_multiple_59", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Los Angeles, CA"], "date": ["2023-03-10"]}}], "_original_id": "live_multiple_617-159-10"}
+{"id": "events_multiple_60", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["London, UK"], "date": ["2023-06-12"]}}], "_original_id": "live_multiple_618-159-11"}
+{"id": "events_multiple_61", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Long Beach, CA"], "date": ["2023-03-12"]}}], "_original_id": "live_multiple_619-159-12"}
+{"id": "events_multiple_62", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["New York, NY"], "date": ["2023-03-12"]}}], "_original_id": "live_multiple_658-162-0"}
+{"id": "events_multiple_63", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["New York, NY"], "date": ["", "dontcare"]}}], "_original_id": "live_multiple_659-162-1"}
+{"id": "events_multiple_64", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-03-10"]}}], "_original_id": "live_multiple_660-162-2"}
+{"id": "events_multiple_65", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-05-21"]}}], "_original_id": "live_multiple_661-162-3"}
+{"id": "events_multiple_66", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-10-07"]}}], "_original_id": "live_multiple_662-162-4"}
+{"id": "events_multiple_67", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Philadelphia, PA"], "date": ["2023-03-08"]}}], "_original_id": "live_multiple_663-162-5"}
+{"id": "events_multiple_68", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["", "dontcare"]}}], "_original_id": "live_multiple_664-162-6"}
+{"id": "events_multiple_69", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Los Angeles, CA"], "date": ["2023-03-09"]}}], "_original_id": "live_multiple_665-162-7"}
+{"id": "events_multiple_70", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-10-01"]}}], "_original_id": "live_multiple_666-162-8"}
+{"id": "events_multiple_71", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["New York, NY"], "date": ["2023-03-05"]}}], "_original_id": "live_multiple_667-162-9"}
+{"id": "events_multiple_72", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["New York, NY"], "date": ["2023-10-17"]}}], "_original_id": "live_multiple_668-162-10"}
+{"id": "events_multiple_73", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-03-07"]}}], "_original_id": "live_multiple_669-162-11"}
+{"id": "events_multiple_74", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Portland, OR"], "date": ["2023-10-09"]}}], "_original_id": "live_multiple_670-162-12"}
+{"id": "events_multiple_75", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-10-01"]}}], "_original_id": "live_multiple_671-162-13"}
+{"id": "events_multiple_76", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Los Angeles, CA"], "date": ["2023-10-01"]}}], "_original_id": "live_multiple_672-162-14"}
+{"id": "events_multiple_77", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-10-01"]}}], "_original_id": "live_multiple_673-162-15"}
+{"id": "events_multiple_78", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Los Angeles, CA"], "date": ["", "dontcare"]}}], "_original_id": "live_multiple_674-162-16"}
+{"id": "events_multiple_79", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["", null]}}], "_original_id": "live_multiple_818-177-1"}
+{"id": "events_multiple_80", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Los Angeles, CA"], "date": ["2023-07-20"]}}], "_original_id": "live_multiple_819-177-2"}
+{"id": "events_multiple_81", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["New York, NY"], "date": ["2023-03-04"]}}], "_original_id": "live_multiple_820-177-3"}
+{"id": "events_multiple_82", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Theater"], "city": ["Seattle, WA"], "date": ["", null]}}], "_original_id": "live_multiple_821-177-4"}
+{"id": "events_multiple_83", "ground_truth": [{"Events_3_FindEvents": {"event_type": ["Music"], "city": ["Seattle, WA"], "date": ["2023-03-12"]}}], "_original_id": "live_multiple_822-177-5"}

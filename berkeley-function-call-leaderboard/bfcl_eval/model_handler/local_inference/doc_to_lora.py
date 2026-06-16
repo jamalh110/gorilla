@@ -475,9 +475,20 @@ class DocToLoraHandler(BaseHandler):
             sys_msg = _build_system_msg(names)
         else:
             sys_msg = TOOL_CALL_SYSTEM_MSG
+        metadata_keys = (
+            "_original_id",
+            "_ground_truth_func",
+            "_num_distractors",
+            "_num_tools",
+            "_position",
+        )
         return {
+            "id": test_entry.get("id"),
             "message": [{"role": "system", "content": sys_msg}],
             "function": functions,
+            "metadata": {
+                key: test_entry[key] for key in metadata_keys if key in test_entry
+            },
         }
 
     def _query_prompting(self, inference_data: dict):
@@ -507,14 +518,26 @@ class DocToLoraHandler(BaseHandler):
         }
 
         if self._raw_log is not None:
+            functions = inference_data.get("function", [])
+            metadata = inference_data.get("metadata", {})
+            num_tools = metadata.get("_num_tools", len(functions))
+            latency_seconds = end_time - start_time
             with self._log_lock:
                 self._raw_log.write(json.dumps({
+                    "id": inference_data.get("id"),
+                    "original_id": metadata.get("_original_id", ""),
+                    "ground_truth_func": metadata.get("_ground_truth_func", ""),
+                    "num_distractors": metadata.get("_num_distractors", ""),
+                    "num_tools": num_tools,
+                    "position": metadata.get("_position", ""),
                     "messages": messages,
-                    "functions": inference_data.get("function", []),
+                    "functions": functions,
                     "raw_output": result["text"],
                     "input_tokens": result["input_tokens"],
                     "output_tokens": result["output_tokens"],
-                    "latency": end_time - start_time,
+                    "total_tokens": result["input_tokens"] + result["output_tokens"],
+                    "latency": latency_seconds,
+                    "latency_seconds": latency_seconds,
                 }) + "\n")
                 self._raw_log.flush()
 

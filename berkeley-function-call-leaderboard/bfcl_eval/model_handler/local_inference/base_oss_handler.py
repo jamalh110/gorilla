@@ -3,6 +3,7 @@ import subprocess
 import threading
 import time
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any, Optional
 
 import requests
@@ -341,25 +342,68 @@ class OSSHandler(BaseHandler, EnforceOverrides):
         if hasattr(self, "skip_special_tokens"):
             extra_body["skip_special_tokens"] = self.skip_special_tokens
 
-        start_time = time.time()
+        request_kwargs = {
+            "model": self.model_path_or_id,
+            "temperature": self.temperature,
+            "prompt": formatted_prompt,
+            "max_tokens": leftover_tokens_count,
+            "timeout": 72000,  # Avoid timeout errors
+        }
         if len(extra_body) > 0:
-            api_response = self.client.completions.create(
-                model=self.model_path_or_id,
-                temperature=self.temperature,
-                prompt=formatted_prompt,
-                max_tokens=leftover_tokens_count,
-                extra_body=extra_body,
-                timeout=72000,  # Avoid timeout errors
+            request_kwargs["extra_body"] = extra_body
+
+        stream_timing = os.getenv("BFCL_STREAM_TIMING", "1") not in (
+            "0",
+            "",
+            "false",
+            "False",
+        )
+        start_time = time.time()
+        if stream_timing:
+            stream = self.client.completions.create(**request_kwargs, stream=True)
+            first_token_time = None
+            text_parts = []
+            prompt_tokens = input_token_count
+            completion_tokens = 0
+
+            for chunk in stream:
+                usage = getattr(chunk, "usage", None)
+                if usage is not None:
+                    prompt_tokens = getattr(usage, "prompt_tokens", prompt_tokens)
+                    completion_tokens = getattr(
+                        usage, "completion_tokens", completion_tokens
+                    )
+
+                for choice in getattr(chunk, "choices", []) or []:
+                    token_text = getattr(choice, "text", "") or ""
+                    if token_text and first_token_time is None:
+                        first_token_time = time.time()
+                    text_parts.append(token_text)
+
+            end_time = time.time()
+            if first_token_time is None:
+                first_token_time = end_time
+
+            output_text = "".join(text_parts)
+            if completion_tokens == 0 and output_text:
+                completion_tokens = len(self.tokenizer.tokenize(output_text))
+
+            api_response = SimpleNamespace(
+                choices=[SimpleNamespace(text=output_text)],
+                usage=SimpleNamespace(
+                    prompt_tokens=prompt_tokens,
+                    completion_tokens=completion_tokens,
+                ),
+                timing=SimpleNamespace(
+                    time_to_first_token=first_token_time - start_time,
+                    input_latency=first_token_time - start_time,
+                    output_latency=end_time - first_token_time,
+                    total_latency=end_time - start_time,
+                ),
             )
         else:
-            api_response = self.client.completions.create(
-                model=self.model_path_or_id,
-                temperature=self.temperature,
-                prompt=formatted_prompt,
-                max_tokens=leftover_tokens_count,
-                timeout=72000,  # Avoid timeout errors
-            )
-        end_time = time.time()
+            api_response = self.client.completions.create(**request_kwargs)
+            end_time = time.time()
 
         return api_response, end_time - start_time
 
@@ -376,11 +420,21 @@ class OSSHandler(BaseHandler, EnforceOverrides):
 
     @override
     def _parse_query_response_prompting(self, api_response: Any) -> dict:
-        return {
+        response_data = {
             "model_responses": api_response.choices[0].text,
             "input_token": api_response.usage.prompt_tokens,
             "output_token": api_response.usage.completion_tokens,
         }
+        timing = getattr(api_response, "timing", None)
+        if timing is not None:
+            response_data.update(
+                {
+                    "time_to_first_token": timing.time_to_first_token,
+                    "input_latency": timing.input_latency,
+                    "output_latency": timing.output_latency,
+                }
+            )
+        return response_data
 
     @override
     def add_first_turn_message_prompting(
