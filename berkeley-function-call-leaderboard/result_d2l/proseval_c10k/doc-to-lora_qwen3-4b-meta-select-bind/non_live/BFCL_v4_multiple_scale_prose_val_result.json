@@ -1,0 +1,10 @@
+{"id": "multiple_scale_prose_val_0", "result": "<tool_call>\n{\"name\":\"tool_b\",\"arguments\":{}}\n</tool_call>", "input_token_count": 340, "output_token_count": 17, "latency": 1.7903626579791307}
+{"id": "multiple_scale_prose_val_1", "result": "<tool_call>\n{\"name\":\"tool_c\",\"arguments\":{}}\n</tool_call>", "input_token_count": 334, "output_token_count": 17, "latency": 1.5480733448639512}
+{"id": "multiple_scale_prose_val_2", "result": "<tool_call>\n{\"name\":\"tool_g\",\"arguments\":{}}\n</tool_call>", "input_token_count": 386, "output_token_count": 17, "latency": 1.6445690775290132}
+{"id": "multiple_scale_prose_val_3", "result": "<tool_call>\n{\"name\":\"context7-resolve-library-id\",\"arguments\":{}}\n</tool_call>", "input_token_count": 340, "output_token_count": 21, "latency": 1.6822119429707527}
+{"id": "multiple_scale_prose_val_4", "result": "<tool_call>\n{\"name\":\"lulu-print-get-product-details\",\"arguments\":{}}\n</tool_call>", "input_token_count": 485, "output_token_count": 21, "latency": 1.9111469518393278}
+{"id": "multiple_scale_prose_val_5", "result": "<tool_call>\n{\"name\":\"tool_f\",\"arguments\":{}}\n</tool_call>", "input_token_count": 354, "output_token_count": 17, "latency": 1.5538176130503416}
+{"id": "multiple_scale_prose_val_6", "result": "<tool_call>\n{\"name\":\"tool_a\",\"arguments\":{}}\n</tool_call>", "input_token_count": 364, "output_token_count": 17, "latency": 1.5284251477569342}
+{"id": "multiple_scale_prose_val_7", "result": "<tool_call>\n{\"name\":\"cal-server-getNow\",\"arguments\":{}}\n</tool_call>", "input_token_count": 386, "output_token_count": 19, "latency": 1.745552104897797}
+{"id": "multiple_scale_prose_val_8", "result": "<tool_call>\n{\"name\":\"tool_b\",\"arguments\":{}}\n</tool_call>", "input_token_count": 444, "output_token_count": 17, "latency": 1.657849927432835}
+{"id": "multiple_scale_prose_val_9", "result": "<tool_call>\n{\"name\":\"think-tool-think\",\"arguments\":{}}\n</tool_call>", "input_token_count": 364, "output_token_count": 19, "latency": 1.6216961340978742}

@@ -1,0 +1,10 @@
+{"id": "multiple_scale_par_smoke_0", "result": "<tool_call>\n{\"name\":\"math_toolkit.sum_of_multiples\",\"arguments\":{}}\n</tool_call>", "input_token_count": 335, "output_token_count": 22, "latency": 1.0682274606078863}
+{"id": "multiple_scale_par_smoke_1", "result": "<tool_call>\n{\"name\":\"statistics.median\",\"arguments\":{}}\n</tool_call>", "input_token_count": 324, "output_token_count": 17, "latency": 0.8697723355144262}
+{"id": "multiple_scale_par_smoke_2", "result": "<tool_call>\n{\"name\":\"scienceFacts.getWeight\",\"arguments\":{}}\n</tool_call>", "input_token_count": 338, "output_token_count": 20, "latency": 0.8307866137474775}
+{"id": "multiple_scale_par_smoke_3", "result": "<tool_call>\n{\"name\":\"country_info.capital\",\"arguments\":{}}\n</tool_call>", "input_token_count": 324, "output_token_count": 19, "latency": 0.8452630592510104}
+{"id": "multiple_scale_par_smoke_4", "result": "<tool_call>\n{\"name\":\"functions.intersect\",\"arguments\":{}}\n</tool_call>", "input_token_count": 367, "output_token_count": 18, "latency": 0.8369741560891271}
+{"id": "multiple_scale_par_smoke_5", "result": "<tool_call>\n{\"name\":\"stock_forecast\",\"arguments\":{}}\n</tool_call>", "input_token_count": 375, "output_token_count": 18, "latency": 0.8220555819571018}
+{"id": "multiple_scale_par_smoke_6", "result": "<tool_call>\n{\"name\":\"soccer_scores.get_scores\",\"arguments\":{}}\n</tool_call>", "input_token_count": 340, "output_token_count": 20, "latency": 0.8305205842480063}
+{"id": "multiple_scale_par_smoke_7", "result": "<tool_call>\n{\"name\":\"calculate_density\",\"arguments\":{}}\n</tool_call>", "input_token_count": 463, "output_token_count": 17, "latency": 0.8533859709277749}
+{"id": "multiple_scale_par_smoke_8", "result": "<tool_call>\n{\"name\":\"compound_interest\",\"arguments\":{}}\n</tool_call>", "input_token_count": 394, "output_token_count": 17, "latency": 0.8471413590013981}
+{"id": "multiple_scale_par_smoke_9", "result": "<tool_call>\n{\"name\":\"get_discoverer\",\"arguments\":{}}\n</tool_call>", "input_token_count": 386, "output_token_count": 19, "latency": 0.8659535450860858}

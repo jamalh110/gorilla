@@ -1,0 +1,243 @@
+{
+  "num_records": 40,
+  "groups": [
+    {
+      "backend": "peft",
+      "subset": "smoke",
+      "condition": "base_only",
+      "boundary": null,
+      "cache_policy": "preserve",
+      "total": 10,
+      "completed": 10,
+      "accuracy": 0.0,
+      "malformed_rate": 0.1,
+      "adapter_leak_rate": 0.0,
+      "mean_wall_latency": 1.5375056435819716,
+      "mean_switch_latency": null,
+      "switch_applied_rate": null,
+      "mean_peak_memory_gb": 7.988594627380371,
+      "mean_boundary_logprob_jump": null,
+      "error_types": {
+        "simple_function_checker:wrong_count": 1,
+        "simple_function_checker:wrong_func_name": 9
+      },
+      "errors": 0
+    },
+    {
+      "backend": "peft",
+      "subset": "smoke",
+      "condition": "base_prefill_replay_8_to_correct",
+      "boundary": null,
+      "cache_policy": "preserve",
+      "total": 10,
+      "completed": 10,
+      "accuracy": 0.1,
+      "malformed_rate": 0.0,
+      "adapter_leak_rate": 0.0,
+      "mean_wall_latency": 1.4535120390821248,
+      "mean_switch_latency": 0.01214335709810257,
+      "switch_applied_rate": 1.0,
+      "mean_peak_memory_gb": 7.99245548248291,
+      "mean_boundary_logprob_jump": null,
+      "error_types": {
+        "simple_function_checker:missing_optional": 1,
+        "simple_function_checker:missing_required": 4,
+        "simple_function_checker:unexpected_param": 1,
+        "type_error:simple": 1,
+        "value_error:others": 1,
+        "value_error:string": 1
+      },
+      "errors": 0
+    },
+    {
+      "backend": "peft",
+      "subset": "smoke",
+      "condition": "correct_only",
+      "boundary": null,
+      "cache_policy": "preserve",
+      "total": 10,
+      "completed": 10,
+      "accuracy": 0.5,
+      "malformed_rate": 0.0,
+      "adapter_leak_rate": 0.0,
+      "mean_wall_latency": 9.376989677874372,
+      "mean_switch_latency": null,
+      "switch_applied_rate": null,
+      "mean_peak_memory_gb": 8.008387231826783,
+      "mean_boundary_logprob_jump": null,
+      "error_types": {
+        "simple_function_checker:missing_required": 3,
+        "simple_function_checker:unclear": 1,
+        "value_error:others": 1,
+        "value_error:string": 1
+      },
+      "errors": 0
+    },
+    {
+      "backend": "peft",
+      "subset": "smoke",
+      "condition": "model_generate_correct",
+      "boundary": null,
+      "cache_policy": "generate",
+      "total": 10,
+      "completed": 10,
+      "accuracy": 0.5,
+      "malformed_rate": 0.0,
+      "adapter_leak_rate": 0.0,
+      "mean_wall_latency": 9.375569608295336,
+      "mean_switch_latency": null,
+      "switch_applied_rate": null,
+      "mean_peak_memory_gb": null,
+      "mean_boundary_logprob_jump": null,
+      "error_types": {
+        "simple_function_checker:missing_required": 3,
+        "simple_function_checker:unclear": 1,
+        "value_error:others": 1,
+        "value_error:string": 1
+      },
+      "errors": 0
+    }
+  ],
+  "model_generate_parity": {
+    "n": 10,
+    "exact": 10,
+    "details": [
+      {
+        "backend": "peft",
+        "subset": "smoke",
+        "id": "live_simple_178-103-1",
+        "exact": true,
+        "first_divergence": null
+      },
+      {
+        "backend": "peft",
+        "subset": "smoke",
+        "id": "live_simple_238-125-1",
+        "exact": true,
+        "first_divergence": null
+      },
+      {
+        "backend": "peft",
+        "subset": "smoke",
+        "id": "live_simple_239-125-2",
+        "exact": true,
+        "first_divergence": null
+      },
+      {
+        "backend": "peft",
+        "subset": "smoke",
+        "id": "live_simple_157-95-14",
+        "exact": true,
+        "first_divergence": null
+      },
+      {
+        "backend": "peft",
+        "subset": "smoke",
+        "id": "live_simple_61-29-1",
+        "exact": true,
+        "first_divergence": null
+      },
+      {
+        "backend": "peft",
+        "subset": "smoke",
+        "id": "live_simple_41-17-1",
+        "exact": true,
+        "first_divergence": null
+      },
+      {
+        "backend": "peft",
+        "subset": "smoke",
+        "id": "live_simple_220-117-12",
+        "exact": true,
+        "first_divergence": null
+      },
+      {
+        "backend": "peft",
+        "subset": "smoke",
+        "id": "live_simple_128-83-0",
+        "exact": true,
+        "first_divergence": null
+      },
+      {
+        "backend": "peft",
+        "subset": "smoke",
+        "id": "live_simple_51-23-0",
+        "exact": true,
+        "first_divergence": null
+      },
+      {
+        "backend": "peft",
+        "subset": "smoke",
+        "id": "live_simple_182-107-0",
+        "exact": true,
+        "first_divergence": null
+      }
+    ]
+  },
+  "no_op_parity": {
+    "n": 0,
+    "exact": 0,
+    "details": []
+  },
+  "token_zero_parity": {
+    "n": 0,
+    "exact": 0,
+    "details": []
+  },
+  "paired_comparisons": [
+    {
+      "backend": "peft",
+      "subset": "smoke",
+      "condition": "base_prefill_replay_8_to_correct",
+      "boundary": null,
+      "cache_policy": "preserve",
+      "n": 10,
+      "accuracy_delta": -0.4,
+      "bootstrap_95_ci": [
+        -0.7,
+        -0.1
+      ],
+      "treatment_wins": 0,
+      "control_wins": 4,
+      "mcnemar_exact_p": 0.125,
+      "mean_first_divergence": 0.0
+    }
+  ],
+  "paired_switch_applied_comparisons": [
+    {
+      "backend": "peft",
+      "subset": "smoke",
+      "condition": "base_prefill_replay_8_to_correct",
+      "boundary": null,
+      "cache_policy": "preserve",
+      "n": 10,
+      "accuracy_delta": -0.4,
+      "bootstrap_95_ci": [
+        -0.7,
+        -0.1
+      ],
+      "mcnemar_exact_p": 0.125,
+      "mean_first_divergence": 0.0
+    }
+  ],
+  "boundary_missing": {
+    "count": 0,
+    "by_backend_subset_boundary": {}
+  },
+  "cross_backend_token_parity": [],
+  "cross_backend_first_logits": [],
+  "decision": {
+    "mechanically_feasible": false,
+    "execution_error_count": 0,
+    "best_full_schedule": null,
+    "behaviorally_viable_point_estimate": false,
+    "behaviorally_equivalent_95_ci": false,
+    "max_switch_time_fraction": 0.008354493648206006,
+    "operationally_useful": true,
+    "early_activation_signal": null,
+    "phase_switch_signal": null,
+    "expert_handoff_signal": null,
+    "rapid_token_moe_supported": false,
+    "phase_switching_supported": false
+  }
+}

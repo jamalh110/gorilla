@@ -9,6 +9,24 @@ RESTRICT_TOOLGEN=1
 TOOL_NAMES_IN_SYSTEM=0
 TOOL_SYMBOLS_IN_SYSTEM=0
 SKIP_INTERNALIZE=0
+ICL_ALL_TOOLS=0
+SAME_META_PROMPTS=0
+PLAIN_SCHEMA_BIND=0
+ROUTER_SCORE_CANDIDATES=0
+ROUTER_SCHEMA_ABLATION="full"
+ROUTING_ONLY=0
+CTX_CHUNK_MODE="none"
+CHUNK_SCALING="none"
+TOOLS_PER_CHUNK=1
+STAGED_VARIANT=""
+BINDER_CHECKPOINT=""
+MAIN_GPU=""
+BINDER_GPU=""
+BINDER_PYTHON=""
+BINDER_MAX_NEW_TOKENS=""
+D2L_PYTHON_PATH=""
+D2L_SOURCE_PATH_ARG=""
+NUM_THREADS=""
 
 usage() {
     cat <<EOF
@@ -41,6 +59,36 @@ Options:
   --tool-names-in-system    Include tool names in the system message
   --tool-symbols-in-system  Include tool names, param names, and enums in system message
   --skip-internalize        Skip LoRA internalization (base model only, for ablation)
+  --same-meta-prompts       Keep the D2L meta prompt when internalization is skipped
+  --plain-schema-bind       Remove the router call from bind context and append the
+                            raw selected schema as a plain user message
+  --router-score-candidates Score candidate-name likelihoods and serialize
+                            select_tool deterministically
+  --router-schema-ablation MODE
+                            D2L context ablation: full, names_only,
+                            descriptions_only, parameters_only, or shuffled
+  --routing-only           Stop after select_tool and log routing traces
+  --ctx-chunk-mode MODE     Hypernetwork context chunking: none (whole
+                            catalogue in one pass) or per_tool (one chunk per
+                            tool, LoRAs stacked along the rank axis)
+  --chunk-scaling MODE      Scale stacked chunk LoRAs: none (sum), mean or
+                            sqrt. Must match the trained checkpoint.
+  --tools-per-chunk N       Tools per chunk under --ctx-chunk-mode per_tool
+  --staged-a                Use meta-intent + separate Qwen3-0.6B binder
+  --staged-b                Use meta-select + fresh same-4B binding pass
+  --staged-b-base           Variant B protocol on base model (no Doc-to-LoRA)
+  --staged-b-bind-on-base   D2L select, then bind on frozen base (reset LoRA)
+  --staged-b-native-binder  D2L select_tool + separate native-FC binder
+  --icl-all-tools           ICL ceiling: frozen binder, ALL schemas inline, no D2L
+  --binder-checkpoint PATH  HF binder checkpoint (required by --staged-a /
+                            --staged-b-native-binder)
+  --main-gpu ID             GPU exposed to the staged D2L 4B worker
+  --binder-gpu ID           GPU exposed to the Variant A binder worker
+  --binder-python PATH      Python executable for the binder worker
+  --binder-max-tokens N     Maximum binder completion tokens (default: 256)
+  --d2l-python PATH         Python executable for the D2L worker
+  --d2l-source-path PATH    Path to the doc-to-lora src directory
+  --num-threads N           BFCL generation threads (staged default: 1)
   --generate-only           Only run generate, skip evaluate
   --evaluate-only           Only run evaluate, skip generate
   -h, --help                Show this help message
@@ -60,6 +108,28 @@ while [[ $# -gt 0 ]]; do
         --tool-names-in-system) TOOL_NAMES_IN_SYSTEM=1; shift ;;
         --tool-symbols-in-system) TOOL_SYMBOLS_IN_SYSTEM=1; shift ;;
         --skip-internalize) SKIP_INTERNALIZE=1; shift ;;
+        --same-meta-prompts) SAME_META_PROMPTS=1; shift ;;
+        --plain-schema-bind) PLAIN_SCHEMA_BIND=1; shift ;;
+        --router-score-candidates) ROUTER_SCORE_CANDIDATES=1; shift ;;
+        --router-schema-ablation) ROUTER_SCHEMA_ABLATION="$2"; shift 2 ;;
+        --routing-only) ROUTING_ONLY=1; shift ;;
+        --ctx-chunk-mode) CTX_CHUNK_MODE="$2"; shift 2 ;;
+        --chunk-scaling) CHUNK_SCALING="$2"; shift 2 ;;
+        --tools-per-chunk) TOOLS_PER_CHUNK="$2"; shift 2 ;;
+        --staged-a) STAGED_VARIANT="a"; MODEL="doc-to-lora/qwen3-4b-meta-intent-0.6b"; shift ;;
+        --staged-b) STAGED_VARIANT="b"; MODEL="doc-to-lora/qwen3-4b-meta-select-bind"; shift ;;
+        --staged-b-base) STAGED_VARIANT="b"; MODEL="doc-to-lora/qwen3-4b-meta-select-bind-base"; SKIP_INTERNALIZE=1; shift ;;
+        --staged-b-bind-on-base) STAGED_VARIANT="b"; MODEL="doc-to-lora/qwen3-4b-meta-select-bind-on-base"; shift ;;
+        --staged-b-native-binder) STAGED_VARIANT="b-native"; MODEL="doc-to-lora/qwen3-4b-meta-select-native-binder"; shift ;;
+        --icl-all-tools) STAGED_VARIANT="b-native"; MODEL="doc-to-lora/qwen3-4b-icl-native"; SKIP_INTERNALIZE=1; ICL_ALL_TOOLS=1; shift ;;
+        --binder-checkpoint) BINDER_CHECKPOINT="$2"; shift 2 ;;
+        --main-gpu) MAIN_GPU="$2"; shift 2 ;;
+        --binder-gpu) BINDER_GPU="$2"; shift 2 ;;
+        --binder-python) BINDER_PYTHON="$2"; shift 2 ;;
+        --binder-max-tokens) BINDER_MAX_NEW_TOKENS="$2"; shift 2 ;;
+        --d2l-python) D2L_PYTHON_PATH="$2"; shift 2 ;;
+        --d2l-source-path) D2L_SOURCE_PATH_ARG="$2"; shift 2 ;;
+        --num-threads) NUM_THREADS="$2"; shift 2 ;;
         --generate-only) GENERATE=1; EVALUATE=0; shift ;;
         --evaluate-only) GENERATE=0; EVALUATE=1; shift ;;
         -h|--help) usage ;;
@@ -82,6 +152,27 @@ if [[ ! -f "$CHECKPOINT_PATH" ]]; then
     exit 1
 fi
 
+if [[ "$STAGED_VARIANT" == "a" || "$STAGED_VARIANT" == "b-native" ]]; then
+    if [[ -z "$BINDER_CHECKPOINT" ]]; then
+        echo "Error: --binder-checkpoint is required with --staged-a / --staged-b-native-binder" >&2
+        exit 1
+    fi
+    if [[ ! -e "$BINDER_CHECKPOINT" ]]; then
+        echo "Error: binder checkpoint not found: $BINDER_CHECKPOINT" >&2
+        exit 1
+    fi
+fi
+
+if [[ -n "$STAGED_VARIANT" ]]; then
+    for cat in "${TEST_CATEGORIES[@]}"; do
+        # Staged handlers accept single-turn multiple catalogs and live_simple.
+        if [[ "$cat" != "multiple" && "$cat" != multiple_scale_* && "$cat" != "live_simple" ]]; then
+            echo "Error: staged handlers support only 'multiple' / 'multiple_scale_*' / 'live_simple', got '$cat'" >&2
+            exit 1
+        fi
+    done
+fi
+
 if [[ -n "${CUSTOM_NAME:-}" ]]; then
     DIR_NAME="$CUSTOM_NAME"
 else
@@ -90,15 +181,25 @@ else
     CKPT_NUM="$(basename "$CKPT_DIR" | sed 's/checkpoint-//')"
     RUN_NAME="$(basename "$(dirname "$CKPT_DIR")")"
     DIR_NAME="${RUN_NAME}_${CKPT_NUM}"
+    if [[ -n "$STAGED_VARIANT" ]]; then
+        DIR_NAME="${DIR_NAME}_staged_${STAGED_VARIANT}"
+    fi
 fi
 
 RESULT_DIR="${SCRIPT_DIR}/result_d2l/${DIR_NAME}/"
 SCORE_DIR="${SCRIPT_DIR}/score_d2l/${DIR_NAME}/"
 
 # Detect available GPUs
-NUM_GPUS=$(nvidia-smi -L 2>/dev/null | grep -c 'GPU ')
+NUM_GPUS=$(nvidia-smi -L 2>/dev/null | grep -c 'GPU ' || true)
 if [[ "$NUM_GPUS" -lt 1 ]]; then
     NUM_GPUS=1
+fi
+if [[ -z "$NUM_THREADS" ]]; then
+    if [[ -n "$STAGED_VARIANT" ]]; then
+        NUM_THREADS=1
+    else
+        NUM_THREADS="$NUM_GPUS"
+    fi
 fi
 
 echo "=== BFCL Run ==="
@@ -107,6 +208,15 @@ echo "  Output name:    $DIR_NAME"
 echo "  Model:          $MODEL"
 echo "  Test categories: ${TEST_CATEGORIES[*]}"
 echo "  GPUs:           $NUM_GPUS"
+echo "  Threads:        $NUM_THREADS"
+if [[ -n "$STAGED_VARIANT" ]]; then
+    echo "  Staged variant: $STAGED_VARIANT"
+    echo "  Main GPU:       ${MAIN_GPU:-auto}"
+fi
+if [[ "$STAGED_VARIANT" == "a" || "$STAGED_VARIANT" == "b-native" ]]; then
+    echo "  Binder:         $BINDER_CHECKPOINT"
+    echo "  Binder GPU:     ${BINDER_GPU:-auto}"
+fi
 echo "  Result dir:     $RESULT_DIR"
 echo "  Score dir:      $SCORE_DIR"
 echo ""
@@ -127,12 +237,108 @@ fi
 if [[ "$SKIP_INTERNALIZE" -eq 1 ]]; then
     ENV_VARS="${ENV_VARS} D2L_SKIP_INTERNALIZE=1"
 fi
+if [[ "$SAME_META_PROMPTS" -eq 1 ]]; then
+    ENV_VARS="${ENV_VARS} D2L_BASELINE_PROMPTS=0"
+fi
+if [[ "$PLAIN_SCHEMA_BIND" -eq 1 ]]; then
+    ENV_VARS="${ENV_VARS} D2L_PLAIN_SCHEMA_BIND=1 D2L_BASELINE_PROMPTS=0"
+fi
+if [[ "$ROUTER_SCORE_CANDIDATES" -eq 1 ]]; then
+    ENV_VARS="${ENV_VARS} D2L_ROUTER_SCORE_CANDIDATES=1"
+fi
+ENV_VARS="${ENV_VARS} D2L_ROUTER_SCHEMA_ABLATION=${ROUTER_SCHEMA_ABLATION}"
+if [[ "$ROUTING_ONLY" -eq 1 ]]; then
+    ENV_VARS="${ENV_VARS} D2L_ROUTING_ONLY=1"
+fi
+ENV_VARS="${ENV_VARS} D2L_CTX_CHUNK_MODE=${CTX_CHUNK_MODE} D2L_CHUNK_SCALING=${CHUNK_SCALING} D2L_TOOLS_PER_CHUNK=${TOOLS_PER_CHUNK}"
+# WS2 gating. conda run rebuilds the environment from this list, so a variable
+# exported in the caller does NOT reach the worker unless it is named here.
+if [[ -n "${D2L_GATE_MODE:-}" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_GATE_MODE=${D2L_GATE_MODE} D2L_GATE_TOPK=${D2L_GATE_TOPK:-1}"
+fi
+# Inference-time context chunking. Defaults to 1024 in doc_to_lora_staged.py,
+# which silently splits and SUMS any catalogue over ~1000 tokens even when
+# --ctx-chunk-mode is 'none'. The router checkpoints were trained with the
+# context in ONE chunk (num_chunk_probs unset, max_ctx_chunk_len unset), so
+# leaving this at 1024 evaluates them out of distribution from N=8 up.
+# Candidate-scoring sub-batch. Lower = lower peak memory, which matters when an
+# eval shares a GPU with a live training run.
+if [[ -n "${D2L_SCORE_BATCH:-}" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_SCORE_BATCH=${D2L_SCORE_BATCH}"
+fi
+if [[ -n "${D2L_ORDER_ENSEMBLE:-}" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_ORDER_ENSEMBLE=${D2L_ORDER_ENSEMBLE}"
+fi
+if [[ -n "${D2L_CHUNK_SIZE:-}" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_CHUNK_SIZE=${D2L_CHUNK_SIZE}"
+fi
+# Positional probe (see doc_to_lora_staged.py). Same conda-run caveat as above:
+# exporting these in the caller is not enough, they must be named here.
+if [[ -n "${D2L_PROBE_CTX_ORDER:-}" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_PROBE_CTX_ORDER=${D2L_PROBE_CTX_ORDER}"
+fi
+if [[ -n "${D2L_PROBE_ENUM_ORDER:-}" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_PROBE_ENUM_ORDER=${D2L_PROBE_ENUM_ORDER}"
+fi
+if [[ -n "$BINDER_CHECKPOINT" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_BINDER_CHECKPOINT_PATH=${BINDER_CHECKPOINT}"
+fi
+if [[ -n "$MAIN_GPU" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_STAGED_MAIN_GPU=${MAIN_GPU}"
+fi
+if [[ -n "$BINDER_GPU" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_BINDER_GPU=${BINDER_GPU}"
+fi
+if [[ -n "$BINDER_PYTHON" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_BINDER_PYTHON=${BINDER_PYTHON}"
+fi
+if [[ -n "$BINDER_MAX_NEW_TOKENS" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_BINDER_MAX_NEW_TOKENS=${BINDER_MAX_NEW_TOKENS}"
+fi
+if [[ -n "$D2L_PYTHON_PATH" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_PYTHON=${D2L_PYTHON_PATH}"
+fi
+if [[ -n "$D2L_SOURCE_PATH_ARG" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_SOURCE_PATH=${D2L_SOURCE_PATH_ARG}"
+fi
+if [[ -n "${D2L_BINDER_SYSTEM_MESSAGE_FILE:-}" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_BINDER_SYSTEM_MESSAGE_FILE=${D2L_BINDER_SYSTEM_MESSAGE_FILE}"
+fi
+if [[ -n "${D2L_BINDER_SYSTEM_MESSAGE:-}" ]]; then
+    # Value may contain spaces; keep it quoted for the inner bash -c.
+    ENV_VARS="${ENV_VARS} D2L_BINDER_SYSTEM_MESSAGE=$(printf '%q' "${D2L_BINDER_SYSTEM_MESSAGE}")"
+fi
+if [[ -n "${D2L_ALLOW_SHARED_GPU:-}" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_ALLOW_SHARED_GPU=${D2L_ALLOW_SHARED_GPU}"
+fi
+if [[ -n "${D2L_ROUTER_SYSTEM_MESSAGE_FILE:-}" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_ROUTER_SYSTEM_MESSAGE_FILE=${D2L_ROUTER_SYSTEM_MESSAGE_FILE}"
+fi
+if [[ -n "${D2L_BASELINE_PROMPTS:-}" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_BASELINE_PROMPTS=${D2L_BASELINE_PROMPTS}"
+fi
+if [[ -n "${D2L_ADAPTER_DIR:-}" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_ADAPTER_DIR=${D2L_ADAPTER_DIR}"
+fi
+if [[ -n "${D2L_BASE_MODEL:-}" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_BASE_MODEL=${D2L_BASE_MODEL}"
+fi
+if [[ -n "${D2L_ROOT:-}" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_ROOT=${D2L_ROOT}"
+fi
+if [[ "$STAGED_VARIANT" == "b-native" ]]; then
+    ENV_VARS="${ENV_VARS} D2L_NATIVE_FC_BINDER=1"
+fi
+if [[ "$ICL_ALL_TOOLS" -eq 1 ]]; then
+    # No routing stage at all: the model sees the query plus every schema.
+    ENV_VARS="${ENV_VARS} D2L_ICL_ALL_TOOLS=1"
+fi
 
 for cat in "${TEST_CATEGORIES[@]}"; do
     if [[ "$GENERATE" -eq 1 ]]; then
-        echo ">>> Running generate for '${cat}' (${NUM_GPUS} GPU(s), ${NUM_GPUS} threads)..."
+        echo ">>> Running generate for '${cat}' (${NUM_GPUS} GPU(s), ${NUM_THREADS} threads)..."
         conda run -n BFCL --no-capture-output bash -c \
-            "${ENV_VARS} D2L_RAW_LOG=${RAW_LOG_DIR}/${cat}.jsonl bfcl generate --model ${MODEL} --test-category ${cat} --num-threads ${NUM_GPUS} --result-dir ${RESULT_DIR}"
+            "${ENV_VARS} D2L_RAW_LOG=${RAW_LOG_DIR}/${cat}.jsonl bfcl generate --model ${MODEL} --test-category ${cat} --temperature 0 --num-threads ${NUM_THREADS} --result-dir ${RESULT_DIR}"
         echo ">>> Generate complete for '${cat}'."
         echo ""
     fi

@@ -1,0 +1,11 @@
+{"seed": 42, "total_count": 10, "correct_count": 2, "accuracy": 0.2, "sample_ids": ["multiple_95", "multiple_87", "multiple_98", "multiple_140", "multiple_124", "multiple_188", "multiple_52", "multiple_30", "multiple_187", "multiple_97"]}
+{"id": "multiple_95", "num_tools": 2, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ',' delimiter: line 1 column 546 (char 545)"}
+{"id": "multiple_87", "num_tools": 3, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ',' delimiter: line 1 column 81 (char 80)"}
+{"id": "multiple_98", "num_tools": 4, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ':' delimiter: line 1 column 65 (char 64)"}
+{"id": "multiple_140", "num_tools": 2, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ',' delimiter: line 1 column 79 (char 78)"}
+{"id": "multiple_124", "num_tools": 3, "valid": true, "checker": {"valid": true, "error": [], "error_type": "simple_function_checker:unclear"}, "final_call": {"name": "probabilities.calculate_single", "arguments": {"total_outcomes": 52, "event_outcomes": 4}}, "input_token_count": 802, "output_token_count": 78, "latency": 3.7057452029548585}
+{"id": "multiple_188", "num_tools": 4, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ',' delimiter: line 1 column 442 (char 441)"}
+{"id": "multiple_52", "num_tools": 2, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ':' delimiter: line 1 column 72 (char 71)"}
+{"id": "multiple_30", "num_tools": 3, "valid": true, "checker": {"valid": true, "error": [], "error_type": "simple_function_checker:unclear"}, "final_call": {"name": "rectangle.area", "arguments": {"length": 12, "width": 5}}, "input_token_count": 717, "output_token_count": 68, "latency": 3.368959480896592}
+{"id": "multiple_187", "num_tools": 4, "valid": false, "error": "StagedValidationError: $.arguments is missing required keys ['items']"}
+{"id": "multiple_97", "num_tools": 2, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ',' delimiter: line 1 column 73 (char 72)"}

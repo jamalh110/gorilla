@@ -1,0 +1,10 @@
+{"id": "multiple_scale_irrel_noabst_0", "result": "<tool_call>\n{\"name\":\"determine_body_mass_index\",\"arguments\":{}}\n</tool_call>", "input_token_count": 288, "output_token_count": 20, "latency": 1.8808958129957318}
+{"id": "multiple_scale_irrel_noabst_1", "result": "<tool_call>\n{\"name\":\"calculate_current\",\"arguments\":{}}\n</tool_call>", "input_token_count": 272, "output_token_count": 17, "latency": 1.4696189872920513}
+{"id": "multiple_scale_irrel_noabst_2", "result": "<tool_call>\n{\"name\":\"finance.fetchGDP\",\"arguments\":{}}\n</tool_call>", "input_token_count": 277, "output_token_count": 19, "latency": 1.5127714350819588}
+{"id": "multiple_scale_irrel_noabst_3", "result": "<tool_call>\n{\"name\":\"calculate_internal_rate_of_return\",\"arguments\":{}}\n</tool_call>", "input_token_count": 303, "output_token_count": 20, "latency": 1.6147809103131294}
+{"id": "multiple_scale_irrel_noabst_4", "result": "<tool_call>\n{\"name\":\"get_case_result\",\"arguments\":{}}\n</tool_call>", "input_token_count": 278, "output_token_count": 18, "latency": 1.4909839946776628}
+{"id": "multiple_scale_irrel_noabst_5", "result": "<tool_call>\n{\"name\":\"caffeine_effect\",\"arguments\":{}}\n</tool_call>", "input_token_count": 276, "output_token_count": 18, "latency": 1.5288946945220232}
+{"id": "multiple_scale_irrel_noabst_6", "result": "<tool_call>\n{\"name\":\"search_holy_books\",\"arguments\":{}}\n</tool_call>", "input_token_count": 272, "output_token_count": 19, "latency": 1.5683136954903603}
+{"id": "multiple_scale_irrel_noabst_7", "result": "<tool_call>\n{\"name\":\"concert_availability\",\"arguments\":{}}\n</tool_call>", "input_token_count": 277, "output_token_count": 18, "latency": 1.494943001307547}
+{"id": "multiple_scale_irrel_noabst_8", "result": "<tool_call>\n{\"name\":\"sports_team.get_top_scorer\",\"arguments\":{}}\n</tool_call>", "input_token_count": 277, "output_token_count": 22, "latency": 1.66730488371104}
+{"id": "multiple_scale_irrel_noabst_9", "result": "<tool_call>\n{\"name\":\"convert_currency\",\"arguments\":{}}\n</tool_call>", "input_token_count": 271, "output_token_count": 17, "latency": 1.4753715861588717}

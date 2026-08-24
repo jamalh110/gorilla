@@ -1,0 +1,11 @@
+{"seed": 42, "total_count": 10, "correct_count": 0, "accuracy": 0.0, "sample_ids": ["multiple_95", "multiple_87", "multiple_98", "multiple_140", "multiple_124", "multiple_188", "multiple_52", "multiple_30", "multiple_187", "multiple_97"]}
+{"id": "multiple_95", "num_tools": 2, "valid": false, "error": "StagedValidationError: expected exactly one <tool_call>, found 0"}
+{"id": "multiple_87", "num_tools": 3, "valid": false, "error": "StagedValidationError: expected exactly one <tool_call>, found 0"}
+{"id": "multiple_98", "num_tools": 4, "valid": false, "error": "StagedValidationError: expected exactly one <tool_call>, found 0"}
+{"id": "multiple_140", "num_tools": 2, "valid": false, "error": "StagedValidationError: expected exactly one <tool_call>, found 0"}
+{"id": "multiple_124", "num_tools": 3, "valid": false, "error": "StagedValidationError: expected exactly one <tool_call>, found 0"}
+{"id": "multiple_188", "num_tools": 4, "valid": false, "error": "StagedValidationError: expected exactly one <tool_call>, found 0"}
+{"id": "multiple_52", "num_tools": 2, "valid": false, "error": "StagedValidationError: expected exactly one <tool_call>, found 0"}
+{"id": "multiple_30", "num_tools": 3, "valid": false, "error": "StagedValidationError: expected exactly one <tool_call>, found 0"}
+{"id": "multiple_187", "num_tools": 4, "valid": false, "error": "StagedValidationError: expected exactly one <tool_call>, found 0"}
+{"id": "multiple_97", "num_tools": 2, "valid": false, "error": "StagedValidationError: expected exactly one <tool_call>, found 0"}

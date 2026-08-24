@@ -1,0 +1,1827 @@
+[
+  {
+    "id": "live_simple_66-30-0",
+    "adapter_hash": "066798fb8af94675",
+    "tool": "inventory.restock_check",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"inventory.restock_check\", \"arguments\": {\"item_ids\": [102, 103], \"threshold\": 20}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "The Requirement Extractor is designed to interpret and process multiple user queries in a single input, especially in the context of inventory management and product information.",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_66-30-0",
+    "adapter_hash": "066798fb8af94675",
+    "tool": "inventory.restock_check",
+    "condition": "correct_from_start",
+    "latency_sec": 2.1015155841596425,
+    "raw_output": "<tool_call>\n{\"name\": \"inventory.restock_check\", \"arguments\": {\"item_ids\": [102, 103], \"threshold\": 20}}\n</tool_call>",
+    "input_tokens": 145,
+    "output_tokens": 37,
+    "user": "The Requirement Extractor is designed to interpret and process multiple user queries in a single input, especially in the context of inventory management and product information.",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "inventory.restock_check",
+        "arguments": {
+          "item_ids": [
+            102,
+            103
+          ],
+          "threshold": 20
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_66-30-0",
+    "adapter_hash": "066798fb8af94675",
+    "tool": "inventory.restock_check",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.790711295325309,
+    "raw_output": "<tool_call>\n{\"name\": \"inventory.restock_check\", \"arguments\": {\"item_ids\": [102, 103], \"threshold\": 20}}\n</tool_call>",
+    "input_tokens": 145,
+    "output_tokens": 37,
+    "user": "The Requirement Extractor is designed to interpret and process multiple user queries in a single input, especially in the context of inventory management and product information.",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "inventory.restock_check",
+        "arguments": {
+          "item_ids": [
+            102,
+            103
+          ],
+          "threshold": 20
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_22-5-0",
+    "adapter_hash": "0821d8a1e36d4c92",
+    "tool": "ChaFod",
+    "condition": "icl_fc",
+    "valid": false,
+    "raw_output": "The request seems to be a mix of confusion or typo. \"Whopper\" is not one of the available food options in the system, and \"old folks as the burger\" is not a recognized food item. The available food options are: PIZZA, BURGER, SALAD, SOUP, and STEAK. \n\nIf you'd like, I can help change the selection to a valid burger option (e.g., BURGER) if that's what you're looking for. Let me know!",
+    "parsed_calls": [],
+    "checker": {
+      "valid": false,
+      "error": [
+        "Wrong number of functions."
+      ],
+      "error_type": "simple_function_checker:wrong_count",
+      "model_result_decoded": []
+    },
+    "user": "I need Whopper also known old folks as the burger.",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_22-5-0",
+    "adapter_hash": "0821d8a1e36d4c92",
+    "tool": "ChaFod",
+    "condition": "correct_from_start",
+    "latency_sec": 1.132230500690639,
+    "raw_output": "<tool_call>\n{\"name\": \"ChaFod\", \"arguments\": {\"TheFod\": \"Whopper\"}}\n</tool_call>",
+    "input_tokens": 78,
+    "output_tokens": 24,
+    "user": "I need Whopper also known old folks as the burger.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'TheFod': 'Whopper'. Expected one of ['BURGER']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "ChaFod",
+        "arguments": {
+          "TheFod": "Whopper"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_22-5-0",
+    "adapter_hash": "0821d8a1e36d4c92",
+    "tool": "ChaFod",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.1489202808588743,
+    "raw_output": "<tool_call>\n{\"name\": \"ChaFod\", \"arguments\": {\"TheFod\": \"Whopper\"}}\n</tool_call>",
+    "input_tokens": 78,
+    "output_tokens": 24,
+    "user": "I need Whopper also known old folks as the burger.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'TheFod': 'Whopper'. Expected one of ['BURGER']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "ChaFod",
+        "arguments": {
+          "TheFod": "Whopper"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_105-62-0",
+    "adapter_hash": "094fec0a4823223e",
+    "tool": "classify",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"classify\", \"arguments\": {\"clean_hello\": [\"hello\"], \"faq_link_accounts_start\": [\"link my account\", \"connect my accounts\"]}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "classify these sentences\\nlink my account\\nconnect my accounts\\nhello",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_105-62-0",
+    "adapter_hash": "094fec0a4823223e",
+    "tool": "classify",
+    "condition": "correct_from_start",
+    "latency_sec": 1.7081457930617034,
+    "raw_output": "<tool_call>\n{\"name\": \"classify\", \"arguments\": {\"clean_hello\": [\"hello\"], \"faq_link_accounts_start\": [\"link my account\", \"connect my accounts\"]}}\n</tool_call>",
+    "input_tokens": 79,
+    "output_tokens": 37,
+    "user": "classify these sentences\\nlink my account\\nconnect my accounts\\nhello",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "classify",
+        "arguments": {
+          "clean_hello": [
+            "hello"
+          ],
+          "faq_link_accounts_start": [
+            "link my account",
+            "connect my accounts"
+          ]
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_105-62-0",
+    "adapter_hash": "094fec0a4823223e",
+    "tool": "classify",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.0071681290864944,
+    "raw_output": "<tool_call>\n{\"name\": \"classify\", \"arguments\": {\"clean_hello\": [\"hello\"]}}\n</tool_call>",
+    "input_tokens": 79,
+    "output_tokens": 21,
+    "user": "classify these sentences\\nlink my account\\nconnect my accounts\\nhello",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Missing required parameter: 'faq_link_accounts_start'."
+      ],
+      "error_type": "simple_function_checker:missing_required"
+    },
+    "parsed_calls": [
+      {
+        "name": "classify",
+        "arguments": {
+          "clean_hello": [
+            "hello"
+          ]
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_80-41-0",
+    "adapter_hash": "0adde26531595d1b",
+    "tool": "sitefinity_create_contentitem",
+    "condition": "icl_fc",
+    "valid": false,
+    "raw_output": "<tool_call>\n{\"name\": \"sitefinity_create_contentitem\", \"arguments\": {\"Title\": \"Breakthrough in Artificial Intelligence\", \"Content\": \"Recent advancements in machine learning algorithms have revolutionized the way AI systems learn and adapt. Researchers have developed new neural network architectures that significantly improve accuracy and reduce computational costs. These breakthroughs are enabling AI to handle complex tasks such as natural language processing, image recognition, and autonomous decision-making with unprecedented efficiency. The integration of reinforcement learning with deep learning has also led to more intelligent and responsive AI models.\", \"MetaTitle\": \"AI Breakthrough Latest Developments in Machine Learning\", \"MetaDescription\": \"An overview of the recent significant advancements in artificial intelligence and machine learning technology\", \"UrlName\": \"ai-breakthrough-latest-developments\"}}\n</tool_call>",
+    "parsed_calls": [
+      {
+        "name": "sitefinity_create_contentitem",
+        "arguments": {
+          "Title": "Breakthrough in Artificial Intelligence",
+          "Content": "Recent advancements in machine learning algorithms have revolutionized the way AI systems learn and adapt. Researchers have developed new neural network architectures that significantly improve accuracy and reduce computational costs. These breakthroughs are enabling AI to handle complex tasks such as natural language processing, image recognition, and autonomous decision-making with unprecedented efficiency. The integration of reinforcement learning with deep learning has also led to more intelligent and responsive AI models.",
+          "MetaTitle": "AI Breakthrough Latest Developments in Machine Learning",
+          "MetaDescription": "An overview of the recent significant advancements in artificial intelligence and machine learning technology",
+          "UrlName": "ai-breakthrough-latest-developments"
+        }
+      }
+    ],
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'Content': 'Recent advancements in machine learning algorithms have revolutionized the way AI systems learn and adapt. Researchers have developed new neural network architectures that significantly improve accuracy and reduce computational costs. These breakthroughs are enabling AI to handle complex tasks such as natural language processing, image recognition, and autonomous decision-making with unprecedented efficiency. The integration of reinforcement learning with deep learning has also led to more intelligent and responsive AI models.'. Expected one of ['The recent breakthroughs in machine learning algorithms.']. Case insensitive."
+      ],
+      "error_type": "value_error:string",
+      "model_result_decoded": [
+        {
+          "sitefinity_create_contentitem": {
+            "Title": "Breakthrough in Artificial Intelligence",
+            "Content": "Recent advancements in machine learning algorithms have revolutionized the way AI systems learn and adapt. Researchers have developed new neural network architectures that significantly improve accuracy and reduce computational costs. These breakthroughs are enabling AI to handle complex tasks such as natural language processing, image recognition, and autonomous decision-making with unprecedented efficiency. The integration of reinforcement learning with deep learning has also led to more intelligent and responsive AI models.",
+            "MetaTitle": "AI Breakthrough Latest Developments in Machine Learning",
+            "MetaDescription": "An overview of the recent significant advancements in artificial intelligence and machine learning technology",
+            "UrlName": "ai-breakthrough-latest-developments"
+          }
+        }
+      ]
+    },
+    "user": "I need to add a news item about the latest advancements in AI. The title should be 'Breakthrough in Artificial Intelligence', and the content must cover the recent breakthroughs in machine learning algorithms. Can you set the meta title as 'AI Breakthrough Latest Developments in Machine Learning' and the meta description to 'An overview of the recent significant advancements in artificial intelligence and machine learning technology'? Also, the URL should be 'ai-breakthrough-latest-developments'.",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_80-41-0",
+    "adapter_hash": "0adde26531595d1b",
+    "tool": "sitefinity_create_contentitem",
+    "condition": "correct_from_start",
+    "latency_sec": 7.145080855116248,
+    "raw_output": "<tool_call>\n{\"name\": \"sitefinity_create_contentitem\", \"arguments\": {\"Title\": \"Breakthrough in Artificial Intelligence\", \"Content\": \"Recent breakthroughs in machine learning algorithms have revolutionized the way AI systems learn and adapt. New techniques such as self-supervised learning, transformer-based models, and improved neural network architectures have significantly enhanced the performance of AI in tasks like natural language processing, image recognition, and predictive analytics. These advancements are paving the way for more efficient, accurate, and scalable AI solutions across various industries.\", \"MetaTitle\": \"AI Breakthrough Latest Developments in Machine Learning\", \"MetaDescription\": \"An overview of the recent significant advancements in artificial intelligence and machine learning technology\", \"UrlName\": \"ai-breakthrough-latest-developments\"}}\n</tool_call>",
+    "input_tokens": 159,
+    "output_tokens": 156,
+    "user": "I need to add a news item about the latest advancements in AI. The title should be 'Breakthrough in Artificial Intelligence', and the content must cover the recent breakthroughs in machine learning algorithms. Can you set the meta title as 'AI Breakthrough Latest Developments in Machine Learning' and the meta description to 'An overview of the recent significant advancements in artificial intelligence and machine learning technology'? Also, the URL should be 'ai-breakthrough-latest-developments'.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'Content': 'Recent breakthroughs in machine learning algorithms have revolutionized the way AI systems learn and adapt. New techniques such as self-supervised learning, transformer-based models, and improved neural network architectures have significantly enhanced the performance of AI in tasks like natural language processing, image recognition, and predictive analytics. These advancements are paving the way for more efficient, accurate, and scalable AI solutions across various industries.'. Expected one of ['The recent breakthroughs in machine learning algorithms.']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "sitefinity_create_contentitem",
+        "arguments": {
+          "Title": "Breakthrough in Artificial Intelligence",
+          "Content": "Recent breakthroughs in machine learning algorithms have revolutionized the way AI systems learn and adapt. New techniques such as self-supervised learning, transformer-based models, and improved neural network architectures have significantly enhanced the performance of AI in tasks like natural language processing, image recognition, and predictive analytics. These advancements are paving the way for more efficient, accurate, and scalable AI solutions across various industries.",
+          "MetaTitle": "AI Breakthrough Latest Developments in Machine Learning",
+          "MetaDescription": "An overview of the recent significant advancements in artificial intelligence and machine learning technology",
+          "UrlName": "ai-breakthrough-latest-developments"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_80-41-0",
+    "adapter_hash": "0adde26531595d1b",
+    "tool": "sitefinity_create_contentitem",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 7.954446101095527,
+    "raw_output": "<tool_call>\n{\"name\": \"sitefinity_create_contentitem\", \"arguments\": {\"Title\": \"Breakthrough in Artificial Intelligence\", \"Content\": \"Recent breakthroughs in machine learning algorithms have revolutionized the way AI systems learn and adapt. New techniques such as self-supervised learning, transformer-based models, and reinforcement learning have significantly improved accuracy and efficiency. These advancements enable AI to process vast amounts of data with minimal human intervention, leading to more intelligent and responsive systems in fields like healthcare, autonomous vehicles, and natural language processing. Researchers have also developed more scalable and energy-efficient models, making AI more accessible and sustainable.\", \"MetaTitle\": \"AI Breakthrough Latest Developments in Machine Learning\", \"MetaDescription\": \"An overview of the recent significant advancements in artificial intelligence and machine learning technology\", \"UrlName\": \"ai-breakthrough-latest-developments\"}}\n</tool_call>",
+    "input_tokens": 159,
+    "output_tokens": 173,
+    "user": "I need to add a news item about the latest advancements in AI. The title should be 'Breakthrough in Artificial Intelligence', and the content must cover the recent breakthroughs in machine learning algorithms. Can you set the meta title as 'AI Breakthrough Latest Developments in Machine Learning' and the meta description to 'An overview of the recent significant advancements in artificial intelligence and machine learning technology'? Also, the URL should be 'ai-breakthrough-latest-developments'.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'Content': 'Recent breakthroughs in machine learning algorithms have revolutionized the way AI systems learn and adapt. New techniques such as self-supervised learning, transformer-based models, and reinforcement learning have significantly improved accuracy and efficiency. These advancements enable AI to process vast amounts of data with minimal human intervention, leading to more intelligent and responsive systems in fields like healthcare, autonomous vehicles, and natural language processing. Researchers have also developed more scalable and energy-efficient models, making AI more accessible and sustainable.'. Expected one of ['The recent breakthroughs in machine learning algorithms.']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "sitefinity_create_contentitem",
+        "arguments": {
+          "Title": "Breakthrough in Artificial Intelligence",
+          "Content": "Recent breakthroughs in machine learning algorithms have revolutionized the way AI systems learn and adapt. New techniques such as self-supervised learning, transformer-based models, and reinforcement learning have significantly improved accuracy and efficiency. These advancements enable AI to process vast amounts of data with minimal human intervention, leading to more intelligent and responsive systems in fields like healthcare, autonomous vehicles, and natural language processing. Researchers have also developed more scalable and energy-efficient models, making AI more accessible and sustainable.",
+          "MetaTitle": "AI Breakthrough Latest Developments in Machine Learning",
+          "MetaDescription": "An overview of the recent significant advancements in artificial intelligence and machine learning technology",
+          "UrlName": "ai-breakthrough-latest-developments"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_137-90-0",
+    "adapter_hash": "0dc2e1f5047ece33",
+    "tool": "reschedule",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"reschedule\", \"arguments\": {\"identifier\": \"Alice-One-one-One\", \"dateOrTime\": \"2023-11-01T20:00:00\", \"timezone\": \"Europe/London\"}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "Reschedule event 'Alice-One-one-One' to November 1, 2023 at 8pm London time",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_137-90-0",
+    "adapter_hash": "0dc2e1f5047ece33",
+    "tool": "reschedule",
+    "condition": "correct_from_start",
+    "latency_sec": 2.6296380273997784,
+    "raw_output": "<tool_call>\n{\"name\": \"reschedule\", \"arguments\": {\"identifier\": \"Alice-One-one-One\", \"dateOrTime\": \"2023-11-01T20:00:00\", \"timezone\": \"Europe/London\"}}\n</tool_call>",
+    "input_tokens": 91,
+    "output_tokens": 57,
+    "user": "Reschedule event 'Alice-One-one-One' to November 1, 2023 at 8pm London time",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "reschedule",
+        "arguments": {
+          "identifier": "Alice-One-one-One",
+          "dateOrTime": "2023-11-01T20:00:00",
+          "timezone": "Europe/London"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_137-90-0",
+    "adapter_hash": "0dc2e1f5047ece33",
+    "tool": "reschedule",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 2.6702977158129215,
+    "raw_output": "<tool_call>\n{\"name\": \"reschedule\", \"arguments\": {\"identifier\": \"Alice-One-one-One\", \"dateOrTime\": \"2023-11-01T20:00:00\", \"timezone\": \"Europe/London\"}}\n</tool_call>",
+    "input_tokens": 91,
+    "output_tokens": 57,
+    "user": "Reschedule event 'Alice-One-one-One' to November 1, 2023 at 8pm London time",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "reschedule",
+        "arguments": {
+          "identifier": "Alice-One-one-One",
+          "dateOrTime": "2023-11-01T20:00:00",
+          "timezone": "Europe/London"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_26-6-0",
+    "adapter_hash": "0ded45b2fbc1622d",
+    "tool": "uber.ride",
+    "condition": "icl_fc",
+    "valid": false,
+    "raw_output": "<tool_call>\n{\"name\": \"uber.ride\", \"arguments\": {\"loc\": \"123 Đường Đại học, Berkeley, CA 94704\", \"type\": \"plus\", \"time\": 10}}\n</tool_call>",
+    "parsed_calls": [
+      {
+        "name": "uber.ride",
+        "arguments": {
+          "loc": "123 Đường Đại học, Berkeley, CA 94704",
+          "type": "plus",
+          "time": 10
+        }
+      }
+    ],
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'loc': '123 Đường Đại học, Berkeley, CA 94704'. Expected one of ['123 Đường Đại học, Berkeley, CA', '123 University Street, Berkeley, CA']. Case insensitive."
+      ],
+      "error_type": "value_error:string",
+      "model_result_decoded": [
+        {
+          "uber.ride": {
+            "loc": "123 Đường Đại học, Berkeley, CA 94704",
+            "type": "plus",
+            "time": 10
+          }
+        }
+      ]
+    },
+    "user": "Tôi cần một chuyến Uber loại 'Plus' từ địa chỉ 123 Đường Đại học, Berkeley, CA 94704 và tôi không muốn chờ quá 10 phút.",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_26-6-0",
+    "adapter_hash": "0ded45b2fbc1622d",
+    "tool": "uber.ride",
+    "condition": "correct_from_start",
+    "latency_sec": 2.257412692066282,
+    "raw_output": "<tool_call>\n{\"name\": \"uber.ride\", \"arguments\": {\"loc\": \"123 Đường Đại học, Berkeley, CA 94704\", \"type\": \"plus\", \"time\": 10}}\n</tool_call>",
+    "input_tokens": 106,
+    "output_tokens": 49,
+    "user": "Tôi cần một chuyến Uber loại 'Plus' từ địa chỉ 123 Đường Đại học, Berkeley, CA 94704 và tôi không muốn chờ quá 10 phút.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'loc': '123 Đường Đại học, Berkeley, CA 94704'. Expected one of ['123 Đường Đại học, Berkeley, CA', '123 University Street, Berkeley, CA']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "uber.ride",
+        "arguments": {
+          "loc": "123 Đường Đại học, Berkeley, CA 94704",
+          "type": "plus",
+          "time": 10
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_26-6-0",
+    "adapter_hash": "0ded45b2fbc1622d",
+    "tool": "uber.ride",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 2.087112383916974,
+    "raw_output": "<tool_call>\n{\"name\": \"uber.ride\", \"arguments\": {\"loc\": \"123 Đường Đại học, Berkeley, CA 94704\", \"type\": \"plus\", \"time\": 10}}\n</tool_call>",
+    "input_tokens": 106,
+    "output_tokens": 49,
+    "user": "Tôi cần một chuyến Uber loại 'Plus' từ địa chỉ 123 Đường Đại học, Berkeley, CA 94704 và tôi không muốn chờ quá 10 phút.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'loc': '123 Đường Đại học, Berkeley, CA 94704'. Expected one of ['123 Đường Đại học, Berkeley, CA', '123 University Street, Berkeley, CA']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "uber.ride",
+        "arguments": {
+          "loc": "123 Đường Đại học, Berkeley, CA 94704",
+          "type": "plus",
+          "time": 10
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_71-35-0",
+    "adapter_hash": "0e41b496073d1b90",
+    "tool": "extract_parameters_v1",
+    "condition": "icl_fc",
+    "valid": false,
+    "raw_output": "<tool_call>\n{\"name\": \"extract_parameters_v1\", \"arguments\": {\"targets\": [\"brand:Apple\"], \"metrics\": [\"view\"], \"min_date\": \"2022-07-01\", \"interval\": \"month\"}}\n</tool_call>",
+    "parsed_calls": [
+      {
+        "name": "extract_parameters_v1",
+        "arguments": {
+          "targets": [
+            "brand:Apple"
+          ],
+          "metrics": [
+            "view"
+          ],
+          "min_date": "2022-07-01",
+          "interval": "month"
+        }
+      }
+    ],
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'interval': 'month'. Expected one of ['', None]."
+      ],
+      "error_type": "value_error:others",
+      "model_result_decoded": [
+        {
+          "extract_parameters_v1": {
+            "targets": [
+              "brand:Apple"
+            ],
+            "metrics": [
+              "view"
+            ],
+            "min_date": "2022-07-01",
+            "interval": "month"
+          }
+        }
+      ]
+    },
+    "user": "How have millennials views of Apple changed since July 2022?'",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_71-35-0",
+    "adapter_hash": "0e41b496073d1b90",
+    "tool": "extract_parameters_v1",
+    "condition": "correct_from_start",
+    "latency_sec": 3.477385450154543,
+    "raw_output": "<tool_call>\n{\"name\": \"extract_parameters_v1\", \"arguments\": {\"targets\": [\"brand:Apple\"], \"metrics\": [\"brand awareness\", \"brand trust\", \"brand loyalty\"], \"demographics\": [\"millennials\"], \"country\": null, \"min_date\": \"2022-07-01\", \"max_date\": null}}\n</tool_call>",
+    "input_tokens": 81,
+    "output_tokens": 75,
+    "user": "How have millennials views of Apple changed since July 2022?'",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'metrics': ['brand awareness', 'brand trust', 'brand loyalty']. Expected one of [['view']]."
+      ],
+      "error_type": "value_error:list/tuple"
+    },
+    "parsed_calls": [
+      {
+        "name": "extract_parameters_v1",
+        "arguments": {
+          "targets": [
+            "brand:Apple"
+          ],
+          "metrics": [
+            "brand awareness",
+            "brand trust",
+            "brand loyalty"
+          ],
+          "demographics": [
+            "millennials"
+          ],
+          "country": null,
+          "min_date": "2022-07-01",
+          "max_date": null
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_71-35-0",
+    "adapter_hash": "0e41b496073d1b90",
+    "tool": "extract_parameters_v1",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 3.54445762000978,
+    "raw_output": "<tool_call>\n{\"name\": \"extract_parameters_v1\", \"arguments\": {\"targets\": [\"brand:Apple\"], \"metrics\": [\"brand perception\", \"brand loyalty\", \"brand trust\"], \"demographics\": [\"millennials\"], \"country\": null, \"min_date\": \"2022-07-01\", \"max_date\": null}}\n</tool_call>",
+    "input_tokens": 81,
+    "output_tokens": 75,
+    "user": "How have millennials views of Apple changed since July 2022?'",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'metrics': ['brand perception', 'brand loyalty', 'brand trust']. Expected one of [['view']]."
+      ],
+      "error_type": "value_error:list/tuple"
+    },
+    "parsed_calls": [
+      {
+        "name": "extract_parameters_v1",
+        "arguments": {
+          "targets": [
+            "brand:Apple"
+          ],
+          "metrics": [
+            "brand perception",
+            "brand loyalty",
+            "brand trust"
+          ],
+          "demographics": [
+            "millennials"
+          ],
+          "country": null,
+          "min_date": "2022-07-01",
+          "max_date": null
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_226-118-0",
+    "adapter_hash": "10b91467d45a5ce1",
+    "tool": "text_to_speech.convert",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"text_to_speech.convert\", \"arguments\": {\"text\": \"I am a pretty girl\", \"language\": \"es-ES\", \"gender\": \"female\"}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "Convert the phrase 'I am a pretty girl' into spoken audio in Spanish with a female voice?",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_226-118-0",
+    "adapter_hash": "10b91467d45a5ce1",
+    "tool": "text_to_speech.convert",
+    "condition": "correct_from_start",
+    "latency_sec": 1.906333573628217,
+    "raw_output": "<tool_call>\n{\"name\": \"text_to_speech.convert\", \"arguments\": {\"text\": \"I am a pretty girl\", \"language\": \"es-ES\", \"gender\": \"female\"}}\n</tool_call>",
+    "input_tokens": 86,
+    "output_tokens": 41,
+    "user": "Convert the phrase 'I am a pretty girl' into spoken audio in Spanish with a female voice?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "text_to_speech.convert",
+        "arguments": {
+          "text": "I am a pretty girl",
+          "language": "es-ES",
+          "gender": "female"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_226-118-0",
+    "adapter_hash": "10b91467d45a5ce1",
+    "tool": "text_to_speech.convert",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.9572556363418698,
+    "raw_output": "<tool_call>\n{\"name\": \"text_to_speech.convert\", \"arguments\": {\"text\": \"I am a pretty girl\", \"language\": \"es-ES\", \"gender\": \"female\"}}\n</tool_call>",
+    "input_tokens": 86,
+    "output_tokens": 41,
+    "user": "Convert the phrase 'I am a pretty girl' into spoken audio in Spanish with a female voice?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "text_to_speech.convert",
+        "arguments": {
+          "text": "I am a pretty girl",
+          "language": "es-ES",
+          "gender": "female"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_10-3-6",
+    "adapter_hash": "110e6dd34cc787f5",
+    "tool": "get_current_weather",
+    "condition": "icl_fc",
+    "valid": false,
+    "raw_output": "<tool_call>\n{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Yosemite National Park, CA\", \"unit\": \"celsius\"}}\n</tool_call>",
+    "parsed_calls": [
+      {
+        "name": "get_current_weather",
+        "arguments": {
+          "location": "Yosemite National Park, CA",
+          "unit": "celsius"
+        }
+      }
+    ],
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'location': 'Yosemite National Park, CA'. Expected one of ['Mariposa, CA']. Case insensitive."
+      ],
+      "error_type": "value_error:string",
+      "model_result_decoded": [
+        {
+          "get_current_weather": {
+            "location": "Yosemite National Park, CA",
+            "unit": "celsius"
+          }
+        }
+      ]
+    },
+    "user": "Could you tell me the current weather in Yosemite National Park which locates at Mariposa, CA, and make sure to give me the temperature in Celsius?",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_10-3-6",
+    "adapter_hash": "110e6dd34cc787f5",
+    "tool": "get_current_weather",
+    "condition": "correct_from_start",
+    "latency_sec": 1.7472783490084112,
+    "raw_output": "<tool_call>\n{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Yosemite National Park, Mariposa, CA\", \"unit\": \"celsius\"}}\n</tool_call>",
+    "input_tokens": 98,
+    "output_tokens": 37,
+    "user": "Could you tell me the current weather in Yosemite National Park which locates at Mariposa, CA, and make sure to give me the temperature in Celsius?",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'location': 'Yosemite National Park, Mariposa, CA'. Expected one of ['Mariposa, CA']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "get_current_weather",
+        "arguments": {
+          "location": "Yosemite National Park, Mariposa, CA",
+          "unit": "celsius"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_10-3-6",
+    "adapter_hash": "110e6dd34cc787f5",
+    "tool": "get_current_weather",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.772891920991242,
+    "raw_output": "<tool_call>\n{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Yosemite National Park, Mariposa, CA\", \"unit\": \"celsius\"}}\n</tool_call>",
+    "input_tokens": 98,
+    "output_tokens": 37,
+    "user": "Could you tell me the current weather in Yosemite National Park which locates at Mariposa, CA, and make sure to give me the temperature in Celsius?",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'location': 'Yosemite National Park, Mariposa, CA'. Expected one of ['Mariposa, CA']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "get_current_weather",
+        "arguments": {
+          "location": "Yosemite National Park, Mariposa, CA",
+          "unit": "celsius"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_120-76-0",
+    "adapter_hash": "1625f8c378fbbf7b",
+    "tool": "weather.forecast",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"weather.forecast\", \"arguments\": {\"location\": \"Paris, France\", \"start_date\": \"2023-04-03\", \"end_date\": \"2023-04-05\", \"temperature_unit\": \"Celsius\"}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "Could you tell me what the weather will be like in Paris, France from April 3rd to April 5th 2023. For temperature use Celsius?",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_120-76-0",
+    "adapter_hash": "1625f8c378fbbf7b",
+    "tool": "weather.forecast",
+    "condition": "correct_from_start",
+    "latency_sec": 2.9190628277137876,
+    "raw_output": "<tool_call>\n{\"name\": \"weather.forecast\", \"arguments\": {\"location\": \"Paris, France\", \"start_date\": \"2023-04-03\", \"end_date\": \"2023-04-05\", \"temperature_unit\": \"Celsius\"}}\n</tool_call>",
+    "input_tokens": 101,
+    "output_tokens": 63,
+    "user": "Could you tell me what the weather will be like in Paris, France from April 3rd to April 5th 2023. For temperature use Celsius?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "weather.forecast",
+        "arguments": {
+          "location": "Paris, France",
+          "start_date": "2023-04-03",
+          "end_date": "2023-04-05",
+          "temperature_unit": "Celsius"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_120-76-0",
+    "adapter_hash": "1625f8c378fbbf7b",
+    "tool": "weather.forecast",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 2.98631462873891,
+    "raw_output": "<tool_call>\n{\"name\": \"weather.forecast\", \"arguments\": {\"location\": \"Paris, France\", \"start_date\": \"2023-04-03\", \"end_date\": \"2023-04-05\", \"temperature_unit\": \"Celsius\"}}\n</tool_call>",
+    "input_tokens": 101,
+    "output_tokens": 63,
+    "user": "Could you tell me what the weather will be like in Paris, France from April 3rd to April 5th 2023. For temperature use Celsius?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "weather.forecast",
+        "arguments": {
+          "location": "Paris, France",
+          "start_date": "2023-04-03",
+          "end_date": "2023-04-05",
+          "temperature_unit": "Celsius"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_51-23-0",
+    "adapter_hash": "17778b74a10c43de",
+    "tool": "ThinQ_Connect",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"ThinQ_Connect\", \"arguments\": {\"body\": {\"airConOperationMode\": \"POWER_ON\", \"airConJobMode\": \"COOL\", \"targetTemperature\": 22, \"powerSaveEnabled\": true, \"windStrength\": \"HIGH\", \"relativeHourToStart\": 1, \"relativeMinuteToStart\": 30}}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "Change the settings of my air conditioner. Set it to cool mode with a target temperature of 22 degrees Celsius. Enable the power save mode and set the high wind strength. Start in 1 hour and 30 minutes from now? For everything else",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_51-23-0",
+    "adapter_hash": "17778b74a10c43de",
+    "tool": "ThinQ_Connect",
+    "condition": "correct_from_start",
+    "latency_sec": 3.763343136291951,
+    "raw_output": "<tool_call>\n{\"name\": \"ThinQ_Connect\", \"arguments\": {\"body\": {\"airConOperationMode\": \"POWER_ON\", \"airConJobMode\": \"COOL\", \"targetTemperature\": 22, \"powerSaveEnabled\": true, \"windStrength\": \"HIGH\", \"relativeHourToStart\": 1, \"relativeMinuteToStart\": 30}}}\n</tool_call>",
+    "input_tokens": 118,
+    "output_tokens": 81,
+    "user": "Change the settings of my air conditioner. Set it to cool mode with a target temperature of 22 degrees Celsius. Enable the power save mode and set the high wind strength. Start in 1 hour and 30 minutes from now? For everything else",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "ThinQ_Connect",
+        "arguments": {
+          "body": {
+            "airConOperationMode": "POWER_ON",
+            "airConJobMode": "COOL",
+            "targetTemperature": 22,
+            "powerSaveEnabled": true,
+            "windStrength": "HIGH",
+            "relativeHourToStart": 1,
+            "relativeMinuteToStart": 30
+          }
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_51-23-0",
+    "adapter_hash": "17778b74a10c43de",
+    "tool": "ThinQ_Connect",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 3.7792337350547314,
+    "raw_output": "<tool_call>\n{\"name\": \"ThinQ_Connect\", \"arguments\": {\"body\": {\"airConOperationMode\": \"POWER_ON\", \"airConJobMode\": \"COOL\", \"targetTemperature\": 22, \"powerSaveEnabled\": true, \"windStrength\": \"HIGH\", \"relativeHourToStart\": 1, \"relativeMinuteToStart\": 30}}}\n</tool_call>",
+    "input_tokens": 118,
+    "output_tokens": 81,
+    "user": "Change the settings of my air conditioner. Set it to cool mode with a target temperature of 22 degrees Celsius. Enable the power save mode and set the high wind strength. Start in 1 hour and 30 minutes from now? For everything else",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "ThinQ_Connect",
+        "arguments": {
+          "body": {
+            "airConOperationMode": "POWER_ON",
+            "airConJobMode": "COOL",
+            "targetTemperature": 22,
+            "powerSaveEnabled": true,
+            "windStrength": "HIGH",
+            "relativeHourToStart": 1,
+            "relativeMinuteToStart": 30
+          }
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_68-32-0",
+    "adapter_hash": "178beb1a7f629d76",
+    "tool": "sum",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"sum\", \"arguments\": {\"a\": 5.0, \"b\": 3.0}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "Could you tell me what I get if I add 5.0 to 3.0?",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_68-32-0",
+    "adapter_hash": "178beb1a7f629d76",
+    "tool": "sum",
+    "condition": "correct_from_start",
+    "latency_sec": 1.3902290337719023,
+    "raw_output": "<tool_call>\n{\"name\": \"sum\", \"arguments\": {\"a\": 5.0, \"b\": 3.0}}\n</tool_call>",
+    "input_tokens": 86,
+    "output_tokens": 29,
+    "user": "Could you tell me what I get if I add 5.0 to 3.0?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": [],
+      "error_type": "simple_function_checker:unclear"
+    },
+    "parsed_calls": [
+      {
+        "name": "sum",
+        "arguments": {
+          "a": 5.0,
+          "b": 3.0
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_68-32-0",
+    "adapter_hash": "178beb1a7f629d76",
+    "tool": "sum",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.3976535629481077,
+    "raw_output": "<tool_call>\n{\"name\": \"sum\", \"arguments\": {\"a\": 5.0, \"b\": 3.0}}\n</tool_call>",
+    "input_tokens": 86,
+    "output_tokens": 29,
+    "user": "Could you tell me what I get if I add 5.0 to 3.0?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": [],
+      "error_type": "simple_function_checker:unclear"
+    },
+    "parsed_calls": [
+      {
+        "name": "sum",
+        "arguments": {
+          "a": 5.0,
+          "b": 3.0
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_174-100-0",
+    "adapter_hash": "1935b25cac4fb00f",
+    "tool": "get_service_id",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"get_service_id\", \"arguments\": {\"service_id\": 2}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "ฉันต้องการรหัสบริการสำหรับบริการรีดผ้า, คุณช่วยหามาให้ฉันได้ไหม?",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_174-100-0",
+    "adapter_hash": "1935b25cac4fb00f",
+    "tool": "get_service_id",
+    "condition": "correct_from_start",
+    "latency_sec": 1.3674122663214803,
+    "raw_output": "<tool_call>\n{\"name\": \"get_service_id\", \"arguments\": {\"service_id\": 13, \"unit\": 1}}\n</tool_call>",
+    "input_tokens": 105,
+    "output_tokens": 29,
+    "user": "ฉันต้องการรหัสบริการสำหรับบริการรีดผ้า, คุณช่วยหามาให้ฉันได้ไหม?",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'service_id': 13. Expected one of [2]."
+      ],
+      "error_type": "value_error:others"
+    },
+    "parsed_calls": [
+      {
+        "name": "get_service_id",
+        "arguments": {
+          "service_id": 13,
+          "unit": 1
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_174-100-0",
+    "adapter_hash": "1935b25cac4fb00f",
+    "tool": "get_service_id",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.397826662287116,
+    "raw_output": "<tool_call>\n{\"name\": \"get_service_id\", \"arguments\": {\"service_id\": 13, \"unit\": 1}}\n</tool_call>",
+    "input_tokens": 105,
+    "output_tokens": 29,
+    "user": "ฉันต้องการรหัสบริการสำหรับบริการรีดผ้า, คุณช่วยหามาให้ฉันได้ไหม?",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'service_id': 13. Expected one of [2]."
+      ],
+      "error_type": "value_error:others"
+    },
+    "parsed_calls": [
+      {
+        "name": "get_service_id",
+        "arguments": {
+          "service_id": 13,
+          "unit": 1
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_20-4-0",
+    "adapter_hash": "19363ba691034d2f",
+    "tool": "change_food",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"change_food\", \"arguments\": {\"food_item\": \"burger\", \"modification_request\": \"no onions,extra cheese\"}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "I would like to order a burger with the following modification verbatim: no onions, extra cheese",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_20-4-0",
+    "adapter_hash": "19363ba691034d2f",
+    "tool": "change_food",
+    "condition": "correct_from_start",
+    "latency_sec": 1.5240327171050012,
+    "raw_output": "<tool_call>\n{\"name\": \"change_food\", \"arguments\": {\"food_item\": \"burger\", \"modification_request\": \"no onions, extra cheese\"}}\n</tool_call>",
+    "input_tokens": 85,
+    "output_tokens": 32,
+    "user": "I would like to order a burger with the following modification verbatim: no onions, extra cheese",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "change_food",
+        "arguments": {
+          "food_item": "burger",
+          "modification_request": "no onions, extra cheese"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_20-4-0",
+    "adapter_hash": "19363ba691034d2f",
+    "tool": "change_food",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.5555649949237704,
+    "raw_output": "<tool_call>\n{\"name\": \"change_food\", \"arguments\": {\"food_item\": \"burger\", \"modification_request\": \"no onions, extra cheese\"}}\n</tool_call>",
+    "input_tokens": 85,
+    "output_tokens": 32,
+    "user": "I would like to order a burger with the following modification verbatim: no onions, extra cheese",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "change_food",
+        "arguments": {
+          "food_item": "burger",
+          "modification_request": "no onions, extra cheese"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_15-3-11",
+    "adapter_hash": "1975098fb4735a7b",
+    "tool": "get_current_weather",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Chennai, Tamil Nadu\", \"unit\": \"fahrenheit\"}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "I'm at Bengaluru. Tell me the current weather conditions in Chennai, Tamil Nadu in fahrenheit?",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_15-3-11",
+    "adapter_hash": "1975098fb4735a7b",
+    "tool": "get_current_weather",
+    "condition": "correct_from_start",
+    "latency_sec": 1.510016999207437,
+    "raw_output": "<tool_call>\n{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Chennai, Tamil Nadu\", \"unit\": \"fahrenheit\"}}\n</tool_call>",
+    "input_tokens": 87,
+    "output_tokens": 32,
+    "user": "I'm at Bengaluru. Tell me the current weather conditions in Chennai, Tamil Nadu in fahrenheit?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "get_current_weather",
+        "arguments": {
+          "location": "Chennai, Tamil Nadu",
+          "unit": "fahrenheit"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_15-3-11",
+    "adapter_hash": "1975098fb4735a7b",
+    "tool": "get_current_weather",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.533266537822783,
+    "raw_output": "<tool_call>\n{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Chennai, Tamil Nadu\", \"unit\": \"fahrenheit\"}}\n</tool_call>",
+    "input_tokens": 87,
+    "output_tokens": 32,
+    "user": "I'm at Bengaluru. Tell me the current weather conditions in Chennai, Tamil Nadu in fahrenheit?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "get_current_weather",
+        "arguments": {
+          "location": "Chennai, Tamil Nadu",
+          "unit": "fahrenheit"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_143-95-0",
+    "adapter_hash": "1c38a854aa1bcea5",
+    "tool": "cmd_controller.execute",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"cmd_controller.execute\", \"arguments\": {\"command\": \"docker ps\"}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "is docker running, please use docker ps to find out",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_143-95-0",
+    "adapter_hash": "1c38a854aa1bcea5",
+    "tool": "cmd_controller.execute",
+    "condition": "correct_from_start",
+    "latency_sec": 1.3111214670352638,
+    "raw_output": "<tool_call>\n{\"name\": \"cmd_controller.execute\", \"arguments\": {\"command\": \"docker ps\", \"unit\": \"seconds\"}}\n</tool_call>",
+    "input_tokens": 77,
+    "output_tokens": 28,
+    "user": "is docker running, please use docker ps to find out",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'unit': 'seconds'. Expected one of ['', 'N/A']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "cmd_controller.execute",
+        "arguments": {
+          "command": "docker ps",
+          "unit": "seconds"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_143-95-0",
+    "adapter_hash": "1c38a854aa1bcea5",
+    "tool": "cmd_controller.execute",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.3564640921540558,
+    "raw_output": "<tool_call>\n{\"name\": \"cmd_controller.execute\", \"arguments\": {\"command\": \"docker ps\", \"unit\": \"seconds\"}}\n</tool_call>",
+    "input_tokens": 77,
+    "output_tokens": 28,
+    "user": "is docker running, please use docker ps to find out",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'unit': 'seconds'. Expected one of ['', 'N/A']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "cmd_controller.execute",
+        "arguments": {
+          "command": "docker ps",
+          "unit": "seconds"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_90-51-0",
+    "adapter_hash": "203f7c8ea7a060cf",
+    "tool": "temperature",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"temperature\", \"arguments\": {\"location\": \"Paris, France\"}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "Can you tell me the current temperature in Paris, France?",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_90-51-0",
+    "adapter_hash": "203f7c8ea7a060cf",
+    "tool": "temperature",
+    "condition": "correct_from_start",
+    "latency_sec": 1.005088445264846,
+    "raw_output": "<tool_call>\n{\"name\": \"temperature\", \"arguments\": {\"location\": \"Paris, France\"}}\n</tool_call>",
+    "input_tokens": 78,
+    "output_tokens": 21,
+    "user": "Can you tell me the current temperature in Paris, France?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "temperature",
+        "arguments": {
+          "location": "Paris, France"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_90-51-0",
+    "adapter_hash": "203f7c8ea7a060cf",
+    "tool": "temperature",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.030224893707782,
+    "raw_output": "<tool_call>\n{\"name\": \"temperature\", \"arguments\": {\"location\": \"Paris, France\"}}\n</tool_call>",
+    "input_tokens": 78,
+    "output_tokens": 21,
+    "user": "Can you tell me the current temperature in Paris, France?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "temperature",
+        "arguments": {
+          "location": "Paris, France"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_135-88-0",
+    "adapter_hash": "21c884e43f50033f",
+    "tool": "requests.get",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"requests.get\", \"arguments\": {\"url\": \"https://api.example.com/v1/data\", \"params\": {\"limit\": 50}}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "retrieve data from 'https://api.example.com/v1/data' with a limit of 50 items?",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_135-88-0",
+    "adapter_hash": "21c884e43f50033f",
+    "tool": "requests.get",
+    "condition": "correct_from_start",
+    "latency_sec": 1.7831241418607533,
+    "raw_output": "<tool_call>\n{\"name\": \"requests.get\", \"arguments\": {\"url\": \"https://api.example.com/v1/data\", \"params\": {\"limit\": 50}}}\n</tool_call>",
+    "input_tokens": 88,
+    "output_tokens": 38,
+    "user": "retrieve data from 'https://api.example.com/v1/data' with a limit of 50 items?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "requests.get",
+        "arguments": {
+          "url": "https://api.example.com/v1/data",
+          "params": {
+            "limit": 50
+          }
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_135-88-0",
+    "adapter_hash": "21c884e43f50033f",
+    "tool": "requests.get",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.8126079482026398,
+    "raw_output": "<tool_call>\n{\"name\": \"requests.get\", \"arguments\": {\"url\": \"https://api.example.com/v1/data\", \"params\": {\"limit\": 50}}}\n</tool_call>",
+    "input_tokens": 88,
+    "output_tokens": 38,
+    "user": "retrieve data from 'https://api.example.com/v1/data' with a limit of 50 items?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "requests.get",
+        "arguments": {
+          "url": "https://api.example.com/v1/data",
+          "params": {
+            "limit": 50
+          }
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_38-15-0",
+    "adapter_hash": "21ce1eed6071ea61",
+    "tool": "get_current_weather",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Mariposa, CA\", \"unit\": \"fahrenheit\"}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "Provide the current weather information for Yosemite National Park at Mariposa, CA, using the coordinates 37.8651 N, 119.5383 W, and tell me the temperature, wind speed, and precipitation? I would like the temperature in Fahrenheit.",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_38-15-0",
+    "adapter_hash": "21ce1eed6071ea61",
+    "tool": "get_current_weather",
+    "condition": "correct_from_start",
+    "latency_sec": 3.585622616112232,
+    "raw_output": "<tool_call>\n{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Mariposa, CA\", \"coordinates\": {\"latitude\": 37.8651, \"longitude\": -119.5383}, \"unit\": \"fahrenheit\", \"fields\": [\"temperature\", \"wind_speed\", \"precipitation\"]}}\n</tool_call>",
+    "input_tokens": 126,
+    "output_tokens": 76,
+    "user": "Provide the current weather information for Yosemite National Park at Mariposa, CA, using the coordinates 37.8651 N, 119.5383 W, and tell me the temperature, wind speed, and precipitation? I would like the temperature in Fahrenheit.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Unexpected parameter: 'coordinates'."
+      ],
+      "error_type": "simple_function_checker:unexpected_param"
+    },
+    "parsed_calls": [
+      {
+        "name": "get_current_weather",
+        "arguments": {
+          "location": "Mariposa, CA",
+          "coordinates": {
+            "latitude": 37.8651,
+            "longitude": -119.5383
+          },
+          "unit": "fahrenheit",
+          "fields": [
+            "temperature",
+            "wind_speed",
+            "precipitation"
+          ]
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_38-15-0",
+    "adapter_hash": "21ce1eed6071ea61",
+    "tool": "get_current_weather",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 2.8558620680123568,
+    "raw_output": "<tool_call>\n{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Mariposa, CA\", \"coordinates\": {\"latitude\": 37.8651, \"longitude\": -119.5383}, \"unit\": \"fahrenheit\"}}\n</tool_call>",
+    "input_tokens": 126,
+    "output_tokens": 60,
+    "user": "Provide the current weather information for Yosemite National Park at Mariposa, CA, using the coordinates 37.8651 N, 119.5383 W, and tell me the temperature, wind speed, and precipitation? I would like the temperature in Fahrenheit.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Unexpected parameter: 'coordinates'."
+      ],
+      "error_type": "simple_function_checker:unexpected_param"
+    },
+    "parsed_calls": [
+      {
+        "name": "get_current_weather",
+        "arguments": {
+          "location": "Mariposa, CA",
+          "coordinates": {
+            "latitude": 37.8651,
+            "longitude": -119.5383
+          },
+          "unit": "fahrenheit"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_125-81-0",
+    "adapter_hash": "238fd5ae144938ea",
+    "tool": "concat_strings",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"concat_strings\", \"arguments\": {\"strings\": [\"John\", \"Doe\"], \"separator\": \" \"}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "Could you help me combine the names 'John' and 'Doe' into a full name?",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_125-81-0",
+    "adapter_hash": "238fd5ae144938ea",
+    "tool": "concat_strings",
+    "condition": "correct_from_start",
+    "latency_sec": 1.3876914200372994,
+    "raw_output": "<tool_call>\n{\"name\": \"concat_strings\", \"arguments\": {\"strings\": [\"John\", \"Doe\"], \"separator\": \" \"}}\n</tool_call>",
+    "input_tokens": 86,
+    "output_tokens": 30,
+    "user": "Could you help me combine the names 'John' and 'Doe' into a full name?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "concat_strings",
+        "arguments": {
+          "strings": [
+            "John",
+            "Doe"
+          ],
+          "separator": " "
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_125-81-0",
+    "adapter_hash": "238fd5ae144938ea",
+    "tool": "concat_strings",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.477488439064473,
+    "raw_output": "<tool_call>\n{\"name\": \"concat_strings\", \"arguments\": {\"strings\": [\"John\", \"Doe\"], \"separator\": \" \"}}\n</tool_call>",
+    "input_tokens": 86,
+    "output_tokens": 30,
+    "user": "Could you help me combine the names 'John' and 'Doe' into a full name?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "concat_strings",
+        "arguments": {
+          "strings": [
+            "John",
+            "Doe"
+          ],
+          "separator": " "
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_85-46-0",
+    "adapter_hash": "2514bc6e499fc29b",
+    "tool": "open_meteo_api.fetch_weather_data",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"open_meteo_api.fetch_weather_data\", \"arguments\": {\"coordinates\": [37.8715, -122.273], \"units\": \"Celsius\"}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "Could you tell me the current temperature in Berkeley using latitude 37.8715 and longitude -122.2730?",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_85-46-0",
+    "adapter_hash": "2514bc6e499fc29b",
+    "tool": "open_meteo_api.fetch_weather_data",
+    "condition": "correct_from_start",
+    "latency_sec": 2.239434007089585,
+    "raw_output": "<tool_call>\n{\"name\": \"open_meteo_api.fetch_weather_data\", \"arguments\": {\"coordinates\": [37.8715, -122.273], \"units\": \"Celsius\"}}\n</tool_call>",
+    "input_tokens": 97,
+    "output_tokens": 48,
+    "user": "Could you tell me the current temperature in Berkeley using latitude 37.8715 and longitude -122.2730?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "open_meteo_api.fetch_weather_data",
+        "arguments": {
+          "coordinates": [
+            37.8715,
+            -122.273
+          ],
+          "units": "Celsius"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_85-46-0",
+    "adapter_hash": "2514bc6e499fc29b",
+    "tool": "open_meteo_api.fetch_weather_data",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 2.272071246057749,
+    "raw_output": "<tool_call>\n{\"name\": \"open_meteo_api.fetch_weather_data\", \"arguments\": {\"coordinates\": [37.8715, -122.273], \"units\": \"Celsius\"}}\n</tool_call>",
+    "input_tokens": 97,
+    "output_tokens": 48,
+    "user": "Could you tell me the current temperature in Berkeley using latitude 37.8715 and longitude -122.2730?",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "open_meteo_api.fetch_weather_data",
+        "arguments": {
+          "coordinates": [
+            37.8715,
+            -122.273
+          ],
+          "units": "Celsius"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_208-117-0",
+    "adapter_hash": "26656563cf384494",
+    "tool": "Movies_3_FindMovies",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Quentin Tarantino\", \"genre\": \"dontcare\", \"cast\": \"Duane Whitaker\"}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "I want to find a good film to watch with Duane Whitaker and I want something directed by Quentin Tarantino.",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_208-117-0",
+    "adapter_hash": "26656563cf384494",
+    "tool": "Movies_3_FindMovies",
+    "condition": "correct_from_start",
+    "latency_sec": 1.6443034117110074,
+    "raw_output": "<tool_call>\n{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Quentin Tarantino\", \"genre\": \"Thriller\"}}\n</tool_call>",
+    "input_tokens": 90,
+    "output_tokens": 35,
+    "user": "I want to find a good film to watch with Duane Whitaker and I want something directed by Quentin Tarantino.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'genre': 'Thriller'. Expected one of ['', 'dontcare']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "directed_by": "Quentin Tarantino",
+          "genre": "Thriller"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_208-117-0",
+    "adapter_hash": "26656563cf384494",
+    "tool": "Movies_3_FindMovies",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.6684130309149623,
+    "raw_output": "<tool_call>\n{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Quentin Tarantino\", \"genre\": \"Drama\"}}\n</tool_call>",
+    "input_tokens": 90,
+    "output_tokens": 35,
+    "user": "I want to find a good film to watch with Duane Whitaker and I want something directed by Quentin Tarantino.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'genre': 'Drama'. Expected one of ['', 'dontcare']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "directed_by": "Quentin Tarantino",
+          "genre": "Drama"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_32-9-0",
+    "adapter_hash": "2697055ee956fad1",
+    "tool": "answer.string",
+    "condition": "icl_fc",
+    "valid": false,
+    "raw_output": "<tool_call>\n{\"name\": \"answer.string\", \"arguments\": {\"answer\": \"\"}}\n</tool_call>",
+    "parsed_calls": [
+      {
+        "name": "answer.string",
+        "arguments": {
+          "answer": ""
+        }
+      }
+    ],
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'answer': ''. Expected one of ['Logistic regression is not present in the text, therefore I cannot answer this question.']. Case insensitive."
+      ],
+      "error_type": "value_error:string",
+      "model_result_decoded": [
+        {
+          "answer.string": {
+            "answer": ""
+          }
+        }
+      ]
+    },
+    "user": "Sure, here is the answer to the question:\\n\\n**Logistic regression is not present in the text, therefore I cannot answer this question.**",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_32-9-0",
+    "adapter_hash": "2697055ee956fad1",
+    "tool": "answer.string",
+    "condition": "correct_from_start",
+    "latency_sec": 1.6890444559976459,
+    "raw_output": "<tool_call>\n{\"name\": \"answer.string\", \"arguments\": {\"answer\": \"Logistic regression is not present in the text, therefore I cannot answer this question.\"}}\n</tool_call>",
+    "input_tokens": 97,
+    "output_tokens": 36,
+    "user": "Sure, here is the answer to the question:\\n\\n**Logistic regression is not present in the text, therefore I cannot answer this question.**",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "answer.string",
+        "arguments": {
+          "answer": "Logistic regression is not present in the text, therefore I cannot answer this question."
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_32-9-0",
+    "adapter_hash": "2697055ee956fad1",
+    "tool": "answer.string",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.5784753006882966,
+    "raw_output": "{\"name\": \"answer.string\", \"arguments\": {\"answer\": \"Logistic regression is not present in the text, therefore I cannot answer this question.\"}}",
+    "input_tokens": 97,
+    "output_tokens": 33,
+    "user": "Sure, here is the answer to the question:\\n\\n**Logistic regression is not present in the text, therefore I cannot answer this question.**",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "answer.string",
+        "arguments": {
+          "answer": "Logistic regression is not present in the text, therefore I cannot answer this question."
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_134-87-0",
+    "adapter_hash": "287e14a14313d7e9",
+    "tool": "requests.get",
+    "condition": "icl_fc",
+    "valid": true,
+    "raw_output": "<tool_call>\n{\"name\": \"requests.get\", \"arguments\": {\"url\": \"https://api.insights.com/groups\", \"params\": {\"limit\": 20, \"sort\": \"desc\"}}}\n</tool_call>",
+    "parsed_calls": null,
+    "checker": null,
+    "user": "Could you retrieve the Insights Groups Information for the nodes from the following URL: 'https://api.insights.com/groups'? I'd like to see a maximum of 20 results, sorted in descending order.",
+    "source": "/home/jah649/gorilla/berkeley-function-call-leaderboard/result/Qwen_Qwen3-4B-Instruct-2507-FC/live/BFCL_v4_live_simple_result.json"
+  },
+  {
+    "id": "live_simple_134-87-0",
+    "adapter_hash": "287e14a14313d7e9",
+    "tool": "requests.get",
+    "condition": "correct_from_start",
+    "latency_sec": 2.033587315119803,
+    "raw_output": "<tool_call>\n{\"name\": \"requests.get\", \"arguments\": {\"url\": \"https://api.insights.com/groups\", \"params\": {\"limit\": 20, \"sort\": \"desc\"}}}\n</tool_call>",
+    "input_tokens": 108,
+    "output_tokens": 43,
+    "user": "Could you retrieve the Insights Groups Information for the nodes from the following URL: 'https://api.insights.com/groups'? I'd like to see a maximum of 20 results, sorted in descending order.",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "requests.get",
+        "arguments": {
+          "url": "https://api.insights.com/groups",
+          "params": {
+            "limit": 20,
+            "sort": "desc"
+          }
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_134-87-0",
+    "adapter_hash": "287e14a14313d7e9",
+    "tool": "requests.get",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 2.0618346189148724,
+    "raw_output": "<tool_call>\n{\"name\": \"requests.get\", \"arguments\": {\"url\": \"https://api.insights.com/groups\", \"params\": {\"limit\": 20, \"sort\": \"desc\"}}}\n</tool_call>",
+    "input_tokens": 108,
+    "output_tokens": 43,
+    "user": "Could you retrieve the Insights Groups Information for the nodes from the following URL: 'https://api.insights.com/groups'? I'd like to see a maximum of 20 results, sorted in descending order.",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "requests.get",
+        "arguments": {
+          "url": "https://api.insights.com/groups",
+          "params": {
+            "limit": 20,
+            "sort": "desc"
+          }
+        }
+      }
+    ],
+    "malformed_call": false
+  }
+]

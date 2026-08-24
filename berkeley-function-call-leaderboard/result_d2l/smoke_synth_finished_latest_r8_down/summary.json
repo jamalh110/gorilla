@@ -1,0 +1,478 @@
+{
+  "n_finished_adapters": 59,
+  "n_eval_compatible": 58,
+  "orphans": [
+    "031442ba1fbf4022"
+  ],
+  "icl_fc": 44,
+  "correct_from_start": 35,
+  "post_prefill": 31,
+  "agreement_icl_from_start": 47,
+  "agreement_from_start_post": 52,
+  "per_case": [
+    {
+      "tool": "inventory.restock_check",
+      "id": "live_simple_66-30-0",
+      "hash": "066798fb8af94675",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "ChaFod",
+      "id": "live_simple_22-5-0",
+      "hash": "0821d8a1e36d4c92",
+      "icl_fc": false,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "classify",
+      "id": "live_simple_105-62-0",
+      "hash": "094fec0a4823223e",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "sitefinity_create_contentitem",
+      "id": "live_simple_80-41-0",
+      "hash": "0adde26531595d1b",
+      "icl_fc": false,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "reschedule",
+      "id": "live_simple_137-90-0",
+      "hash": "0dc2e1f5047ece33",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "uber.ride",
+      "id": "live_simple_26-6-0",
+      "hash": "0ded45b2fbc1622d",
+      "icl_fc": false,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "extract_parameters_v1",
+      "id": "live_simple_71-35-0",
+      "hash": "0e41b496073d1b90",
+      "icl_fc": false,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "text_to_speech.convert",
+      "id": "live_simple_226-118-0",
+      "hash": "10b91467d45a5ce1",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "get_current_weather",
+      "id": "live_simple_10-3-6",
+      "hash": "110e6dd34cc787f5",
+      "icl_fc": false,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "weather.forecast",
+      "id": "live_simple_120-76-0",
+      "hash": "1625f8c378fbbf7b",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "ThinQ_Connect",
+      "id": "live_simple_51-23-0",
+      "hash": "17778b74a10c43de",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "sum",
+      "id": "live_simple_68-32-0",
+      "hash": "178beb1a7f629d76",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "get_service_id",
+      "id": "live_simple_174-100-0",
+      "hash": "1935b25cac4fb00f",
+      "icl_fc": true,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "change_food",
+      "id": "live_simple_20-4-0",
+      "hash": "19363ba691034d2f",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "get_current_weather",
+      "id": "live_simple_15-3-11",
+      "hash": "1975098fb4735a7b",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "cmd_controller.execute",
+      "id": "live_simple_143-95-0",
+      "hash": "1c38a854aa1bcea5",
+      "icl_fc": true,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "temperature",
+      "id": "live_simple_90-51-0",
+      "hash": "203f7c8ea7a060cf",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "requests.get",
+      "id": "live_simple_135-88-0",
+      "hash": "21c884e43f50033f",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "get_current_weather",
+      "id": "live_simple_38-15-0",
+      "hash": "21ce1eed6071ea61",
+      "icl_fc": true,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "concat_strings",
+      "id": "live_simple_125-81-0",
+      "hash": "238fd5ae144938ea",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "open_meteo_api.fetch_weather_data",
+      "id": "live_simple_85-46-0",
+      "hash": "2514bc6e499fc29b",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "Movies_3_FindMovies",
+      "id": "live_simple_208-117-0",
+      "hash": "26656563cf384494",
+      "icl_fc": true,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "answer.string",
+      "id": "live_simple_32-9-0",
+      "hash": "2697055ee956fad1",
+      "icl_fc": false,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "get_service_providers",
+      "id": "live_simple_187-112-0",
+      "hash": "27edc64233a57239",
+      "icl_fc": true,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "requests.get",
+      "id": "live_simple_134-87-0",
+      "hash": "287e14a14313d7e9",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "play_artist",
+      "id": "live_simple_92-53-0",
+      "hash": "2e2ea11e43e7508d",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "acl_api.AclApi.retrieve_projects",
+      "id": "live_simple_248-130-0",
+      "hash": "2e69706c289f2c2c",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "todo_add",
+      "id": "live_simple_53-24-0",
+      "hash": "2ff8a373b301a36e",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "getDataForProfessional",
+      "id": "live_simple_188-113-0",
+      "hash": "308ab61e20a7cc65",
+      "icl_fc": true,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "cmd_controller.execute",
+      "id": "live_simple_148-95-5",
+      "hash": "30ac95eed1c3a7ce",
+      "icl_fc": false,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "process_data",
+      "id": "live_simple_122-78-0",
+      "hash": "31cc703a5818e0f3",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "record",
+      "id": "live_simple_109-66-0",
+      "hash": "32f94b3ffdd30eff",
+      "icl_fc": false,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "requests.get",
+      "id": "live_simple_130-84-0",
+      "hash": "38f3545ec9aeb3e1",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "ThinQ_Connect",
+      "id": "live_simple_44-18-0",
+      "hash": "3975436ea331b8fc",
+      "icl_fc": false,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "greet_partner",
+      "id": "live_simple_140-93-0",
+      "hash": "39bb6fa22fa0825a",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "getDataForProfessional",
+      "id": "live_simple_184-109-0",
+      "hash": "39e33369fec9e575",
+      "icl_fc": true,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "flight.status.check",
+      "id": "live_simple_251-133-0",
+      "hash": "39f84fc4d959adea",
+      "icl_fc": true,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "play_spotify_song",
+      "id": "live_simple_237-125-0",
+      "hash": "3bb8fa769feb78ae",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "generate_chart",
+      "id": "live_simple_121-77-0",
+      "hash": "3ec3755c739d9120",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "get_service_providers",
+      "id": "live_simple_182-107-0",
+      "hash": "3f83749439fa6966",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "sum_numbers",
+      "id": "live_simple_116-72-0",
+      "hash": "3fc8d28436fa336f",
+      "icl_fc": false,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "book_flight",
+      "id": "live_simple_245-127-0",
+      "hash": "40318758b30d00e5",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "uber.ride",
+      "id": "live_simple_2-2-0",
+      "hash": "41951033f77fe744",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "get_weather_by_coordinates",
+      "id": "live_simple_98-58-0",
+      "hash": "42963559851b048b",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "requests.get",
+      "id": "live_simple_131-84-1",
+      "hash": "431306d5dea11b72",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "requests.get",
+      "id": "live_simple_133-86-0",
+      "hash": "459e5a9b2a4ac18b",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "detect_beats_and_filter",
+      "id": "live_simple_72-36-0",
+      "hash": "46a200a62fdf4148",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "Movies_3_FindMovies",
+      "id": "live_simple_211-117-3",
+      "hash": "47534f1252546b58",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "todo",
+      "id": "live_simple_54-25-0",
+      "hash": "47e19489d0868a3d",
+      "icl_fc": true,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "record",
+      "id": "live_simple_106-63-0",
+      "hash": "493188e5c0fcd09e",
+      "icl_fc": false,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "extractor.extract_information",
+      "id": "live_simple_189-114-0",
+      "hash": "4ac36bf6d740c16d",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "play_spotify_song",
+      "id": "live_simple_235-124-0",
+      "hash": "4b542777053afa69",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "cmd_controller.execute",
+      "id": "live_simple_141-94-0",
+      "hash": "4b5879b3248da015",
+      "icl_fc": false,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "get_current_weather",
+      "id": "live_simple_11-3-7",
+      "hash": "4c54f4b23fca526a",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": true
+    },
+    {
+      "tool": "record",
+      "id": "live_simple_108-65-0",
+      "hash": "4e1aeab9e5bdcead",
+      "icl_fc": false,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "extractor.extract_information",
+      "id": "live_simple_165-98-0",
+      "hash": "4ed77f98ffd0d9e5",
+      "icl_fc": true,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "play_song",
+      "id": "live_simple_230-121-0",
+      "hash": "4fa80033d12f19cc",
+      "icl_fc": true,
+      "correct_from_start": true,
+      "base_prefill_replay_1_to_correct": false
+    },
+    {
+      "tool": "get_current_weather",
+      "id": "live_simple_97-57-1",
+      "hash": "530a29a7a3d5a88d",
+      "icl_fc": false,
+      "correct_from_start": false,
+      "base_prefill_replay_1_to_correct": true
+    }
+  ]
+}

@@ -142,12 +142,24 @@ def _parse_tool_calls(text: str) -> list[dict]:
 class _D2LWorkerProxy:
     """Manages the lifecycle of and communication with the d2l_worker subprocess."""
 
-    def __init__(self, python_path: str, d2l_source_path: str, gpu_device: str | None = None):
+    def __init__(
+        self,
+        python_path: str,
+        d2l_source_path: str,
+        gpu_device: str | None = None,
+        worker_script: str = _WORKER_SCRIPT,
+        worker_args: list[str] | None = None,
+    ):
         self._proc: subprocess.Popen | None = None
         self._python = python_path
         self._src = d2l_source_path
         self.gpu_device = gpu_device
+        self._worker_script = worker_script
+        self._worker_args = (
+            list(worker_args) if worker_args is not None else [d2l_source_path]
+        )
         self.model_loaded = False
+        atexit.register(self._stop)
 
     # ------------------------------------------------------------------
 
@@ -156,13 +168,17 @@ class _D2LWorkerProxy:
             return
         self._start()
 
+    @property
+    def is_alive(self) -> bool:
+        return self._proc is not None and self._proc.poll() is None
+
     def _start(self):
         self._stop()
         env = os.environ.copy()
         if self.gpu_device is not None:
             env["CUDA_VISIBLE_DEVICES"] = self.gpu_device
         self._proc = subprocess.Popen(
-            [self._python, _WORKER_SCRIPT, self._src],
+            [self._python, self._worker_script, *self._worker_args],
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=None,  # inherit → D2L prints appear in terminal
@@ -170,7 +186,6 @@ class _D2LWorkerProxy:
             bufsize=1,  # line-buffered
             env=env,
         )
-        atexit.register(self._stop)
         ready = self._read_response()
         if ready.get("status") != "ready":
             raise RuntimeError(
@@ -178,6 +193,7 @@ class _D2LWorkerProxy:
             )
 
     def _stop(self):
+        self.model_loaded = False
         if self._proc is None:
             return
         try:
@@ -208,9 +224,13 @@ class _D2LWorkerProxy:
     def send(self, cmd: str, args: dict | None = None) -> dict:
         self._ensure_alive()
         payload = json.dumps({"cmd": cmd, "args": args or {}}) + "\n"
-        self._proc.stdin.write(payload)
-        self._proc.stdin.flush()
-        return self._read_response()
+        try:
+            self._proc.stdin.write(payload)
+            self._proc.stdin.flush()
+            return self._read_response()
+        except (BrokenPipeError, OSError, RuntimeError, json.JSONDecodeError):
+            self._stop()
+            raise
 
 
 class DocToLoraHandler(BaseHandler):
@@ -382,30 +402,58 @@ class DocToLoraHandler(BaseHandler):
         Also strips the non-standard ``"optional"`` key from every property.
         """
         func = json.loads(json.dumps(func))  # deep copy
+        func.pop("name_original", None)
 
         _TYPE_MAP = {
             "dict": "object",
             "tuple": "array",
             "float": "number",
-            "String": "string",
-            "Boolean": "boolean",
-            "HashMap": "object",
-            "ArrayList": "array",
+            "hashmap": "object",
+            "arraylist": "array",
             "any": "string",
+        }
+        _JSON_TYPES = {
+            "array",
+            "boolean",
+            "integer",
+            "null",
+            "number",
+            "object",
+            "string",
         }
 
         def _normalize_schema(schema: dict):
             t = schema.get("type")
-            if t in _TYPE_MAP:
-                schema["type"] = _TYPE_MAP[t]
+            if isinstance(t, str):
+                lowered = t.casefold()
+                schema["type"] = _TYPE_MAP.get(
+                    lowered, lowered if lowered in _JSON_TYPES else t
+                )
+            elif isinstance(t, list):
+                schema["type"] = [
+                    _TYPE_MAP.get(
+                        item.casefold(),
+                        item.casefold() if item.casefold() in _JSON_TYPES else item,
+                    )
+                    if isinstance(item, str)
+                    else item
+                    for item in t
+                ]
             schema.pop("optional", None)
+            schema.pop("name_original", None)
             for prop in schema.get("properties", {}).values():
                 _normalize_schema(prop)
             if "items" in schema and isinstance(schema["items"], dict):
                 _normalize_schema(schema["items"])
 
-        params = func.get("parameters", {})
+        params = func.get("parameters")
+        if not isinstance(params, dict):
+            params = {"type": "object", "properties": {}}
+            func["parameters"] = params
         _normalize_schema(params)
+        params.setdefault("type", "object")
+        if not isinstance(params.get("properties"), dict):
+            params["properties"] = {}
         params.pop("optional", None)
         return func
 

@@ -1,0 +1,2661 @@
+{
+  "version": 1,
+  "seed": 42,
+  "base_model": "Qwen/Qwen3-4B-Instruct-2507",
+  "checkpoint": "/home/jah649/tool-lora/doc-to-lora/train_outputs/runs/nemotron_best/pytorch_model.bin",
+  "adapter_dir": "/home/jah649/tool-lora/doc-to-lora/train_outputs/live_simple_d2l_adapters",
+  "data_path": "/home/jah649/gorilla/berkeley-function-call-leaderboard/bfcl_eval/data/BFCL_v4_live_simple.json",
+  "ground_truth_path": "/home/jah649/gorilla/berkeley-function-call-leaderboard/bfcl_eval/data/possible_answer/BFCL_v4_live_simple.json",
+  "num_entries": 258,
+  "num_adapters": 154,
+  "cache_policies": [
+    "preserve",
+    "recompute"
+  ],
+  "fixed_boundaries": {
+    "token_0": 0,
+    "token_8": 8,
+    "token_16": 16,
+    "token_32": 32
+  },
+  "subsets": {
+    "smoke": [
+      "live_simple_178-103-1",
+      "live_simple_238-125-1",
+      "live_simple_239-125-2",
+      "live_simple_157-95-14",
+      "live_simple_61-29-1",
+      "live_simple_41-17-1",
+      "live_simple_220-117-12",
+      "live_simple_128-83-0",
+      "live_simple_51-23-0",
+      "live_simple_182-107-0"
+    ],
+    "pilot": [
+      "live_simple_178-103-1",
+      "live_simple_238-125-1",
+      "live_simple_239-125-2",
+      "live_simple_157-95-14",
+      "live_simple_61-29-1",
+      "live_simple_41-17-1",
+      "live_simple_220-117-12",
+      "live_simple_128-83-0",
+      "live_simple_51-23-0",
+      "live_simple_182-107-0",
+      "live_simple_146-95-3",
+      "live_simple_35-12-0",
+      "live_simple_82-43-0",
+      "live_simple_134-87-0",
+      "live_simple_38-15-0",
+      "live_simple_32-9-0",
+      "live_simple_10-3-6",
+      "live_simple_133-86-0",
+      "live_simple_17-3-13",
+      "live_simple_34-11-0",
+      "live_simple_155-95-12",
+      "live_simple_27-7-0",
+      "live_simple_205-116-13",
+      "live_simple_135-88-0",
+      "live_simple_81-42-0",
+      "live_simple_211-117-3",
+      "live_simple_170-99-4",
+      "live_simple_114-70-0",
+      "live_simple_109-66-0",
+      "live_simple_253-135-0",
+      "live_simple_122-78-0",
+      "live_simple_159-95-16",
+      "live_simple_52-23-1",
+      "live_simple_216-117-8",
+      "live_simple_213-117-5",
+      "live_simple_148-95-5",
+      "live_simple_95-56-0",
+      "live_simple_165-98-0",
+      "live_simple_110-67-0",
+      "live_simple_217-117-9"
+    ],
+    "full": [
+      "live_simple_0-0-0",
+      "live_simple_1-1-0",
+      "live_simple_10-3-6",
+      "live_simple_100-59-1",
+      "live_simple_101-60-0",
+      "live_simple_102-61-0",
+      "live_simple_103-61-1",
+      "live_simple_104-61-2",
+      "live_simple_105-62-0",
+      "live_simple_106-63-0",
+      "live_simple_107-64-0",
+      "live_simple_108-65-0",
+      "live_simple_109-66-0",
+      "live_simple_11-3-7",
+      "live_simple_110-67-0",
+      "live_simple_111-67-1",
+      "live_simple_112-68-0",
+      "live_simple_113-69-0",
+      "live_simple_114-70-0",
+      "live_simple_115-71-0",
+      "live_simple_116-72-0",
+      "live_simple_117-73-0",
+      "live_simple_118-74-0",
+      "live_simple_119-75-0",
+      "live_simple_12-3-8",
+      "live_simple_120-76-0",
+      "live_simple_121-77-0",
+      "live_simple_122-78-0",
+      "live_simple_123-79-0",
+      "live_simple_124-80-0",
+      "live_simple_125-81-0",
+      "live_simple_126-82-0",
+      "live_simple_127-82-1",
+      "live_simple_128-83-0",
+      "live_simple_129-83-1",
+      "live_simple_13-3-9",
+      "live_simple_130-84-0",
+      "live_simple_131-84-1",
+      "live_simple_132-85-0",
+      "live_simple_133-86-0",
+      "live_simple_134-87-0",
+      "live_simple_135-88-0",
+      "live_simple_136-89-0",
+      "live_simple_137-90-0",
+      "live_simple_138-91-0",
+      "live_simple_139-92-0",
+      "live_simple_14-3-10",
+      "live_simple_140-93-0",
+      "live_simple_141-94-0",
+      "live_simple_142-94-1",
+      "live_simple_143-95-0",
+      "live_simple_144-95-1",
+      "live_simple_145-95-2",
+      "live_simple_146-95-3",
+      "live_simple_147-95-4",
+      "live_simple_148-95-5",
+      "live_simple_149-95-6",
+      "live_simple_15-3-11",
+      "live_simple_150-95-7",
+      "live_simple_151-95-8",
+      "live_simple_152-95-9",
+      "live_simple_153-95-10",
+      "live_simple_154-95-11",
+      "live_simple_155-95-12",
+      "live_simple_156-95-13",
+      "live_simple_157-95-14",
+      "live_simple_158-95-15",
+      "live_simple_159-95-16",
+      "live_simple_16-3-12",
+      "live_simple_160-95-17",
+      "live_simple_161-96-0",
+      "live_simple_162-96-1",
+      "live_simple_163-96-2",
+      "live_simple_164-97-0",
+      "live_simple_165-98-0",
+      "live_simple_166-99-0",
+      "live_simple_167-99-1",
+      "live_simple_168-99-2",
+      "live_simple_169-99-3",
+      "live_simple_17-3-13",
+      "live_simple_170-99-4",
+      "live_simple_171-99-5",
+      "live_simple_172-99-6",
+      "live_simple_173-99-7",
+      "live_simple_174-100-0",
+      "live_simple_175-101-0",
+      "live_simple_176-102-0",
+      "live_simple_177-103-0",
+      "live_simple_178-103-1",
+      "live_simple_179-104-0",
+      "live_simple_18-3-14",
+      "live_simple_180-105-0",
+      "live_simple_181-106-0",
+      "live_simple_182-107-0",
+      "live_simple_183-108-0",
+      "live_simple_184-109-0",
+      "live_simple_185-110-0",
+      "live_simple_186-111-0",
+      "live_simple_187-112-0",
+      "live_simple_188-113-0",
+      "live_simple_189-114-0",
+      "live_simple_19-3-15",
+      "live_simple_190-115-0",
+      "live_simple_191-115-1",
+      "live_simple_192-116-0",
+      "live_simple_193-116-1",
+      "live_simple_194-116-2",
+      "live_simple_195-116-3",
+      "live_simple_196-116-4",
+      "live_simple_197-116-5",
+      "live_simple_198-116-6",
+      "live_simple_199-116-7",
+      "live_simple_2-2-0",
+      "live_simple_20-4-0",
+      "live_simple_200-116-8",
+      "live_simple_201-116-9",
+      "live_simple_202-116-10",
+      "live_simple_203-116-11",
+      "live_simple_204-116-12",
+      "live_simple_205-116-13",
+      "live_simple_206-116-14",
+      "live_simple_207-116-15",
+      "live_simple_208-117-0",
+      "live_simple_209-117-1",
+      "live_simple_21-4-1",
+      "live_simple_210-117-2",
+      "live_simple_211-117-3",
+      "live_simple_212-117-4",
+      "live_simple_213-117-5",
+      "live_simple_214-117-6",
+      "live_simple_215-117-7",
+      "live_simple_216-117-8",
+      "live_simple_217-117-9",
+      "live_simple_218-117-10",
+      "live_simple_219-117-11",
+      "live_simple_22-5-0",
+      "live_simple_220-117-12",
+      "live_simple_221-117-13",
+      "live_simple_222-117-14",
+      "live_simple_223-117-15",
+      "live_simple_224-117-16",
+      "live_simple_225-117-17",
+      "live_simple_226-118-0",
+      "live_simple_227-118-1",
+      "live_simple_228-119-0",
+      "live_simple_229-120-0",
+      "live_simple_23-5-1",
+      "live_simple_230-121-0",
+      "live_simple_231-122-0",
+      "live_simple_232-122-1",
+      "live_simple_233-123-0",
+      "live_simple_234-123-1",
+      "live_simple_235-124-0",
+      "live_simple_236-124-1",
+      "live_simple_237-125-0",
+      "live_simple_238-125-1",
+      "live_simple_239-125-2",
+      "live_simple_24-5-2",
+      "live_simple_240-125-3",
+      "live_simple_241-125-4",
+      "live_simple_242-126-0",
+      "live_simple_243-126-1",
+      "live_simple_244-126-2",
+      "live_simple_245-127-0",
+      "live_simple_246-128-0",
+      "live_simple_247-129-0",
+      "live_simple_248-130-0",
+      "live_simple_249-131-0",
+      "live_simple_25-5-3",
+      "live_simple_250-132-0",
+      "live_simple_251-133-0",
+      "live_simple_252-134-0",
+      "live_simple_253-135-0",
+      "live_simple_254-136-0",
+      "live_simple_255-136-1",
+      "live_simple_256-137-0",
+      "live_simple_257-137-1",
+      "live_simple_26-6-0",
+      "live_simple_27-7-0",
+      "live_simple_28-7-1",
+      "live_simple_29-7-2",
+      "live_simple_3-2-1",
+      "live_simple_30-8-0",
+      "live_simple_31-8-1",
+      "live_simple_32-9-0",
+      "live_simple_33-10-0",
+      "live_simple_34-11-0",
+      "live_simple_35-12-0",
+      "live_simple_36-13-0",
+      "live_simple_37-14-0",
+      "live_simple_38-15-0",
+      "live_simple_39-16-0",
+      "live_simple_4-3-0",
+      "live_simple_40-17-0",
+      "live_simple_41-17-1",
+      "live_simple_42-17-2",
+      "live_simple_43-17-3",
+      "live_simple_44-18-0",
+      "live_simple_45-18-1",
+      "live_simple_46-19-0",
+      "live_simple_47-20-0",
+      "live_simple_48-21-0",
+      "live_simple_49-21-1",
+      "live_simple_5-3-1",
+      "live_simple_50-22-0",
+      "live_simple_51-23-0",
+      "live_simple_52-23-1",
+      "live_simple_53-24-0",
+      "live_simple_54-25-0",
+      "live_simple_55-25-1",
+      "live_simple_56-26-0",
+      "live_simple_57-26-1",
+      "live_simple_58-27-0",
+      "live_simple_59-28-0",
+      "live_simple_6-3-2",
+      "live_simple_60-29-0",
+      "live_simple_61-29-1",
+      "live_simple_62-29-2",
+      "live_simple_63-29-3",
+      "live_simple_64-29-4",
+      "live_simple_65-29-5",
+      "live_simple_66-30-0",
+      "live_simple_67-31-0",
+      "live_simple_68-32-0",
+      "live_simple_69-33-0",
+      "live_simple_7-3-3",
+      "live_simple_70-34-0",
+      "live_simple_71-35-0",
+      "live_simple_72-36-0",
+      "live_simple_73-36-1",
+      "live_simple_74-36-2",
+      "live_simple_75-36-3",
+      "live_simple_76-37-0",
+      "live_simple_77-38-0",
+      "live_simple_78-39-0",
+      "live_simple_79-40-0",
+      "live_simple_8-3-4",
+      "live_simple_80-41-0",
+      "live_simple_81-42-0",
+      "live_simple_82-43-0",
+      "live_simple_83-44-0",
+      "live_simple_84-45-0",
+      "live_simple_85-46-0",
+      "live_simple_86-47-0",
+      "live_simple_87-48-0",
+      "live_simple_88-49-0",
+      "live_simple_89-50-0",
+      "live_simple_9-3-5",
+      "live_simple_90-51-0",
+      "live_simple_91-52-0",
+      "live_simple_92-53-0",
+      "live_simple_93-54-0",
+      "live_simple_94-55-0",
+      "live_simple_95-56-0",
+      "live_simple_96-57-0",
+      "live_simple_97-57-1",
+      "live_simple_98-58-0",
+      "live_simple_99-59-0"
+    ]
+  },
+  "entries": [
+    {
+      "id": "live_simple_0-0-0",
+      "function_name": "get_user_info",
+      "correct_adapter": "6fef48f55161cb7c",
+      "alternate_adapter": "8ad40833081892d7",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_1-1-0",
+      "function_name": "github_star",
+      "correct_adapter": "da2e96bdf4763070",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_2-2-0",
+      "function_name": "uber.ride",
+      "correct_adapter": "41951033f77fe744",
+      "alternate_adapter": "0ded45b2fbc1622d",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_3-2-1",
+      "function_name": "uber.ride",
+      "correct_adapter": "41951033f77fe744",
+      "alternate_adapter": "0ded45b2fbc1622d",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_4-3-0",
+      "function_name": "get_current_weather",
+      "correct_adapter": "e07bb30583c59a7d",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_5-3-1",
+      "function_name": "get_current_weather",
+      "correct_adapter": "dfca38d48b61c049",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_6-3-2",
+      "function_name": "get_current_weather",
+      "correct_adapter": "e07bb30583c59a7d",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_7-3-3",
+      "function_name": "get_current_weather",
+      "correct_adapter": "e07bb30583c59a7d",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_8-3-4",
+      "function_name": "get_current_weather",
+      "correct_adapter": "e07bb30583c59a7d",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_9-3-5",
+      "function_name": "get_current_weather",
+      "correct_adapter": "e07bb30583c59a7d",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_10-3-6",
+      "function_name": "get_current_weather",
+      "correct_adapter": "110e6dd34cc787f5",
+      "alternate_adapter": "1975098fb4735a7b",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_11-3-7",
+      "function_name": "get_current_weather",
+      "correct_adapter": "4c54f4b23fca526a",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_12-3-8",
+      "function_name": "get_current_weather",
+      "correct_adapter": "b8c08ede61657cc1",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_13-3-9",
+      "function_name": "get_current_weather",
+      "correct_adapter": "e07bb30583c59a7d",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_14-3-10",
+      "function_name": "get_current_weather",
+      "correct_adapter": "e07bb30583c59a7d",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_15-3-11",
+      "function_name": "get_current_weather",
+      "correct_adapter": "1975098fb4735a7b",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_16-3-12",
+      "function_name": "get_current_weather",
+      "correct_adapter": "1975098fb4735a7b",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_17-3-13",
+      "function_name": "get_current_weather",
+      "correct_adapter": "e07bb30583c59a7d",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_18-3-14",
+      "function_name": "get_current_weather",
+      "correct_adapter": "e07bb30583c59a7d",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_19-3-15",
+      "function_name": "get_current_weather",
+      "correct_adapter": "7c36ec62b9ed44b6",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_20-4-0",
+      "function_name": "change_food",
+      "correct_adapter": "19363ba691034d2f",
+      "alternate_adapter": "56d506297302a29b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_21-4-1",
+      "function_name": "change_food",
+      "correct_adapter": "19363ba691034d2f",
+      "alternate_adapter": "56d506297302a29b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_22-5-0",
+      "function_name": "ChaFod",
+      "correct_adapter": "0821d8a1e36d4c92",
+      "alternate_adapter": "ad5f7c4b8f889436",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_23-5-1",
+      "function_name": "ChaFod",
+      "correct_adapter": "0821d8a1e36d4c92",
+      "alternate_adapter": "ad5f7c4b8f889436",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_24-5-2",
+      "function_name": "ChaFod",
+      "correct_adapter": "0821d8a1e36d4c92",
+      "alternate_adapter": "ad5f7c4b8f889436",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_25-5-3",
+      "function_name": "ChaFod",
+      "correct_adapter": "0821d8a1e36d4c92",
+      "alternate_adapter": "ad5f7c4b8f889436",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_26-6-0",
+      "function_name": "uber.ride",
+      "correct_adapter": "0ded45b2fbc1622d",
+      "alternate_adapter": "41951033f77fe744",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_27-7-0",
+      "function_name": "uber.eat.order",
+      "correct_adapter": "7012e96a84612f53",
+      "alternate_adapter": "b2b5bc8bdce010b3",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_28-7-1",
+      "function_name": "uber.eat.order",
+      "correct_adapter": "7012e96a84612f53",
+      "alternate_adapter": "b2b5bc8bdce010b3",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_29-7-2",
+      "function_name": "uber.eat.order",
+      "correct_adapter": "7012e96a84612f53",
+      "alternate_adapter": "b2b5bc8bdce010b3",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_30-8-0",
+      "function_name": "aws.lexv2_models.list_exports",
+      "correct_adapter": "cb99ce41dc3e95f5",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_31-8-1",
+      "function_name": "aws.lexv2_models.list_exports",
+      "correct_adapter": "cb99ce41dc3e95f5",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_32-9-0",
+      "function_name": "answer.string",
+      "correct_adapter": "2697055ee956fad1",
+      "alternate_adapter": "70d0d97a0bf81687",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_33-10-0",
+      "function_name": "answer.string",
+      "correct_adapter": "99ae1b4ad639f6da",
+      "alternate_adapter": "2697055ee956fad1",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_34-11-0",
+      "function_name": "answer.string",
+      "correct_adapter": "70d0d97a0bf81687",
+      "alternate_adapter": "2697055ee956fad1",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_35-12-0",
+      "function_name": "answer.string",
+      "correct_adapter": "c3b3d20a259c1cc3",
+      "alternate_adapter": "2697055ee956fad1",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_36-13-0",
+      "function_name": "parseAnswer",
+      "correct_adapter": "f25676b9a3fa4de4",
+      "alternate_adapter": "d369214a5c7412e4",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_37-14-0",
+      "function_name": "parseAnswer",
+      "correct_adapter": "d369214a5c7412e4",
+      "alternate_adapter": "f25676b9a3fa4de4",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_38-15-0",
+      "function_name": "get_current_weather",
+      "correct_adapter": "21ce1eed6071ea61",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_39-16-0",
+      "function_name": "fetch_weather_data",
+      "correct_adapter": "9950008244bb2f2a",
+      "alternate_adapter": "2514bc6e499fc29b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_40-17-0",
+      "function_name": "ThinQ_Connect",
+      "correct_adapter": "f703916104b0d095",
+      "alternate_adapter": "17778b74a10c43de",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_41-17-1",
+      "function_name": "ThinQ_Connect",
+      "correct_adapter": "f703916104b0d095",
+      "alternate_adapter": "17778b74a10c43de",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_42-17-2",
+      "function_name": "ThinQ_Connect",
+      "correct_adapter": "f703916104b0d095",
+      "alternate_adapter": "17778b74a10c43de",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_43-17-3",
+      "function_name": "ThinQ_Connect",
+      "correct_adapter": "f703916104b0d095",
+      "alternate_adapter": "17778b74a10c43de",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_44-18-0",
+      "function_name": "ThinQ_Connect",
+      "correct_adapter": "3975436ea331b8fc",
+      "alternate_adapter": "17778b74a10c43de",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_45-18-1",
+      "function_name": "ThinQ_Connect",
+      "correct_adapter": "3975436ea331b8fc",
+      "alternate_adapter": "17778b74a10c43de",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_46-19-0",
+      "function_name": "ThinQ_Connect",
+      "correct_adapter": "931d9df20998f653",
+      "alternate_adapter": "17778b74a10c43de",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_47-20-0",
+      "function_name": "multiply",
+      "correct_adapter": "d135a86f80833c6d",
+      "alternate_adapter": "178beb1a7f629d76",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_48-21-0",
+      "function_name": "find_beer",
+      "correct_adapter": "fc2833087e7a2370",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_49-21-1",
+      "function_name": "find_beer",
+      "correct_adapter": "fc2833087e7a2370",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_50-22-0",
+      "function_name": "get_latest_carbon_intensity",
+      "correct_adapter": "58c95d8f45dde63b",
+      "alternate_adapter": "791ac5c4cb9cf01a",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_51-23-0",
+      "function_name": "ThinQ_Connect",
+      "correct_adapter": "17778b74a10c43de",
+      "alternate_adapter": "3975436ea331b8fc",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_52-23-1",
+      "function_name": "ThinQ_Connect",
+      "correct_adapter": "17778b74a10c43de",
+      "alternate_adapter": "3975436ea331b8fc",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_53-24-0",
+      "function_name": "todo_add",
+      "correct_adapter": "2ff8a373b301a36e",
+      "alternate_adapter": "47e19489d0868a3d",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_54-25-0",
+      "function_name": "todo",
+      "correct_adapter": "47e19489d0868a3d",
+      "alternate_adapter": "dba0f3ecfa879446",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_55-25-1",
+      "function_name": "todo",
+      "correct_adapter": "47e19489d0868a3d",
+      "alternate_adapter": "dba0f3ecfa879446",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_56-26-0",
+      "function_name": "todo_manager.handle_action",
+      "correct_adapter": "b5745d2bd129aa54",
+      "alternate_adapter": "47e19489d0868a3d",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_57-26-1",
+      "function_name": "todo_manager.handle_action",
+      "correct_adapter": "b5745d2bd129aa54",
+      "alternate_adapter": "47e19489d0868a3d",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_58-27-0",
+      "function_name": "get_movies",
+      "correct_adapter": "6f7f3e05bb5ef8e0",
+      "alternate_adapter": "e6d27b75cb262184",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_59-28-0",
+      "function_name": "get_movies",
+      "correct_adapter": "e6d27b75cb262184",
+      "alternate_adapter": "6f7f3e05bb5ef8e0",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_60-29-0",
+      "function_name": "todo",
+      "correct_adapter": "dba0f3ecfa879446",
+      "alternate_adapter": "47e19489d0868a3d",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_61-29-1",
+      "function_name": "todo",
+      "correct_adapter": "dba0f3ecfa879446",
+      "alternate_adapter": "47e19489d0868a3d",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_62-29-2",
+      "function_name": "todo",
+      "correct_adapter": "dba0f3ecfa879446",
+      "alternate_adapter": "47e19489d0868a3d",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_63-29-3",
+      "function_name": "todo",
+      "correct_adapter": "dba0f3ecfa879446",
+      "alternate_adapter": "47e19489d0868a3d",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_64-29-4",
+      "function_name": "todo",
+      "correct_adapter": "dba0f3ecfa879446",
+      "alternate_adapter": "47e19489d0868a3d",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_65-29-5",
+      "function_name": "todo",
+      "correct_adapter": "dba0f3ecfa879446",
+      "alternate_adapter": "47e19489d0868a3d",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_66-30-0",
+      "function_name": "inventory.restock_check",
+      "correct_adapter": "066798fb8af94675",
+      "alternate_adapter": "39f84fc4d959adea",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_67-31-0",
+      "function_name": "obtener_cotizacion_de_creditos",
+      "correct_adapter": "d9cf34cc9bc8983a",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_68-32-0",
+      "function_name": "sum",
+      "correct_adapter": "178beb1a7f629d76",
+      "alternate_adapter": "d135a86f80833c6d",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_69-33-0",
+      "function_name": "analysis_api.AnalysisApi.retrieve_analysis",
+      "correct_adapter": "f01d103985ee3b7e",
+      "alternate_adapter": "2e69706c289f2c2c",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_70-34-0",
+      "function_name": "get_sensor_alerts",
+      "correct_adapter": "b349f1d8fc63d583",
+      "alternate_adapter": "791ac5c4cb9cf01a",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_71-35-0",
+      "function_name": "extract_parameters_v1",
+      "correct_adapter": "0e41b496073d1b90",
+      "alternate_adapter": "d58f2fedd1295b83",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_72-36-0",
+      "function_name": "detect_beats_and_filter",
+      "correct_adapter": "46a200a62fdf4148",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_73-36-1",
+      "function_name": "detect_beats_and_filter",
+      "correct_adapter": "46a200a62fdf4148",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_74-36-2",
+      "function_name": "detect_beats_and_filter",
+      "correct_adapter": "46a200a62fdf4148",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_75-36-3",
+      "function_name": "detect_beats_and_filter",
+      "correct_adapter": "46a200a62fdf4148",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_76-37-0",
+      "function_name": "language_translator.translate",
+      "correct_adapter": "7241fab3b7c88ee7",
+      "alternate_adapter": "94abc505a16fe348",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_77-38-0",
+      "function_name": "weather.get",
+      "correct_adapter": "d58f2fedd1295b83",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_78-39-0",
+      "function_name": "send_email",
+      "correct_adapter": "f262dd79b39b6d2e",
+      "alternate_adapter": "f703916104b0d095",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_79-40-0",
+      "function_name": "search_hotels",
+      "correct_adapter": "7061ad24c42f2723",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_80-41-0",
+      "function_name": "sitefinity_create_contentitem",
+      "correct_adapter": "0adde26531595d1b",
+      "alternate_adapter": "7d6105edec5f0348",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_81-42-0",
+      "function_name": "sitefinity_create_contentitem",
+      "correct_adapter": "7d6105edec5f0348",
+      "alternate_adapter": "0adde26531595d1b",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_82-43-0",
+      "function_name": "sitefinity_create_contentitem",
+      "correct_adapter": "9a5718cb22dcc595",
+      "alternate_adapter": "0adde26531595d1b",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_83-44-0",
+      "function_name": "sitefinity_create_contentitem",
+      "correct_adapter": "cbeb594b813677fc",
+      "alternate_adapter": "0adde26531595d1b",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_84-45-0",
+      "function_name": "get_coordinates_from_city",
+      "correct_adapter": "a5e796b710fa4731",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_85-46-0",
+      "function_name": "open_meteo_api.fetch_weather_data",
+      "correct_adapter": "2514bc6e499fc29b",
+      "alternate_adapter": "9950008244bb2f2a",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_86-47-0",
+      "function_name": "sort_array",
+      "correct_adapter": "ea8c066805db1e25",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_87-48-0",
+      "function_name": "get_current_loc",
+      "correct_adapter": "a8ee08ae9a36137e",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_88-49-0",
+      "function_name": "log_food",
+      "correct_adapter": "56d506297302a29b",
+      "alternate_adapter": "19363ba691034d2f",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_89-50-0",
+      "function_name": "interior_design_analysis.generate_report",
+      "correct_adapter": "af784a63cd5d42ca",
+      "alternate_adapter": "3ec3755c739d9120",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_90-51-0",
+      "function_name": "temperature",
+      "correct_adapter": "203f7c8ea7a060cf",
+      "alternate_adapter": "aea8c9c4eb642bfa",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_91-52-0",
+      "function_name": "fetchPerson",
+      "correct_adapter": "ad5f7c4b8f889436",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_92-53-0",
+      "function_name": "play_artist",
+      "correct_adapter": "2e2ea11e43e7508d",
+      "alternate_adapter": "e58b66ce4bb6f716",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_93-54-0",
+      "function_name": "play_artist",
+      "correct_adapter": "e58b66ce4bb6f716",
+      "alternate_adapter": "2e2ea11e43e7508d",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_94-55-0",
+      "function_name": "play_song",
+      "correct_adapter": "f2686e6077524722",
+      "alternate_adapter": "4fa80033d12f19cc",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_95-56-0",
+      "function_name": "process_data",
+      "correct_adapter": "9d2017aff000ebb9",
+      "alternate_adapter": "31cc703a5818e0f3",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_96-57-0",
+      "function_name": "get_current_weather",
+      "correct_adapter": "e776544cd83839fe",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_97-57-1",
+      "function_name": "get_current_weather",
+      "correct_adapter": "530a29a7a3d5a88d",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_98-58-0",
+      "function_name": "get_weather_by_coordinates",
+      "correct_adapter": "42963559851b048b",
+      "alternate_adapter": "d58f2fedd1295b83",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_99-59-0",
+      "function_name": "connectBluetooth",
+      "correct_adapter": "718e3cf7be43a7b9",
+      "alternate_adapter": "a8ee08ae9a36137e",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_100-59-1",
+      "function_name": "connectBluetooth",
+      "correct_adapter": "718e3cf7be43a7b9",
+      "alternate_adapter": "a8ee08ae9a36137e",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_101-60-0",
+      "function_name": "askForSSID",
+      "correct_adapter": "e1304de396a1f1a3",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_102-61-0",
+      "function_name": "calculate_tax",
+      "correct_adapter": "e129c70cd07740eb",
+      "alternate_adapter": "c443845996a7915f",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_103-61-1",
+      "function_name": "calculate_tax",
+      "correct_adapter": "e129c70cd07740eb",
+      "alternate_adapter": "c443845996a7915f",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_104-61-2",
+      "function_name": "calculate_tax",
+      "correct_adapter": "e129c70cd07740eb",
+      "alternate_adapter": "c443845996a7915f",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_105-62-0",
+      "function_name": "classify",
+      "correct_adapter": "094fec0a4823223e",
+      "alternate_adapter": "4e1aeab9e5bdcead",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_106-63-0",
+      "function_name": "record",
+      "correct_adapter": "493188e5c0fcd09e",
+      "alternate_adapter": "32f94b3ffdd30eff",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_107-64-0",
+      "function_name": "record",
+      "correct_adapter": "a272d263c162b00a",
+      "alternate_adapter": "32f94b3ffdd30eff",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_108-65-0",
+      "function_name": "record",
+      "correct_adapter": "4e1aeab9e5bdcead",
+      "alternate_adapter": "32f94b3ffdd30eff",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_109-66-0",
+      "function_name": "record",
+      "correct_adapter": "32f94b3ffdd30eff",
+      "alternate_adapter": "493188e5c0fcd09e",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_110-67-0",
+      "function_name": "record",
+      "correct_adapter": "571ac8a524bf21f9",
+      "alternate_adapter": "32f94b3ffdd30eff",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_111-67-1",
+      "function_name": "record",
+      "correct_adapter": "571ac8a524bf21f9",
+      "alternate_adapter": "32f94b3ffdd30eff",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_112-68-0",
+      "function_name": "record",
+      "correct_adapter": "cec7056db4d08dd6",
+      "alternate_adapter": "32f94b3ffdd30eff",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_113-69-0",
+      "function_name": "calculate_dynamic_pricing",
+      "correct_adapter": "b08cdbaf1035e987",
+      "alternate_adapter": "cca865452b4148b3",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_114-70-0",
+      "function_name": "update_user_profile",
+      "correct_adapter": "d9f598a0aeed81e9",
+      "alternate_adapter": "6fef48f55161cb7c",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_115-71-0",
+      "function_name": "calculate_sum",
+      "correct_adapter": "cca865452b4148b3",
+      "alternate_adapter": "178beb1a7f629d76",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_116-72-0",
+      "function_name": "sum_numbers",
+      "correct_adapter": "3fc8d28436fa336f",
+      "alternate_adapter": "178beb1a7f629d76",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_117-73-0",
+      "function_name": "reverse_input",
+      "correct_adapter": "664176b6ff23f350",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_118-74-0",
+      "function_name": "get_temperature",
+      "correct_adapter": "aea8c9c4eb642bfa",
+      "alternate_adapter": "203f7c8ea7a060cf",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_119-75-0",
+      "function_name": "GetPrimeMinisters",
+      "correct_adapter": "a26de724f72a8782",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_120-76-0",
+      "function_name": "weather.forecast",
+      "correct_adapter": "1625f8c378fbbf7b",
+      "alternate_adapter": "110e6dd34cc787f5",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_121-77-0",
+      "function_name": "generate_chart",
+      "correct_adapter": "3ec3755c739d9120",
+      "alternate_adapter": "af784a63cd5d42ca",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_122-78-0",
+      "function_name": "process_data",
+      "correct_adapter": "31cc703a5818e0f3",
+      "alternate_adapter": "9d2017aff000ebb9",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_123-79-0",
+      "function_name": "pipeline",
+      "correct_adapter": "a541f8bb2a84c0d6",
+      "alternate_adapter": "31cc703a5818e0f3",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_124-80-0",
+      "function_name": "get_tickets",
+      "correct_adapter": "6625332fc8fe9e36",
+      "alternate_adapter": "8ad40833081892d7",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_125-81-0",
+      "function_name": "concat_strings",
+      "correct_adapter": "238fd5ae144938ea",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_126-82-0",
+      "function_name": "telemetry.flowrules.interfaceInfo.get",
+      "correct_adapter": "e548ac8f0fe34d24",
+      "alternate_adapter": "38f3545ec9aeb3e1",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_127-82-1",
+      "function_name": "telemetry.flowrules.interfaceInfo.get",
+      "correct_adapter": "e548ac8f0fe34d24",
+      "alternate_adapter": "38f3545ec9aeb3e1",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_128-83-0",
+      "function_name": "requests.get",
+      "correct_adapter": "aead76710ae083e8",
+      "alternate_adapter": "21c884e43f50033f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_129-83-1",
+      "function_name": "requests.get",
+      "correct_adapter": "d51462f68b7ea3c6",
+      "alternate_adapter": "21c884e43f50033f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_130-84-0",
+      "function_name": "requests.get",
+      "correct_adapter": "38f3545ec9aeb3e1",
+      "alternate_adapter": "21c884e43f50033f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_131-84-1",
+      "function_name": "requests.get",
+      "correct_adapter": "431306d5dea11b72",
+      "alternate_adapter": "21c884e43f50033f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_132-85-0",
+      "function_name": "requests.get",
+      "correct_adapter": "c0ae567a44273b3e",
+      "alternate_adapter": "21c884e43f50033f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_133-86-0",
+      "function_name": "requests.get",
+      "correct_adapter": "459e5a9b2a4ac18b",
+      "alternate_adapter": "21c884e43f50033f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_134-87-0",
+      "function_name": "requests.get",
+      "correct_adapter": "287e14a14313d7e9",
+      "alternate_adapter": "21c884e43f50033f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_135-88-0",
+      "function_name": "requests.get",
+      "correct_adapter": "21c884e43f50033f",
+      "alternate_adapter": "287e14a14313d7e9",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_136-89-0",
+      "function_name": "requests.get",
+      "correct_adapter": "cf253a62ca2dc7e7",
+      "alternate_adapter": "21c884e43f50033f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_137-90-0",
+      "function_name": "reschedule",
+      "correct_adapter": "0dc2e1f5047ece33",
+      "alternate_adapter": "8a088c6329d75989",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_138-91-0",
+      "function_name": "reschedule",
+      "correct_adapter": "8a088c6329d75989",
+      "alternate_adapter": "0dc2e1f5047ece33",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_139-92-0",
+      "function_name": "requests.get",
+      "correct_adapter": "db5077145a9d2d80",
+      "alternate_adapter": "21c884e43f50033f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_140-93-0",
+      "function_name": "greet_partner",
+      "correct_adapter": "39bb6fa22fa0825a",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_141-94-0",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "4b5879b3248da015",
+      "alternate_adapter": "1c38a854aa1bcea5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_142-94-1",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "4b5879b3248da015",
+      "alternate_adapter": "1c38a854aa1bcea5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_143-95-0",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_144-95-1",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_145-95-2",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_146-95-3",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_147-95-4",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_148-95-5",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "30ac95eed1c3a7ce",
+      "alternate_adapter": "1c38a854aa1bcea5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_149-95-6",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_150-95-7",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_151-95-8",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_152-95-9",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_153-95-10",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_154-95-11",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_155-95-12",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_156-95-13",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_157-95-14",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_158-95-15",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_159-95-16",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_160-95-17",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "1c38a854aa1bcea5",
+      "alternate_adapter": "30ac95eed1c3a7ce",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_161-96-0",
+      "function_name": "get_items",
+      "correct_adapter": "6993d087555e4720",
+      "alternate_adapter": "7012e96a84612f53",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_162-96-1",
+      "function_name": "get_items",
+      "correct_adapter": "6993d087555e4720",
+      "alternate_adapter": "7012e96a84612f53",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_163-96-2",
+      "function_name": "get_items",
+      "correct_adapter": "6993d087555e4720",
+      "alternate_adapter": "7012e96a84612f53",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_164-97-0",
+      "function_name": "get_copyright_info",
+      "correct_adapter": "884fd911289ec6d5",
+      "alternate_adapter": "6fef48f55161cb7c",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_165-98-0",
+      "function_name": "extractor.extract_information",
+      "correct_adapter": "4ed77f98ffd0d9e5",
+      "alternate_adapter": "4ac36bf6d740c16d",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_166-99-0",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "6c0bc980eae68210",
+      "alternate_adapter": "1c38a854aa1bcea5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_167-99-1",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "6c0bc980eae68210",
+      "alternate_adapter": "1c38a854aa1bcea5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_168-99-2",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "6c0bc980eae68210",
+      "alternate_adapter": "1c38a854aa1bcea5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_169-99-3",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "6c0bc980eae68210",
+      "alternate_adapter": "1c38a854aa1bcea5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_170-99-4",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "6c0bc980eae68210",
+      "alternate_adapter": "1c38a854aa1bcea5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_171-99-5",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "6c0bc980eae68210",
+      "alternate_adapter": "1c38a854aa1bcea5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_172-99-6",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "6c0bc980eae68210",
+      "alternate_adapter": "1c38a854aa1bcea5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_173-99-7",
+      "function_name": "cmd_controller.execute",
+      "correct_adapter": "6c0bc980eae68210",
+      "alternate_adapter": "1c38a854aa1bcea5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_174-100-0",
+      "function_name": "get_service_id",
+      "correct_adapter": "1935b25cac4fb00f",
+      "alternate_adapter": "6a501ad84c902c05",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_175-101-0",
+      "function_name": "get_service_id",
+      "correct_adapter": "7343b299f170f0cf",
+      "alternate_adapter": "1935b25cac4fb00f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_176-102-0",
+      "function_name": "get_service_id",
+      "correct_adapter": "87735e125ec4a473",
+      "alternate_adapter": "1935b25cac4fb00f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_177-103-0",
+      "function_name": "get_service_id",
+      "correct_adapter": "ebac2199aa4e52e0",
+      "alternate_adapter": "1935b25cac4fb00f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_178-103-1",
+      "function_name": "get_service_id",
+      "correct_adapter": "ebac2199aa4e52e0",
+      "alternate_adapter": "1935b25cac4fb00f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_179-104-0",
+      "function_name": "get_service_id",
+      "correct_adapter": "fb1b5eac6b5fb534",
+      "alternate_adapter": "1935b25cac4fb00f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_180-105-0",
+      "function_name": "get_service_id",
+      "correct_adapter": "a10a83509cb4ae20",
+      "alternate_adapter": "1935b25cac4fb00f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_181-106-0",
+      "function_name": "get_service_id",
+      "correct_adapter": "6a501ad84c902c05",
+      "alternate_adapter": "1935b25cac4fb00f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_182-107-0",
+      "function_name": "get_service_providers",
+      "correct_adapter": "3f83749439fa6966",
+      "alternate_adapter": "27edc64233a57239",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_183-108-0",
+      "function_name": "getDataForProfessional",
+      "correct_adapter": "668deb2af808b0e8",
+      "alternate_adapter": "308ab61e20a7cc65",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_184-109-0",
+      "function_name": "getDataForProfessional",
+      "correct_adapter": "39e33369fec9e575",
+      "alternate_adapter": "308ab61e20a7cc65",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_185-110-0",
+      "function_name": "get_service_providers",
+      "correct_adapter": "659de279a6df3732",
+      "alternate_adapter": "27edc64233a57239",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_186-111-0",
+      "function_name": "get_service_providers",
+      "correct_adapter": "e2bc35c07b078d05",
+      "alternate_adapter": "27edc64233a57239",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_187-112-0",
+      "function_name": "get_service_providers",
+      "correct_adapter": "27edc64233a57239",
+      "alternate_adapter": "3f83749439fa6966",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_188-113-0",
+      "function_name": "getDataForProfessional",
+      "correct_adapter": "308ab61e20a7cc65",
+      "alternate_adapter": "39e33369fec9e575",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_189-114-0",
+      "function_name": "extractor.extract_information",
+      "correct_adapter": "4ac36bf6d740c16d",
+      "alternate_adapter": "4ed77f98ffd0d9e5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_190-115-0",
+      "function_name": "raptor.mpn.specs",
+      "correct_adapter": "6e54d951590a5b04",
+      "alternate_adapter": "0dc2e1f5047ece33",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_191-115-1",
+      "function_name": "raptor.mpn.specs",
+      "correct_adapter": "6e54d951590a5b04",
+      "alternate_adapter": "0dc2e1f5047ece33",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_192-116-0",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_193-116-1",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_194-116-2",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_195-116-3",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_196-116-4",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_197-116-5",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_198-116-6",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_199-116-7",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_200-116-8",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_201-116-9",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_202-116-10",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_203-116-11",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_204-116-12",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_205-116-13",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_206-116-14",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_207-116-15",
+      "function_name": "Weather_1_GetWeather",
+      "correct_adapter": "c443845996a7915f",
+      "alternate_adapter": "42963559851b048b",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_208-117-0",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_209-117-1",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_210-117-2",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_211-117-3",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "47534f1252546b58",
+      "alternate_adapter": "26656563cf384494",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_212-117-4",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_213-117-5",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_214-117-6",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_215-117-7",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_216-117-8",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_217-117-9",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_218-117-10",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_219-117-11",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_220-117-12",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_221-117-13",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "5bbbaab6be7c6c5b",
+      "alternate_adapter": "26656563cf384494",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_222-117-14",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_223-117-15",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_224-117-16",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_225-117-17",
+      "function_name": "Movies_3_FindMovies",
+      "correct_adapter": "26656563cf384494",
+      "alternate_adapter": "47534f1252546b58",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_226-118-0",
+      "function_name": "text_to_speech.convert",
+      "correct_adapter": "10b91467d45a5ce1",
+      "alternate_adapter": "94abc505a16fe348",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_227-118-1",
+      "function_name": "text_to_speech.convert",
+      "correct_adapter": "d663571f68bdcba5",
+      "alternate_adapter": "10b91467d45a5ce1",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_228-119-0",
+      "function_name": "text_to_speech.convert",
+      "correct_adapter": "94abc505a16fe348",
+      "alternate_adapter": "10b91467d45a5ce1",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_229-120-0",
+      "function_name": "requests.get",
+      "correct_adapter": "f89eb73bbe45ad90",
+      "alternate_adapter": "21c884e43f50033f",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_230-121-0",
+      "function_name": "play_song",
+      "correct_adapter": "4fa80033d12f19cc",
+      "alternate_adapter": "f2686e6077524722",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_231-122-0",
+      "function_name": "reschedule_event",
+      "correct_adapter": "ceebb2b6597f2908",
+      "alternate_adapter": "0dc2e1f5047ece33",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_232-122-1",
+      "function_name": "reschedule_event",
+      "correct_adapter": "ceebb2b6597f2908",
+      "alternate_adapter": "0dc2e1f5047ece33",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_233-123-0",
+      "function_name": "book_flight",
+      "correct_adapter": "f84064b5a026ee99",
+      "alternate_adapter": "40318758b30d00e5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_234-123-1",
+      "function_name": "book_flight",
+      "correct_adapter": "cd62c40a6607c07c",
+      "alternate_adapter": "40318758b30d00e5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_235-124-0",
+      "function_name": "play_spotify_song",
+      "correct_adapter": "4b542777053afa69",
+      "alternate_adapter": "3bb8fa769feb78ae",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_236-124-1",
+      "function_name": "play_spotify_song",
+      "correct_adapter": "a4a5dc23c9829d3e",
+      "alternate_adapter": "3bb8fa769feb78ae",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_237-125-0",
+      "function_name": "play_spotify_song",
+      "correct_adapter": "3bb8fa769feb78ae",
+      "alternate_adapter": "4b542777053afa69",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_238-125-1",
+      "function_name": "play_spotify_song",
+      "correct_adapter": "3bb8fa769feb78ae",
+      "alternate_adapter": "4b542777053afa69",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_239-125-2",
+      "function_name": "play_spotify_song",
+      "correct_adapter": "3bb8fa769feb78ae",
+      "alternate_adapter": "4b542777053afa69",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_240-125-3",
+      "function_name": "play_spotify_song",
+      "correct_adapter": "3bb8fa769feb78ae",
+      "alternate_adapter": "4b542777053afa69",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_241-125-4",
+      "function_name": "play_spotify_song",
+      "correct_adapter": "3bb8fa769feb78ae",
+      "alternate_adapter": "4b542777053afa69",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_242-126-0",
+      "function_name": "set_volume",
+      "correct_adapter": "fba59f0698885dad",
+      "alternate_adapter": "4b542777053afa69",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_243-126-1",
+      "function_name": "set_volume",
+      "correct_adapter": "fba59f0698885dad",
+      "alternate_adapter": "4b542777053afa69",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_244-126-2",
+      "function_name": "set_volume",
+      "correct_adapter": "fba59f0698885dad",
+      "alternate_adapter": "4b542777053afa69",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_245-127-0",
+      "function_name": "book_flight",
+      "correct_adapter": "40318758b30d00e5",
+      "alternate_adapter": "be5ca15c9d67e649",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_246-128-0",
+      "function_name": "book_flight",
+      "correct_adapter": "be5ca15c9d67e649",
+      "alternate_adapter": "40318758b30d00e5",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_247-129-0",
+      "function_name": "version_api.VersionApi.get_version",
+      "correct_adapter": "791ac5c4cb9cf01a",
+      "alternate_adapter": "f89eb73bbe45ad90",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_248-130-0",
+      "function_name": "acl_api.AclApi.retrieve_projects",
+      "correct_adapter": "2e69706c289f2c2c",
+      "alternate_adapter": "f01d103985ee3b7e",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_249-131-0",
+      "function_name": "chat_with_friend",
+      "correct_adapter": "d2bf608c9164ac45",
+      "alternate_adapter": "0821d8a1e36d4c92",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_250-132-0",
+      "function_name": "uber.eat.order",
+      "correct_adapter": "c5d372c942bef3a8",
+      "alternate_adapter": "7012e96a84612f53",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_251-133-0",
+      "function_name": "flight.status.check",
+      "correct_adapter": "39f84fc4d959adea",
+      "alternate_adapter": "8fa2943d4c298595",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_252-134-0",
+      "function_name": "flight.status.check",
+      "correct_adapter": "8fa2943d4c298595",
+      "alternate_adapter": "39f84fc4d959adea",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_253-135-0",
+      "function_name": "uber.eat.order",
+      "correct_adapter": "b2b5bc8bdce010b3",
+      "alternate_adapter": "7012e96a84612f53",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_254-136-0",
+      "function_name": "user.mandates",
+      "correct_adapter": "8ad40833081892d7",
+      "alternate_adapter": "6fef48f55161cb7c",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_255-136-1",
+      "function_name": "user.mandates",
+      "correct_adapter": "8ad40833081892d7",
+      "alternate_adapter": "6fef48f55161cb7c",
+      "alternate_rule": "schema_similar",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_256-137-0",
+      "function_name": "answer_question",
+      "correct_adapter": "8ab623661f8e6cd2",
+      "alternate_adapter": "94b565236941c5b1",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    },
+    {
+      "id": "live_simple_257-137-1",
+      "function_name": "answer_question",
+      "correct_adapter": "94b565236941c5b1",
+      "alternate_adapter": "8ab623661f8e6cd2",
+      "alternate_rule": "same_name_different_schema",
+      "boundaries": {},
+      "references": {}
+    }
+  ]
+}

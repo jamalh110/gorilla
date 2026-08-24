@@ -1,0 +1,44 @@
+{
+  "correct_from_start": {
+    "valid": true,
+    "malformed_call": false,
+    "latency_sec": 1.1758488602936268,
+    "output_tokens": 24,
+    "parsed_calls": [
+      {
+        "name": "play_artist",
+        "arguments": {
+          "artist_name": "Käärijä"
+        }
+      }
+    ]
+  },
+  "base_only": {
+    "valid": false,
+    "malformed_call": false,
+    "latency_sec": 0.7569236028939486,
+    "output_tokens": 23,
+    "parsed_calls": [
+      {
+        "name": "search_tracks",
+        "arguments": {
+          "artist": "Käärijä"
+        }
+      }
+    ]
+  },
+  "base_prefill_replay_1_to_correct": {
+    "valid": true,
+    "malformed_call": false,
+    "latency_sec": 0.9160163910128176,
+    "output_tokens": 24,
+    "parsed_calls": [
+      {
+        "name": "play_artist",
+        "arguments": {
+          "artist_name": "Käärijä"
+        }
+      }
+    ]
+  }
+}

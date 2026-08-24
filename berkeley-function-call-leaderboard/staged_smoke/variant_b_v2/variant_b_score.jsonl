@@ -1,0 +1,11 @@
+{"seed": 42, "total_count": 10, "correct_count": 2, "accuracy": 0.2, "sample_ids": ["multiple_95", "multiple_87", "multiple_98", "multiple_140", "multiple_124", "multiple_188", "multiple_52", "multiple_30", "multiple_187", "multiple_97"]}
+{"id": "multiple_95", "num_tools": 2, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ',' delimiter: line 1 column 75 (char 74)"}
+{"id": "multiple_87", "num_tools": 3, "valid": true, "checker": {"valid": true, "error": []}, "final_call": {"name": "games.update.find", "arguments": {"game": "Cyberpunk 2077", "platform": "Xbox"}}, "input_token_count": 411, "output_token_count": 24, "latency": 1.7841116460040212}
+{"id": "multiple_98", "num_tools": 4, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ',' delimiter: line 1 column 72 (char 71)"}
+{"id": "multiple_140", "num_tools": 2, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ',' delimiter: line 1 column 65 (char 64)"}
+{"id": "multiple_124", "num_tools": 3, "valid": true, "checker": {"valid": true, "error": [], "error_type": "simple_function_checker:unclear"}, "final_call": {"name": "probabilities.calculate_single", "arguments": {"total_outcomes": 52, "event_outcomes": 4, "round": 2}}, "input_token_count": 407, "output_token_count": 25, "latency": 1.833874262869358}
+{"id": "multiple_188", "num_tools": 4, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ',' delimiter: line 1 column 73 (char 72)"}
+{"id": "multiple_52", "num_tools": 2, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ',' delimiter: line 1 column 69 (char 68)"}
+{"id": "multiple_30", "num_tools": 3, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ',' delimiter: line 1 column 64 (char 63)"}
+{"id": "multiple_187", "num_tools": 4, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ',' delimiter: line 1 column 73 (char 72)"}
+{"id": "multiple_97", "num_tools": 2, "valid": false, "error": "StagedValidationError: tool call is not valid JSON: Expecting ',' delimiter: line 1 column 70 (char 69)"}

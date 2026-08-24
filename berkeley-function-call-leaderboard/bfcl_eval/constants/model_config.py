@@ -38,7 +38,18 @@ from bfcl_eval.model_handler.local_inference.deepseek_reasoning import (
     DeepseekReasoningHandler,
 )
 from bfcl_eval.model_handler.local_inference.doc_to_lora import DocToLoraHandler
+from bfcl_eval.model_handler.local_inference.doc_to_lora_peft import DocToLoraPeftHandler
 from bfcl_eval.model_handler.local_inference.doc_to_lora_sglang import DocToLoraSGLangHandler
+from bfcl_eval.model_handler.local_inference.doc_to_lora_staged import (
+    DocToLoraICLNativeHandler,
+    DocToLoraMetaIntentBinderHandler,
+    DocToLoraMetaSelectBindBaseHandler,
+    DocToLoraMetaSelectBindHandler,
+    DocToLoraMetaSelectBindOnBaseHandler,
+    DocToLoraMetaSelectLateOracleBaseHandler,
+    DocToLoraMetaSelectNativeBinderHandler,
+)
+from bfcl_eval.model_handler.local_inference.cartridge import CartridgeHandler
 from bfcl_eval.model_handler.local_inference.falcon_fc import Falcon3FCHandler
 from bfcl_eval.model_handler.local_inference.gemma import GemmaHandler
 from bfcl_eval.model_handler.local_inference.functiongemma import FunctionGemmaHandler
@@ -60,7 +71,10 @@ from bfcl_eval.model_handler.local_inference.quick_testing_oss import (
     QuickTestingOSSHandler,
 )
 from bfcl_eval.model_handler.local_inference.qwen import QwenHandler
-from bfcl_eval.model_handler.local_inference.qwen_fc import QwenFCHandler
+from bfcl_eval.model_handler.local_inference.qwen_fc import (
+    QwenFCHandler,
+    QwenFCOracleSingleToolHandler,
+)
 from bfcl_eval.model_handler.local_inference.pelican_vl_fc import PelicanVLFCHandler
 from bfcl_eval.model_handler.local_inference.nanbeige_fc import NanbeigeFCHandler
 from bfcl_eval.model_handler.local_inference.salesforce_llama import (
@@ -1695,6 +1709,18 @@ local_inference_model_map = {
         is_fc_model=True,
         underscore_to_dot=False,
     ),
+    "Qwen/Qwen3-4B-Instruct-2507-FC-oracle-single": ModelConfig(
+        model_name="Qwen/Qwen3-4B-Instruct-2507",
+        display_name="Qwen3-4B-Instruct-2507 (FC, oracle single-tool)",
+        url="https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507",
+        org="Qwen",
+        license="apache-2.0",
+        model_handler=QwenFCOracleSingleToolHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=True,
+        underscore_to_dot=False,
+    ),
     "Qwen/Qwen3-4B-Instruct-2507": ModelConfig(
         model_name="Qwen/Qwen3-4B-Instruct-2507",
         display_name="Qwen3-4B-Instruct-2507 (Prompt)",
@@ -2158,6 +2184,114 @@ local_inference_model_map = {
         org="Doc-to-LoRA",
         license="Apache 2.0",
         model_handler=DocToLoraSGLangHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
+    "doc-to-lora/qwen3-4b-peft": ModelConfig(
+        model_name="doc-to-lora/qwen3-4b-peft",
+        display_name="Doc-to-LoRA Qwen3-4B PEFT adapters (D2L)",
+        url="https://github.com/",
+        org="Doc-to-LoRA",
+        license="Apache 2.0",
+        model_handler=DocToLoraPeftHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
+    "doc-to-lora/qwen3-4b-meta-intent-0.6b": ModelConfig(
+        model_name="doc-to-lora/qwen3-4b-meta-intent-0.6b",
+        display_name="Doc-to-LoRA Qwen3-4B Meta-Intent + Qwen3-0.6B Binder",
+        url="https://github.com/",
+        org="Doc-to-LoRA",
+        license="Apache 2.0",
+        model_handler=DocToLoraMetaIntentBinderHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
+    "doc-to-lora/qwen3-4b-meta-select-bind": ModelConfig(
+        model_name="doc-to-lora/qwen3-4b-meta-select-bind",
+        display_name="Doc-to-LoRA Qwen3-4B Meta-Select-Bind",
+        url="https://github.com/",
+        org="Doc-to-LoRA",
+        license="Apache 2.0",
+        model_handler=DocToLoraMetaSelectBindHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
+    "doc-to-lora/qwen3-4b-meta-select-bind-base": ModelConfig(
+        model_name="doc-to-lora/qwen3-4b-meta-select-bind-base",
+        display_name="Qwen3-4B Meta-Select-Bind (no Doc-to-LoRA)",
+        url="https://github.com/",
+        org="Doc-to-LoRA",
+        license="Apache 2.0",
+        model_handler=DocToLoraMetaSelectBindBaseHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
+    "doc-to-lora/qwen3-4b-meta-select-late-oracle-base": ModelConfig(
+        model_name="doc-to-lora/qwen3-4b-meta-select-late-oracle-base",
+        display_name="Qwen3-4B Oracle Select + Raw Late Schema (Base)",
+        url="https://github.com/",
+        org="Doc-to-LoRA",
+        license="Apache 2.0",
+        model_handler=DocToLoraMetaSelectLateOracleBaseHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
+    "doc-to-lora/qwen3-4b-meta-select-bind-on-base": ModelConfig(
+        model_name="doc-to-lora/qwen3-4b-meta-select-bind-on-base",
+        display_name="Doc-to-LoRA Select + Base Bind",
+        url="https://github.com/",
+        org="Doc-to-LoRA",
+        license="Apache 2.0",
+        model_handler=DocToLoraMetaSelectBindOnBaseHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
+    "doc-to-lora/qwen3-4b-meta-select-native-binder": ModelConfig(
+        model_name="doc-to-lora/qwen3-4b-meta-select-native-binder",
+        display_name="Doc-to-LoRA Select + Native FC Binder",
+        url="https://github.com/",
+        org="Doc-to-LoRA",
+        license="Apache 2.0",
+        model_handler=DocToLoraMetaSelectNativeBinderHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
+    "doc-to-lora/qwen3-4b-icl-native": ModelConfig(
+        model_name="doc-to-lora/qwen3-4b-icl-native",
+        display_name="ICL ceiling: frozen Qwen3-4B, all schemas inline",
+        url="https://github.com/",
+        org="Doc-to-LoRA",
+        license="Apache 2.0",
+        model_handler=DocToLoraICLNativeHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
+    "cartridge/qwen3-4b": ModelConfig(
+        model_name="cartridge/qwen3-4b",
+        display_name="Self-Study Cartridge Qwen3-4B (no reader)",
+        url="https://github.com/HazyResearch/cartridges",
+        org="Cartridges",
+        license="Apache 2.0",
+        model_handler=CartridgeHandler,
         input_price=None,
         output_price=None,
         is_fc_model=False,

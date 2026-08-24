@@ -1,0 +1,302 @@
+{
+  "num_records": 162,
+  "groups": [
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "correct_only",
+      "boundary": null,
+      "cache_policy": "preserve",
+      "total": 40,
+      "completed": 40,
+      "accuracy": 0.35,
+      "malformed_rate": 0.2,
+      "adapter_leak_rate": 0.0,
+      "mean_wall_latency": 2.157606105704326,
+      "mean_switch_latency": null,
+      "switch_applied_rate": null,
+      "mean_peak_memory_gb": 8.228537094593047,
+      "mean_boundary_logprob_jump": null,
+      "error_types": {
+        "middecode:checker_exception": 12,
+        "simple_function_checker:unclear": 1,
+        "simple_function_checker:wrong_count": 8,
+        "value_error:list/tuple": 1,
+        "value_error:others": 1,
+        "value_error:string": 4
+      },
+      "errors": 0
+    },
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "correct_to_base",
+      "boundary": "after_arguments_key",
+      "cache_policy": "preserve",
+      "total": 40,
+      "completed": 40,
+      "accuracy": 0.35,
+      "malformed_rate": 0.2,
+      "adapter_leak_rate": 0.0,
+      "mean_wall_latency": 1.9896769290906378,
+      "mean_switch_latency": 0.006907804810907692,
+      "switch_applied_rate": 1.0,
+      "mean_peak_memory_gb": 8.228537094593047,
+      "mean_boundary_logprob_jump": 0.04572377148542728,
+      "error_types": {
+        "middecode:checker_exception": 12,
+        "simple_function_checker:missing_optional": 2,
+        "simple_function_checker:unclear": 1,
+        "simple_function_checker:wrong_count": 8,
+        "value_error:others": 1,
+        "value_error:string": 3
+      },
+      "errors": 0
+    },
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "correct_to_wrong",
+      "boundary": "after_arguments_key",
+      "cache_policy": "preserve",
+      "total": 40,
+      "completed": 40,
+      "accuracy": 0.325,
+      "malformed_rate": 0.2,
+      "adapter_leak_rate": 0.0,
+      "mean_wall_latency": 2.1755904286168515,
+      "mean_switch_latency": 0.01773493633372709,
+      "switch_applied_rate": 1.0,
+      "mean_peak_memory_gb": 8.228537094593047,
+      "mean_boundary_logprob_jump": 0.21234448384020652,
+      "error_types": {
+        "middecode:checker_exception": 12,
+        "simple_function_checker:wrong_count": 8,
+        "value_error:list/tuple": 2,
+        "value_error:others": 2,
+        "value_error:string": 3
+      },
+      "errors": 0
+    },
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "wrong_to_correct",
+      "boundary": "token_16",
+      "cache_policy": "recompute",
+      "total": 40,
+      "completed": 40,
+      "accuracy": 0.3,
+      "malformed_rate": 0.2,
+      "adapter_leak_rate": 0.0,
+      "mean_wall_latency": 2.1853849232778884,
+      "mean_switch_latency": 0.01789539718301967,
+      "switch_applied_rate": 1.0,
+      "mean_peak_memory_gb": 8.249640393257142,
+      "mean_boundary_logprob_jump": 0.13337495030447286,
+      "error_types": {
+        "middecode:checker_exception": 12,
+        "simple_function_checker:unclear": 1,
+        "simple_function_checker:wrong_count": 8,
+        "value_error:list/tuple": 2,
+        "value_error:others": 1,
+        "value_error:string": 5
+      },
+      "errors": 0
+    },
+    {
+      "backend": "peft",
+      "subset": "smoke",
+      "condition": "correct_only",
+      "boundary": null,
+      "cache_policy": "preserve",
+      "total": 1,
+      "completed": 1,
+      "accuracy": 1.0,
+      "malformed_rate": 0.0,
+      "adapter_leak_rate": 0.0,
+      "mean_wall_latency": 3.5478632720187306,
+      "mean_switch_latency": null,
+      "switch_applied_rate": null,
+      "mean_peak_memory_gb": 7.587554931640625,
+      "mean_boundary_logprob_jump": null,
+      "error_types": {
+        "simple_function_checker:unclear": 1
+      },
+      "errors": 0
+    },
+    {
+      "backend": "peft",
+      "subset": "smoke",
+      "condition": "correct_to_base",
+      "boundary": "after_tool_call",
+      "cache_policy": "preserve",
+      "total": 1,
+      "completed": 1,
+      "accuracy": 1.0,
+      "malformed_rate": 0.0,
+      "adapter_leak_rate": 0.0,
+      "mean_wall_latency": 2.7669401159510016,
+      "mean_switch_latency": null,
+      "switch_applied_rate": 0.0,
+      "mean_peak_memory_gb": 7.587554931640625,
+      "mean_boundary_logprob_jump": null,
+      "error_types": {
+        "simple_function_checker:unclear": 1
+      },
+      "errors": 0
+    }
+  ],
+  "model_generate_parity": {
+    "n": 0,
+    "exact": 0,
+    "details": []
+  },
+  "no_op_parity": {
+    "n": 0,
+    "exact": 0,
+    "details": []
+  },
+  "token_zero_parity": {
+    "n": 0,
+    "exact": 0,
+    "details": []
+  },
+  "paired_comparisons": [
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "correct_to_base",
+      "boundary": "after_arguments_key",
+      "cache_policy": "preserve",
+      "n": 40,
+      "accuracy_delta": 0.0,
+      "bootstrap_95_ci": [
+        -0.075,
+        0.075
+      ],
+      "treatment_wins": 1,
+      "control_wins": 1,
+      "mcnemar_exact_p": 1.0,
+      "mean_first_divergence": 20.733333333333334
+    },
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "correct_to_wrong",
+      "boundary": "after_arguments_key",
+      "cache_policy": "preserve",
+      "n": 40,
+      "accuracy_delta": -0.025,
+      "bootstrap_95_ci": [
+        -0.1,
+        0.05
+      ],
+      "treatment_wins": 1,
+      "control_wins": 2,
+      "mcnemar_exact_p": 1.0,
+      "mean_first_divergence": 20.09090909090909
+    },
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "wrong_to_correct",
+      "boundary": "token_16",
+      "cache_policy": "recompute",
+      "n": 40,
+      "accuracy_delta": -0.05,
+      "bootstrap_95_ci": [
+        -0.125,
+        0.0
+      ],
+      "treatment_wins": 0,
+      "control_wins": 2,
+      "mcnemar_exact_p": 0.5,
+      "mean_first_divergence": 13.727272727272727
+    },
+    {
+      "backend": "peft",
+      "subset": "smoke",
+      "condition": "correct_to_base",
+      "boundary": "after_tool_call",
+      "cache_policy": "preserve",
+      "n": 1,
+      "accuracy_delta": 0.0,
+      "bootstrap_95_ci": [
+        0.0,
+        0.0
+      ],
+      "treatment_wins": 0,
+      "control_wins": 0,
+      "mcnemar_exact_p": 1.0,
+      "mean_first_divergence": null
+    }
+  ],
+  "paired_switch_applied_comparisons": [
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "correct_to_base",
+      "boundary": "after_arguments_key",
+      "cache_policy": "preserve",
+      "n": 40,
+      "accuracy_delta": 0.0,
+      "bootstrap_95_ci": [
+        -0.075,
+        0.075
+      ],
+      "mcnemar_exact_p": 1.0,
+      "mean_first_divergence": 20.733333333333334
+    },
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "correct_to_wrong",
+      "boundary": "after_arguments_key",
+      "cache_policy": "preserve",
+      "n": 40,
+      "accuracy_delta": -0.025,
+      "bootstrap_95_ci": [
+        -0.1,
+        0.05
+      ],
+      "mcnemar_exact_p": 1.0,
+      "mean_first_divergence": 20.09090909090909
+    },
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "wrong_to_correct",
+      "boundary": "token_16",
+      "cache_policy": "recompute",
+      "n": 40,
+      "accuracy_delta": -0.05,
+      "bootstrap_95_ci": [
+        -0.125,
+        0.0
+      ],
+      "mcnemar_exact_p": 0.5,
+      "mean_first_divergence": 13.727272727272727
+    }
+  ],
+  "boundary_missing": {
+    "count": 0,
+    "by_backend_subset_boundary": {}
+  },
+  "cross_backend_token_parity": [],
+  "cross_backend_first_logits": [],
+  "decision": {
+    "mechanically_feasible": false,
+    "execution_error_count": 0,
+    "best_full_schedule": null,
+    "behaviorally_viable_point_estimate": false,
+    "behaviorally_equivalent_95_ci": false,
+    "max_switch_time_fraction": 0.00818867055977403,
+    "operationally_useful": true,
+    "early_activation_signal": null,
+    "phase_switch_signal": null,
+    "expert_handoff_signal": null,
+    "rapid_token_moe_supported": false,
+    "phase_switching_supported": false
+  }
+}

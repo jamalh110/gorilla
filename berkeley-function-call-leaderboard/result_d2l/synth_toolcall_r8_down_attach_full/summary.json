@@ -1,0 +1,11 @@
+{
+  "n_cases": 258,
+  "icl_fc": 203,
+  "correct_from_start": 160,
+  "post_prefill": 143,
+  "icl_accuracy": 0.7868217054263565,
+  "from_start_accuracy": 0.6201550387596899,
+  "post_prefill_accuracy": 0.5542635658914729,
+  "agreement_icl_from_start": 201,
+  "agreement_from_start_post": 239
+}

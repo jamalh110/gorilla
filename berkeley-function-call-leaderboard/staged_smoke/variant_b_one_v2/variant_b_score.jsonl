@@ -1,0 +1,2 @@
+{"seed": 42, "total_count": 1, "correct_count": 0, "accuracy": 0.0, "sample_ids": ["multiple_95"]}
+{"id": "multiple_95", "num_tools": 2, "valid": false, "error": "StagedValidationError: $.arguments is missing required keys ['tool_name']"}

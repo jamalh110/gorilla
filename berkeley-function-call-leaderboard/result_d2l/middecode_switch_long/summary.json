@@ -1,0 +1,130 @@
+{
+  "num_records": 80,
+  "groups": [
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "correct_only",
+      "boundary": null,
+      "cache_policy": "preserve",
+      "total": 40,
+      "completed": 40,
+      "accuracy": 0.2,
+      "malformed_rate": 0.0,
+      "adapter_leak_rate": 0.0,
+      "mean_wall_latency": 9.23201352134347,
+      "mean_switch_latency": null,
+      "switch_applied_rate": null,
+      "mean_peak_memory_gb": 8.24302248954773,
+      "mean_boundary_logprob_jump": null,
+      "error_types": {
+        "middecode:checker_exception": 16,
+        "simple_function_checker:missing_required": 3,
+        "simple_function_checker:unclear": 1,
+        "simple_function_checker:unexpected_param": 4,
+        "simple_function_checker:wrong_func_name": 6,
+        "value_error:others": 1,
+        "value_error:string": 2
+      },
+      "errors": 0
+    },
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "correct_to_base",
+      "boundary": "after_tool_call",
+      "cache_policy": "preserve",
+      "total": 40,
+      "completed": 40,
+      "accuracy": 0.2,
+      "malformed_rate": 0.0,
+      "adapter_leak_rate": 0.025,
+      "mean_wall_latency": 9.12817563250428,
+      "mean_switch_latency": 0.007856765808537603,
+      "switch_applied_rate": 1.0,
+      "mean_peak_memory_gb": 8.243129301071168,
+      "mean_boundary_logprob_jump": 0.0004890796539259057,
+      "error_types": {
+        "middecode:checker_exception": 16,
+        "simple_function_checker:missing_required": 3,
+        "simple_function_checker:unclear": 1,
+        "simple_function_checker:unexpected_param": 4,
+        "simple_function_checker:wrong_func_name": 6,
+        "value_error:others": 1,
+        "value_error:string": 2
+      },
+      "errors": 0
+    }
+  ],
+  "model_generate_parity": {
+    "n": 0,
+    "exact": 0,
+    "details": []
+  },
+  "no_op_parity": {
+    "n": 0,
+    "exact": 0,
+    "details": []
+  },
+  "token_zero_parity": {
+    "n": 0,
+    "exact": 0,
+    "details": []
+  },
+  "paired_comparisons": [
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "correct_to_base",
+      "boundary": "after_tool_call",
+      "cache_policy": "preserve",
+      "n": 40,
+      "accuracy_delta": 0.0,
+      "bootstrap_95_ci": [
+        0.0,
+        0.0
+      ],
+      "treatment_wins": 0,
+      "control_wins": 0,
+      "mcnemar_exact_p": 1.0,
+      "mean_first_divergence": 227.4516129032258
+    }
+  ],
+  "paired_switch_applied_comparisons": [
+    {
+      "backend": "peft",
+      "subset": "pilot",
+      "condition": "correct_to_base",
+      "boundary": "after_tool_call",
+      "cache_policy": "preserve",
+      "n": 40,
+      "accuracy_delta": 0.0,
+      "bootstrap_95_ci": [
+        0.0,
+        0.0
+      ],
+      "mcnemar_exact_p": 1.0,
+      "mean_first_divergence": 227.4516129032258
+    }
+  ],
+  "boundary_missing": {
+    "count": 0,
+    "by_backend_subset_boundary": {}
+  },
+  "cross_backend_token_parity": [],
+  "cross_backend_first_logits": [],
+  "decision": {
+    "mechanically_feasible": false,
+    "execution_error_count": 0,
+    "best_full_schedule": null,
+    "behaviorally_viable_point_estimate": false,
+    "behaviorally_equivalent_95_ci": false,
+    "max_switch_time_fraction": 0.0008607158894446172,
+    "operationally_useful": true,
+    "early_activation_signal": null,
+    "phase_switch_signal": null,
+    "expert_handoff_signal": null,
+    "rapid_token_moe_supported": false,
+    "phase_switching_supported": false
+  }
+}

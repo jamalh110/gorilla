@@ -1,0 +1,743 @@
+[
+  {
+    "id": "live_simple_66-30-0",
+    "adapter_hash": "066798fb8af94675",
+    "tool": "inventory.restock_check",
+    "condition": "correct_from_start",
+    "latency_sec": 2.1043871990405023,
+    "raw_output": "<tool_call>\n{\"name\": \"inventory.restock_check\", \"arguments\": {\"item_ids\": [102, 103], \"threshold\": 20}}\n</tool_call>",
+    "input_tokens": 145,
+    "output_tokens": 37,
+    "user": "The Requirement Extractor is designed to interpret and process multiple user queries in a single input, especially in the context of inventory management and product information.",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "inventory.restock_check",
+        "arguments": {
+          "item_ids": [
+            102,
+            103
+          ],
+          "threshold": 20
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_66-30-0",
+    "adapter_hash": "066798fb8af94675",
+    "tool": "inventory.restock_check",
+    "condition": "base_only",
+    "latency_sec": 2.0310926381498575,
+    "raw_output": "<tool_call>\n{\"name\": \"check_inventory_levels\", \"arguments\": {\"item_ids\": [102, 103], \"sizes\": [\"L\", \"M\"], \"minimum_threshold\": 20}}\n</tool_call>",
+    "input_tokens": 145,
+    "output_tokens": 46,
+    "user": "The Requirement Extractor is designed to interpret and process multiple user queries in a single input, especially in the context of inventory management and product information.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Function name 'inventory.restock_check' not found in model output."
+      ],
+      "error_type": "simple_function_checker:wrong_func_name"
+    },
+    "parsed_calls": [
+      {
+        "name": "check_inventory_levels",
+        "arguments": {
+          "item_ids": [
+            102,
+            103
+          ],
+          "sizes": [
+            "L",
+            "M"
+          ],
+          "minimum_threshold": 20
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_66-30-0",
+    "adapter_hash": "066798fb8af94675",
+    "tool": "inventory.restock_check",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.7724447869695723,
+    "raw_output": "<tool_call>\n{\"name\": \"inventory.restock_check\", \"arguments\": {\"item_ids\": [102, 103], \"threshold\": 20}}\n</tool_call>",
+    "input_tokens": 145,
+    "output_tokens": 37,
+    "user": "The Requirement Extractor is designed to interpret and process multiple user queries in a single input, especially in the context of inventory management and product information.",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "inventory.restock_check",
+        "arguments": {
+          "item_ids": [
+            102,
+            103
+          ],
+          "threshold": 20
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_22-5-0",
+    "adapter_hash": "0821d8a1e36d4c92",
+    "tool": "ChaFod",
+    "condition": "correct_from_start",
+    "latency_sec": 1.1210512700490654,
+    "raw_output": "<tool_call>\n{\"name\": \"ChaFod\", \"arguments\": {\"TheFod\": \"Whopper\"}}\n</tool_call>",
+    "input_tokens": 78,
+    "output_tokens": 24,
+    "user": "I need Whopper also known old folks as the burger.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'TheFod': 'Whopper'. Expected one of ['BURGER']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "ChaFod",
+        "arguments": {
+          "TheFod": "Whopper"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_22-5-0",
+    "adapter_hash": "0821d8a1e36d4c92",
+    "tool": "ChaFod",
+    "condition": "base_only",
+    "latency_sec": 6.0081970281898975,
+    "raw_output": "The Whopper, also known as \"the old folks' burger,\" is a popular beef burger created by the Whopper Company. It is known for its large size, juicy beef patty, and a variety of toppings such as lettuce, tomato, onion, and a special sauce. The name \"old folks' burger\" is a playful or informal nickname, possibly referring to its classic, hearty nature that appeals to older generations or traditional tastes. However, it's important to note that \"old folks' burger\" is not an official name used by the company and may be a colloquial or humorous reference. The Whopper is primarily marketed as a bold, satisfying burger with a strong flavor profile.",
+    "input_tokens": 78,
+    "output_tokens": 142,
+    "user": "I need Whopper also known old folks as the burger.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Wrong number of functions."
+      ],
+      "error_type": "simple_function_checker:wrong_count"
+    },
+    "parsed_calls": [],
+    "malformed_call": true
+  },
+  {
+    "id": "live_simple_22-5-0",
+    "adapter_hash": "0821d8a1e36d4c92",
+    "tool": "ChaFod",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.1542250900529325,
+    "raw_output": "<tool_call>\n{\"name\": \"ChaFod\", \"arguments\": {\"TheFod\": \"Whopper\"}}\n</tool_call>",
+    "input_tokens": 78,
+    "output_tokens": 24,
+    "user": "I need Whopper also known old folks as the burger.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'TheFod': 'Whopper'. Expected one of ['BURGER']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "ChaFod",
+        "arguments": {
+          "TheFod": "Whopper"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_105-62-0",
+    "adapter_hash": "094fec0a4823223e",
+    "tool": "classify",
+    "condition": "correct_from_start",
+    "latency_sec": 1.6778078591451049,
+    "raw_output": "<tool_call>\n{\"name\": \"classify\", \"arguments\": {\"clean_hello\": [\"hello\"], \"faq_link_accounts_start\": [\"link my account\", \"connect my accounts\"]}}\n</tool_call>",
+    "input_tokens": 79,
+    "output_tokens": 37,
+    "user": "classify these sentences\\nlink my account\\nconnect my accounts\\nhello",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "classify",
+        "arguments": {
+          "clean_hello": [
+            "hello"
+          ],
+          "faq_link_accounts_start": [
+            "link my account",
+            "connect my accounts"
+          ]
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_105-62-0",
+    "adapter_hash": "094fec0a4823223e",
+    "tool": "classify",
+    "condition": "base_only",
+    "latency_sec": 2.7033497812226415,
+    "raw_output": "<tool_call>\n{\"name\": \"classify_sentence\", \"arguments\": {\"sentence\": \"link my account\"}}\n</tool_call>\n<tool_call>\n{\"name\": \"classify_sentence\", \"arguments\": {\"sentence\": \"connect my accounts\"}}\n</tool_call>\n<tool_call>\n{\"name\": \"classify_sentence\", \"arguments\": {\"sentence\": \"hello\"}}\n</tool_call>",
+    "input_tokens": 79,
+    "output_tokens": 64,
+    "user": "classify these sentences\\nlink my account\\nconnect my accounts\\nhello",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Wrong number of functions."
+      ],
+      "error_type": "simple_function_checker:wrong_count"
+    },
+    "parsed_calls": [
+      {
+        "name": "classify_sentence",
+        "arguments": {
+          "sentence": "link my account"
+        }
+      },
+      {
+        "name": "classify_sentence",
+        "arguments": {
+          "sentence": "connect my accounts"
+        }
+      },
+      {
+        "name": "classify_sentence",
+        "arguments": {
+          "sentence": "hello"
+        }
+      }
+    ],
+    "malformed_call": true
+  },
+  {
+    "id": "live_simple_105-62-0",
+    "adapter_hash": "094fec0a4823223e",
+    "tool": "classify",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.034256320912391,
+    "raw_output": "<tool_call>\n{\"name\": \"classify\", \"arguments\": {\"clean_hello\": [\"hello\"]}}\n</tool_call>",
+    "input_tokens": 79,
+    "output_tokens": 21,
+    "user": "classify these sentences\\nlink my account\\nconnect my accounts\\nhello",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Missing required parameter: 'faq_link_accounts_start'."
+      ],
+      "error_type": "simple_function_checker:missing_required"
+    },
+    "parsed_calls": [
+      {
+        "name": "classify",
+        "arguments": {
+          "clean_hello": [
+            "hello"
+          ]
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_80-41-0",
+    "adapter_hash": "0adde26531595d1b",
+    "tool": "sitefinity_create_contentitem",
+    "condition": "correct_from_start",
+    "latency_sec": 7.177892914973199,
+    "raw_output": "<tool_call>\n{\"name\": \"sitefinity_create_contentitem\", \"arguments\": {\"Title\": \"Breakthrough in Artificial Intelligence\", \"Content\": \"Recent breakthroughs in machine learning algorithms have revolutionized the way AI systems learn and adapt. New techniques such as self-supervised learning, transformer-based models, and improved neural network architectures have significantly enhanced the performance of AI in tasks like natural language processing, image recognition, and predictive analytics. These advancements are paving the way for more efficient, accurate, and scalable AI solutions across various industries.\", \"MetaTitle\": \"AI Breakthrough Latest Developments in Machine Learning\", \"MetaDescription\": \"An overview of the recent significant advancements in artificial intelligence and machine learning technology\", \"UrlName\": \"ai-breakthrough-latest-developments\"}}\n</tool_call>",
+    "input_tokens": 159,
+    "output_tokens": 156,
+    "user": "I need to add a news item about the latest advancements in AI. The title should be 'Breakthrough in Artificial Intelligence', and the content must cover the recent breakthroughs in machine learning algorithms. Can you set the meta title as 'AI Breakthrough Latest Developments in Machine Learning' and the meta description to 'An overview of the recent significant advancements in artificial intelligence and machine learning technology'? Also, the URL should be 'ai-breakthrough-latest-developments'.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'Content': 'Recent breakthroughs in machine learning algorithms have revolutionized the way AI systems learn and adapt. New techniques such as self-supervised learning, transformer-based models, and improved neural network architectures have significantly enhanced the performance of AI in tasks like natural language processing, image recognition, and predictive analytics. These advancements are paving the way for more efficient, accurate, and scalable AI solutions across various industries.'. Expected one of ['The recent breakthroughs in machine learning algorithms.']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "sitefinity_create_contentitem",
+        "arguments": {
+          "Title": "Breakthrough in Artificial Intelligence",
+          "Content": "Recent breakthroughs in machine learning algorithms have revolutionized the way AI systems learn and adapt. New techniques such as self-supervised learning, transformer-based models, and improved neural network architectures have significantly enhanced the performance of AI in tasks like natural language processing, image recognition, and predictive analytics. These advancements are paving the way for more efficient, accurate, and scalable AI solutions across various industries.",
+          "MetaTitle": "AI Breakthrough Latest Developments in Machine Learning",
+          "MetaDescription": "An overview of the recent significant advancements in artificial intelligence and machine learning technology",
+          "UrlName": "ai-breakthrough-latest-developments"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_80-41-0",
+    "adapter_hash": "0adde26531595d1b",
+    "tool": "sitefinity_create_contentitem",
+    "condition": "base_only",
+    "latency_sec": 7.303607198875397,
+    "raw_output": "<tool_call>\n{\"name\": \"create_news_item\", \"arguments\": {\"title\": \"Breakthrough in Artificial Intelligence\", \"content\": \"Recent breakthroughs in machine learning algorithms have revolutionized how AI systems learn and adapt. New neural network architectures, such as transformer-based models with enhanced self-attention mechanisms, have significantly improved accuracy and efficiency in natural language processing and computer vision tasks. Additionally, advancements in reinforcement learning have enabled AI to solve complex problems through trial and error, with applications in robotics and autonomous systems. These developments mark a pivotal step toward more intelligent, responsive, and autonomous AI technologies.\", \"meta_title\": \"AI Breakthrough Latest Developments in Machine Learning\", \"meta_description\": \"An overview of the recent significant advancements in artificial intelligence and machine learning technology\", \"url\": \"ai-breakthrough-latest-developments\"}}\n</tool_call>",
+    "input_tokens": 159,
+    "output_tokens": 168,
+    "user": "I need to add a news item about the latest advancements in AI. The title should be 'Breakthrough in Artificial Intelligence', and the content must cover the recent breakthroughs in machine learning algorithms. Can you set the meta title as 'AI Breakthrough Latest Developments in Machine Learning' and the meta description to 'An overview of the recent significant advancements in artificial intelligence and machine learning technology'? Also, the URL should be 'ai-breakthrough-latest-developments'.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Function name 'sitefinity_create_contentitem' not found in model output."
+      ],
+      "error_type": "simple_function_checker:wrong_func_name"
+    },
+    "parsed_calls": [
+      {
+        "name": "create_news_item",
+        "arguments": {
+          "title": "Breakthrough in Artificial Intelligence",
+          "content": "Recent breakthroughs in machine learning algorithms have revolutionized how AI systems learn and adapt. New neural network architectures, such as transformer-based models with enhanced self-attention mechanisms, have significantly improved accuracy and efficiency in natural language processing and computer vision tasks. Additionally, advancements in reinforcement learning have enabled AI to solve complex problems through trial and error, with applications in robotics and autonomous systems. These developments mark a pivotal step toward more intelligent, responsive, and autonomous AI technologies.",
+          "meta_title": "AI Breakthrough Latest Developments in Machine Learning",
+          "meta_description": "An overview of the recent significant advancements in artificial intelligence and machine learning technology",
+          "url": "ai-breakthrough-latest-developments"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_80-41-0",
+    "adapter_hash": "0adde26531595d1b",
+    "tool": "sitefinity_create_contentitem",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 7.931876485235989,
+    "raw_output": "<tool_call>\n{\"name\": \"sitefinity_create_contentitem\", \"arguments\": {\"Title\": \"Breakthrough in Artificial Intelligence\", \"Content\": \"Recent breakthroughs in machine learning algorithms have revolutionized the way AI systems learn and adapt. New techniques such as self-supervised learning, transformer-based models, and reinforcement learning have significantly improved accuracy and efficiency. These advancements enable AI to process vast amounts of data with minimal human intervention, leading to more intelligent and responsive systems in fields like healthcare, autonomous vehicles, and natural language processing. Researchers have also developed more scalable and energy-efficient models, making AI more accessible and sustainable.\", \"MetaTitle\": \"AI Breakthrough Latest Developments in Machine Learning\", \"MetaDescription\": \"An overview of the recent significant advancements in artificial intelligence and machine learning technology\", \"UrlName\": \"ai-breakthrough-latest-developments\"}}\n</tool_call>",
+    "input_tokens": 159,
+    "output_tokens": 173,
+    "user": "I need to add a news item about the latest advancements in AI. The title should be 'Breakthrough in Artificial Intelligence', and the content must cover the recent breakthroughs in machine learning algorithms. Can you set the meta title as 'AI Breakthrough Latest Developments in Machine Learning' and the meta description to 'An overview of the recent significant advancements in artificial intelligence and machine learning technology'? Also, the URL should be 'ai-breakthrough-latest-developments'.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'Content': 'Recent breakthroughs in machine learning algorithms have revolutionized the way AI systems learn and adapt. New techniques such as self-supervised learning, transformer-based models, and reinforcement learning have significantly improved accuracy and efficiency. These advancements enable AI to process vast amounts of data with minimal human intervention, leading to more intelligent and responsive systems in fields like healthcare, autonomous vehicles, and natural language processing. Researchers have also developed more scalable and energy-efficient models, making AI more accessible and sustainable.'. Expected one of ['The recent breakthroughs in machine learning algorithms.']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "sitefinity_create_contentitem",
+        "arguments": {
+          "Title": "Breakthrough in Artificial Intelligence",
+          "Content": "Recent breakthroughs in machine learning algorithms have revolutionized the way AI systems learn and adapt. New techniques such as self-supervised learning, transformer-based models, and reinforcement learning have significantly improved accuracy and efficiency. These advancements enable AI to process vast amounts of data with minimal human intervention, leading to more intelligent and responsive systems in fields like healthcare, autonomous vehicles, and natural language processing. Researchers have also developed more scalable and energy-efficient models, making AI more accessible and sustainable.",
+          "MetaTitle": "AI Breakthrough Latest Developments in Machine Learning",
+          "MetaDescription": "An overview of the recent significant advancements in artificial intelligence and machine learning technology",
+          "UrlName": "ai-breakthrough-latest-developments"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_137-90-0",
+    "adapter_hash": "0dc2e1f5047ece33",
+    "tool": "reschedule",
+    "condition": "correct_from_start",
+    "latency_sec": 2.5934110120870173,
+    "raw_output": "<tool_call>\n{\"name\": \"reschedule\", \"arguments\": {\"identifier\": \"Alice-One-one-One\", \"dateOrTime\": \"2023-11-01T20:00:00\", \"timezone\": \"Europe/London\"}}\n</tool_call>",
+    "input_tokens": 91,
+    "output_tokens": 57,
+    "user": "Reschedule event 'Alice-One-one-One' to November 1, 2023 at 8pm London time",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "reschedule",
+        "arguments": {
+          "identifier": "Alice-One-one-One",
+          "dateOrTime": "2023-11-01T20:00:00",
+          "timezone": "Europe/London"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_137-90-0",
+    "adapter_hash": "0dc2e1f5047ece33",
+    "tool": "reschedule",
+    "condition": "base_only",
+    "latency_sec": 2.4984928141348064,
+    "raw_output": "<tool_call>\n{\"name\": \"reschedule_event\", \"arguments\": {\"event_name\": \"Alice-One-one-One\", \"new_date\": \"2023-11-01\", \"new_time\": \"20:00\", \"time_zone\": \"London\"}}\n</tool_call>",
+    "input_tokens": 91,
+    "output_tokens": 59,
+    "user": "Reschedule event 'Alice-One-one-One' to November 1, 2023 at 8pm London time",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Function name 'reschedule' not found in model output."
+      ],
+      "error_type": "simple_function_checker:wrong_func_name"
+    },
+    "parsed_calls": [
+      {
+        "name": "reschedule_event",
+        "arguments": {
+          "event_name": "Alice-One-one-One",
+          "new_date": "2023-11-01",
+          "new_time": "20:00",
+          "time_zone": "London"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_137-90-0",
+    "adapter_hash": "0dc2e1f5047ece33",
+    "tool": "reschedule",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 2.640196750406176,
+    "raw_output": "<tool_call>\n{\"name\": \"reschedule\", \"arguments\": {\"identifier\": \"Alice-One-one-One\", \"dateOrTime\": \"2023-11-01T20:00:00\", \"timezone\": \"Europe/London\"}}\n</tool_call>",
+    "input_tokens": 91,
+    "output_tokens": 57,
+    "user": "Reschedule event 'Alice-One-one-One' to November 1, 2023 at 8pm London time",
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "reschedule",
+        "arguments": {
+          "identifier": "Alice-One-one-One",
+          "dateOrTime": "2023-11-01T20:00:00",
+          "timezone": "Europe/London"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_26-6-0",
+    "adapter_hash": "0ded45b2fbc1622d",
+    "tool": "uber.ride",
+    "condition": "correct_from_start",
+    "latency_sec": 2.253465141169727,
+    "raw_output": "<tool_call>\n{\"name\": \"uber.ride\", \"arguments\": {\"loc\": \"123 Đường Đại học, Berkeley, CA 94704\", \"type\": \"plus\", \"time\": 10}}\n</tool_call>",
+    "input_tokens": 106,
+    "output_tokens": 49,
+    "user": "Tôi cần một chuyến Uber loại 'Plus' từ địa chỉ 123 Đường Đại học, Berkeley, CA 94704 và tôi không muốn chờ quá 10 phút.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'loc': '123 Đường Đại học, Berkeley, CA 94704'. Expected one of ['123 Đường Đại học, Berkeley, CA', '123 University Street, Berkeley, CA']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "uber.ride",
+        "arguments": {
+          "loc": "123 Đường Đại học, Berkeley, CA 94704",
+          "type": "plus",
+          "time": 10
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_26-6-0",
+    "adapter_hash": "0ded45b2fbc1622d",
+    "tool": "uber.ride",
+    "condition": "base_only",
+    "latency_sec": 2.264047123026103,
+    "raw_output": "<tool_call>\n{\"name\": \"request_uber\", \"arguments\": {\"pickup_address\": \"123 Đường Đại học, Berkeley, CA 94704\", \"car_type\": \"Plus\", \"wait_time_limit\": 10}}\n</tool_call>",
+    "input_tokens": 106,
+    "output_tokens": 53,
+    "user": "Tôi cần một chuyến Uber loại 'Plus' từ địa chỉ 123 Đường Đại học, Berkeley, CA 94704 và tôi không muốn chờ quá 10 phút.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Function name 'uber.ride' not found in model output."
+      ],
+      "error_type": "simple_function_checker:wrong_func_name"
+    },
+    "parsed_calls": [
+      {
+        "name": "request_uber",
+        "arguments": {
+          "pickup_address": "123 Đường Đại học, Berkeley, CA 94704",
+          "car_type": "Plus",
+          "wait_time_limit": 10
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_26-6-0",
+    "adapter_hash": "0ded45b2fbc1622d",
+    "tool": "uber.ride",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 2.293125939089805,
+    "raw_output": "<tool_call>\n{\"name\": \"uber.ride\", \"arguments\": {\"loc\": \"123 Đường Đại học, Berkeley, CA 94704\", \"type\": \"plus\", \"time\": 10}}\n</tool_call>",
+    "input_tokens": 106,
+    "output_tokens": 49,
+    "user": "Tôi cần một chuyến Uber loại 'Plus' từ địa chỉ 123 Đường Đại học, Berkeley, CA 94704 và tôi không muốn chờ quá 10 phút.",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'loc': '123 Đường Đại học, Berkeley, CA 94704'. Expected one of ['123 Đường Đại học, Berkeley, CA', '123 University Street, Berkeley, CA']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "uber.ride",
+        "arguments": {
+          "loc": "123 Đường Đại học, Berkeley, CA 94704",
+          "type": "plus",
+          "time": 10
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_71-35-0",
+    "adapter_hash": "0e41b496073d1b90",
+    "tool": "extract_parameters_v1",
+    "condition": "correct_from_start",
+    "latency_sec": 3.428586894646287,
+    "raw_output": "<tool_call>\n{\"name\": \"extract_parameters_v1\", \"arguments\": {\"targets\": [\"brand:Apple\"], \"metrics\": [\"brand awareness\", \"brand trust\", \"brand loyalty\"], \"demographics\": [\"millennials\"], \"country\": null, \"min_date\": \"2022-07-01\", \"max_date\": null}}\n</tool_call>",
+    "input_tokens": 81,
+    "output_tokens": 75,
+    "user": "How have millennials views of Apple changed since July 2022?'",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'metrics': ['brand awareness', 'brand trust', 'brand loyalty']. Expected one of [['view']]."
+      ],
+      "error_type": "value_error:list/tuple"
+    },
+    "parsed_calls": [
+      {
+        "name": "extract_parameters_v1",
+        "arguments": {
+          "targets": [
+            "brand:Apple"
+          ],
+          "metrics": [
+            "brand awareness",
+            "brand trust",
+            "brand loyalty"
+          ],
+          "demographics": [
+            "millennials"
+          ],
+          "country": null,
+          "min_date": "2022-07-01",
+          "max_date": null
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_71-35-0",
+    "adapter_hash": "0e41b496073d1b90",
+    "tool": "extract_parameters_v1",
+    "condition": "base_only",
+    "latency_sec": 2.4780430481769145,
+    "raw_output": "<tool_call>\n{\"name\": \"search_news\", \"arguments\": {\"query\": \"millennials views of Apple July 2022\", \"time_range\": \"2022-07-01 to 2022-07-31\"}}\n</tool_call>",
+    "input_tokens": 81,
+    "output_tokens": 59,
+    "user": "How have millennials views of Apple changed since July 2022?'",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Function name 'extract_parameters_v1' not found in model output."
+      ],
+      "error_type": "simple_function_checker:wrong_func_name"
+    },
+    "parsed_calls": [
+      {
+        "name": "search_news",
+        "arguments": {
+          "query": "millennials views of Apple July 2022",
+          "time_range": "2022-07-01 to 2022-07-31"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_71-35-0",
+    "adapter_hash": "0e41b496073d1b90",
+    "tool": "extract_parameters_v1",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 3.4581492906436324,
+    "raw_output": "<tool_call>\n{\"name\": \"extract_parameters_v1\", \"arguments\": {\"targets\": [\"brand:Apple\"], \"metrics\": [\"brand perception\", \"brand loyalty\", \"brand trust\"], \"demographics\": [\"millennials\"], \"country\": null, \"min_date\": \"2022-07-01\", \"max_date\": null}}\n</tool_call>",
+    "input_tokens": 81,
+    "output_tokens": 75,
+    "user": "How have millennials views of Apple changed since July 2022?'",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'metrics': ['brand perception', 'brand loyalty', 'brand trust']. Expected one of [['view']]."
+      ],
+      "error_type": "value_error:list/tuple"
+    },
+    "parsed_calls": [
+      {
+        "name": "extract_parameters_v1",
+        "arguments": {
+          "targets": [
+            "brand:Apple"
+          ],
+          "metrics": [
+            "brand perception",
+            "brand loyalty",
+            "brand trust"
+          ],
+          "demographics": [
+            "millennials"
+          ],
+          "country": null,
+          "min_date": "2022-07-01",
+          "max_date": null
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_10-3-6",
+    "adapter_hash": "110e6dd34cc787f5",
+    "tool": "get_current_weather",
+    "condition": "correct_from_start",
+    "latency_sec": 1.6901838420890272,
+    "raw_output": "<tool_call>\n{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Yosemite National Park, Mariposa, CA\", \"unit\": \"celsius\"}}\n</tool_call>",
+    "input_tokens": 98,
+    "output_tokens": 37,
+    "user": "Could you tell me the current weather in Yosemite National Park which locates at Mariposa, CA, and make sure to give me the temperature in Celsius?",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'location': 'Yosemite National Park, Mariposa, CA'. Expected one of ['Mariposa, CA']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "get_current_weather",
+        "arguments": {
+          "location": "Yosemite National Park, Mariposa, CA",
+          "unit": "celsius"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_10-3-6",
+    "adapter_hash": "110e6dd34cc787f5",
+    "tool": "get_current_weather",
+    "condition": "base_only",
+    "latency_sec": 1.3355508027598262,
+    "raw_output": "<tool_call>\n{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Mariposa, CA\", \"unit\": \"celsius\"}}\n</tool_call>",
+    "input_tokens": 98,
+    "output_tokens": 31,
+    "user": "Could you tell me the current weather in Yosemite National Park which locates at Mariposa, CA, and make sure to give me the temperature in Celsius?",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Function name 'get_current_weather' not found in model output."
+      ],
+      "error_type": "simple_function_checker:wrong_func_name"
+    },
+    "parsed_calls": [
+      {
+        "name": "get_weather",
+        "arguments": {
+          "location": "Mariposa, CA",
+          "unit": "celsius"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_10-3-6",
+    "adapter_hash": "110e6dd34cc787f5",
+    "tool": "get_current_weather",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 1.7611166597343981,
+    "raw_output": "<tool_call>\n{\"name\": \"get_current_weather\", \"arguments\": {\"location\": \"Yosemite National Park, Mariposa, CA\", \"unit\": \"celsius\"}}\n</tool_call>",
+    "input_tokens": 98,
+    "output_tokens": 37,
+    "user": "Could you tell me the current weather in Yosemite National Park which locates at Mariposa, CA, and make sure to give me the temperature in Celsius?",
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Invalid value for parameter 'location': 'Yosemite National Park, Mariposa, CA'. Expected one of ['Mariposa, CA']. Case insensitive."
+      ],
+      "error_type": "value_error:string"
+    },
+    "parsed_calls": [
+      {
+        "name": "get_current_weather",
+        "arguments": {
+          "location": "Yosemite National Park, Mariposa, CA",
+          "unit": "celsius"
+        }
+      }
+    ],
+    "malformed_call": false
+  }
+]

@@ -1,0 +1,3 @@
+Call exactly one function for the user query. Always emit a tool call; do not refuse, ask questions, or answer in prose.
+
+Fill required parameters from what the user clearly stated. Omit optional parameters the user did not clearly request. Do not invent values, do not fill schema defaults, and do not copy example values from descriptions. Prefer a minimal argument set.

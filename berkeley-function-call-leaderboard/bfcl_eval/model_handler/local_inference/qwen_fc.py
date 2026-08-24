@@ -1,10 +1,63 @@
 import json
+import os
 import re
 from typing import Any
 
 from bfcl_eval.model_handler.local_inference.base_oss_handler import OSSHandler
+from bfcl_eval.model_handler.local_inference.bfcl_tool_schema import (
+    normalize_functions,
+)
 from bfcl_eval.model_handler.utils import convert_to_function_call
 from overrides import override
+
+
+def _qwen_disable_thinking() -> bool:
+    return os.environ.get("QWEN_DISABLE_THINKING", "0") not in ("0", "", "false", "False")
+
+
+def _qwen_fc_normalize_tools() -> bool:
+    """Use the same BFCL schema normalization as the D2L pipelines."""
+    return os.environ.get("QWEN_FC_NORMALIZE_TOOLS", "0") not in (
+        "0",
+        "",
+        "false",
+        "False",
+    )
+
+
+def _qwen_fc_extra_system_message() -> str | None:
+    """Optional system text prepended into the FC tools system block.
+
+    Set ``QWEN_FC_SYSTEM_MESSAGE_FILE`` to a path, or ``QWEN_FC_SYSTEM_MESSAGE``
+    to inline text. Used for sparse-bind / always-call ablations.
+    """
+    path = os.environ.get("QWEN_FC_SYSTEM_MESSAGE_FILE")
+    if path:
+        with open(path, encoding="utf-8") as handle:
+            text = handle.read().strip()
+        if text:
+            return text
+    override = os.environ.get("QWEN_FC_SYSTEM_MESSAGE")
+    if override and override.strip():
+        return override.strip()
+    return None
+
+
+_FORCE_TOOL_CALL_PREFIX = '<tool_call>\n{"name": "'
+
+
+def _qwen_fc_force_tool_call_prefix() -> bool:
+    """If set, prefill assistant with a tool-call opener (binder-style)."""
+    return os.environ.get("QWEN_FC_FORCE_TOOL_CALL_PREFIX", "0") not in (
+        "0",
+        "",
+        "false",
+        "False",
+    )
+
+
+def _qwen_fc_tool_call_prefix() -> str:
+    return _FORCE_TOOL_CALL_PREFIX if _qwen_fc_force_tool_call_prefix() else ""
 
 
 class QwenFCHandler(OSSHandler):
@@ -236,20 +289,36 @@ class QwenFCHandler(OSSHandler):
                     formatted_prompt += "<|im_end|>\n"
 
         formatted_prompt += "<|im_start|>assistant\n"
+        # Hard-disable thinking (empty think block), matching
+        # tokenizer.apply_chat_template(..., enable_thinking=False).
+        if _qwen_disable_thinking():
+            formatted_prompt += "<think>\n\n</think>\n\n"
+        # Binder-style force: completion must continue a tool call.
+        formatted_prompt += _qwen_fc_tool_call_prefix()
         return formatted_prompt
 
     @override
     def _pre_query_processing_prompting(self, test_entry: dict) -> dict:
         functions: list = test_entry["function"]
+        if _qwen_fc_normalize_tools():
+            functions = normalize_functions(functions)
 
-        # FC models use its own system prompt, so no need to add any message
+        # FC models use its own tools system prompt. Optional env text is
+        # prepended into that block when present (sparse-bind ablations).
+        messages: list[dict] = []
+        extra = _qwen_fc_extra_system_message()
+        if extra:
+            messages.append({"role": "system", "content": extra})
 
-        return {"message": [], "function": functions}
+        return {"message": messages, "function": functions}
 
     @override
     def _parse_query_response_prompting(self, api_response: Any) -> dict:
         model_response = api_response.choices[0].text
-        extracted_tool_calls = self._extract_tool_calls(model_response)
+        # Completions API returns only new tokens; restore forced prefix.
+        prefix = _qwen_fc_tool_call_prefix()
+        if prefix and not model_response.lstrip().startswith("<tool_call>"):
+            model_response = prefix + model_response
 
         reasoning_content = ""
         cleaned_response = model_response
@@ -257,6 +326,12 @@ class QwenFCHandler(OSSHandler):
             parts = model_response.split("</think>")
             reasoning_content = parts[0].rstrip("\n").split("<think>")[-1].lstrip("\n")
             cleaned_response = parts[-1].lstrip("\n")
+
+        # Tolerate missing closing tag when a forced prefix was used.
+        if prefix and "</tool_call>" not in cleaned_response and "<tool_call>" in cleaned_response:
+            cleaned_response = cleaned_response.rstrip() + "\n</tool_call>"
+
+        extracted_tool_calls = self._extract_tool_calls(cleaned_response)
 
         if len(extracted_tool_calls) > 0:
             model_responses_message_for_chat_history = {
@@ -270,7 +345,7 @@ class QwenFCHandler(OSSHandler):
                 "role": "assistant",
                 "content": cleaned_response,
             }
-            
+
         model_responses_message_for_chat_history["reasoning_content"] = reasoning_content
 
         return {
@@ -304,3 +379,62 @@ class QwenFCHandler(OSSHandler):
             except Exception as e:
                 pass
         return result
+
+
+def _oracle_tool_name_from_ground_truth(test_entry_id: str) -> str:
+    """Return the single gold tool name for a BFCL entry id."""
+    from bfcl_eval.constants.category_mapping import VERSION_PREFIX
+    from bfcl_eval.constants.eval_config import POSSIBLE_ANSWER_PATH
+    from bfcl_eval.eval_checker.eval_runner_helper import load_file
+
+    # Cache across calls so SGLang batching does not reload 200 rows each time.
+    cache = getattr(_oracle_tool_name_from_ground_truth, "_cache", None)
+    if cache is None:
+        cache = {}
+        for category in ("multiple", "live_simple", "simple"):
+            path = POSSIBLE_ANSWER_PATH / f"{VERSION_PREFIX}_{category}.json"
+            if not path.exists():
+                continue
+            for entry in load_file(path):
+                names: list[str] = []
+                for call in entry.get("ground_truth", []):
+                    if isinstance(call, dict):
+                        names.extend(call.keys())
+                # Keep first name if multiple; BFCL multiple has exactly one.
+                if names:
+                    cache[entry["id"]] = names[0]
+        _oracle_tool_name_from_ground_truth._cache = cache
+
+    if test_entry_id not in cache:
+        raise KeyError(f"No oracle tool name for test entry {test_entry_id!r}")
+    return cache[test_entry_id]
+
+
+class QwenFCOracleSingleToolHandler(QwenFCHandler):
+    """ICL FC with oracle routing: only the gold tool schema is put in context.
+
+    Intended ablation for staged D2L select→bind: assume routing is perfect,
+    then bind with the original (non-normalized) schema via native Qwen FC /
+    SGLang. No XGrammar and no forced tool-call prefix unless those env flags
+    are set independently.
+    """
+
+    @override
+    def _pre_query_processing_prompting(self, test_entry: dict) -> dict:
+        functions: list = test_entry["function"]
+        oracle_name = _oracle_tool_name_from_ground_truth(test_entry["id"])
+        matches = [f for f in functions if f.get("name") == oracle_name]
+        if len(matches) != 1:
+            raise ValueError(
+                f"{test_entry['id']}: expected exactly one oracle tool "
+                f"{oracle_name!r}, found {len(matches)}"
+            )
+        # Keep the original BFCL schema; do not normalize.
+        functions = matches
+
+        messages: list[dict] = []
+        extra = _qwen_fc_extra_system_message()
+        if extra:
+            messages.append({"role": "system", "content": extra})
+
+        return {"message": messages, "function": functions}

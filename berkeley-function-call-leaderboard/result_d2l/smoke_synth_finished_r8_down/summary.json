@@ -1,0 +1,49 @@
+{
+  "n_adapters": 8,
+  "n_cases": 8,
+  "from_start": 3,
+  "post_prefill": 2,
+  "base_only": 0,
+  "per_case": {
+    "inventory.restock_check|live_simple_66-30-0": {
+      "correct_from_start": true,
+      "base_only": false,
+      "base_prefill_replay_1_to_correct": true
+    },
+    "ChaFod|live_simple_22-5-0": {
+      "correct_from_start": false,
+      "base_only": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    "classify|live_simple_105-62-0": {
+      "correct_from_start": true,
+      "base_only": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    "sitefinity_create_contentitem|live_simple_80-41-0": {
+      "correct_from_start": false,
+      "base_only": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    "reschedule|live_simple_137-90-0": {
+      "correct_from_start": true,
+      "base_only": false,
+      "base_prefill_replay_1_to_correct": true
+    },
+    "uber.ride|live_simple_26-6-0": {
+      "correct_from_start": false,
+      "base_only": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    "extract_parameters_v1|live_simple_71-35-0": {
+      "correct_from_start": false,
+      "base_only": false,
+      "base_prefill_replay_1_to_correct": false
+    },
+    "get_current_weather|live_simple_10-3-6": {
+      "correct_from_start": false,
+      "base_only": false,
+      "base_prefill_replay_1_to_correct": false
+    }
+  }
+}

@@ -1,0 +1,118 @@
+[
+  {
+    "id": "live_simple_93-54-0",
+    "condition": "correct_from_start",
+    "latency_sec": 1.1758488602936268,
+    "raw_output": "<tool_call>\n{\"name\": \"play_artist\", \"arguments\": {\"artist_name\": \"Käärijä\"}}\n</tool_call>",
+    "input_tokens": 80,
+    "output_tokens": 24,
+    "prefill_latency": 0.2725985338911414,
+    "decode_latency": 0.8820460229180753,
+    "replay_prompt_tokens": 0,
+    "activation_events": [
+      {
+        "adapter": "031442ba1fbf4022",
+        "latency": 0.0035943440161645412,
+        "adapter_path": "/home/jah649/tool-lora/doc-to-lora/train_outputs/live_simple_synth_toolcall_r8_down/031442ba1fbf4022",
+        "adapters_enabled": true,
+        "kind": "initial",
+        "output_token_index": 0
+      }
+    ],
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "play_artist",
+        "arguments": {
+          "artist_name": "Käärijä"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_93-54-0",
+    "condition": "base_only",
+    "latency_sec": 0.7569236028939486,
+    "raw_output": "<tool_call>\n{\"name\": \"search_tracks\", \"arguments\": {\"artist\": \"Käärijä\"}}\n</tool_call>",
+    "input_tokens": 80,
+    "output_tokens": 23,
+    "prefill_latency": 0.03252687631174922,
+    "decode_latency": 0.7206005430780351,
+    "replay_prompt_tokens": 0,
+    "activation_events": [
+      {
+        "adapter": null,
+        "latency": 0.0015390119515359402,
+        "adapter_path": null,
+        "adapters_enabled": false,
+        "kind": "initial",
+        "output_token_index": 0
+      }
+    ],
+    "valid": false,
+    "checker": {
+      "valid": false,
+      "error": [
+        "Function name 'play_artist' not found in model output."
+      ],
+      "error_type": "simple_function_checker:wrong_func_name"
+    },
+    "parsed_calls": [
+      {
+        "name": "search_tracks",
+        "arguments": {
+          "artist": "Käärijä"
+        }
+      }
+    ],
+    "malformed_call": false
+  },
+  {
+    "id": "live_simple_93-54-0",
+    "condition": "base_prefill_replay_1_to_correct",
+    "latency_sec": 0.9160163910128176,
+    "raw_output": "<tool_call>\n{\"name\": \"play_artist\", \"arguments\": {\"artist_name\": \"Käärijä\"}}\n</tool_call>",
+    "input_tokens": 80,
+    "output_tokens": 24,
+    "prefill_latency": 0.0728995013050735,
+    "decode_latency": 0.8400430660694838,
+    "replay_prompt_tokens": 1,
+    "activation_events": [
+      {
+        "adapter": null,
+        "latency": 0.0014829523861408234,
+        "adapter_path": null,
+        "adapters_enabled": false,
+        "kind": "initial",
+        "output_token_index": 0
+      },
+      {
+        "adapter": "031442ba1fbf4022",
+        "latency": 0.0033552739769220352,
+        "adapter_path": "/home/jah649/tool-lora/doc-to-lora/train_outputs/live_simple_synth_toolcall_r8_down/031442ba1fbf4022",
+        "adapters_enabled": true,
+        "kind": "post_prefill_switch",
+        "output_token_index": 0
+      }
+    ],
+    "valid": true,
+    "checker": {
+      "valid": true,
+      "error": []
+    },
+    "parsed_calls": [
+      {
+        "name": "play_artist",
+        "arguments": {
+          "artist_name": "Käärijä"
+        }
+      }
+    ],
+    "malformed_call": false
+  }
+]
